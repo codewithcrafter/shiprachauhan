@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Location SEO: How to Avoid Cannibalization Across City Pages | Shipra Chauhan</title>
+  <meta name="description" content="Multi location SEO cannibalization happens when two or more of your city pages compete for the same search query, so Google splits ranking signals between them. Learn how unique local content and proper internal linking prevent this.">
+  <link rel="canonical" href="https://shiprachauhan.in/blogs/multi-location-seo-cannibalization">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Multi-Location SEO: How to Avoid Cannibalization Across City Pages">
+  <meta property="og:description" content="Multi location SEO cannibalization happens when two or more of your city pages compete for the same search query, so Google splits ranking signals between them. Learn how unique local content and proper internal linking prevent this.">
+  <meta property="og:image" content="/assets/images/local-multi.webp">
+
+  <!-- Google Fonts Preconnect & Editorial Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    if (sessionStorage.getItem('curtain_reveal')) {
+      document.documentElement.classList.add('curtain-incoming');
+    }
+  </script>
+</head>
+<body>
+  <!-- Full-Page Curtain Wipe Overlay -->
+  <div class="page-curtain is-hidden" aria-hidden="true">
+    <div class="curtain-gold-edge"></div>
+    <div class="curtain-brand-mark">
+      <span class="curtain-monogram">SC</span>
+      <span class="curtain-tagline">Shipra Chauhan · Strategic Advisory</span>
+    </div>
+  </div>
+
+  <!-- Dual-Tier Modern Sticky Header -->
+  <header class="site-header-full" id="siteHeader">
+    <!-- Tier 1: Micro-Bar -->
+    <div class="header-top-bar">
+      <div class="header-top-container">
+        <div class="top-bar-left">
+          <span class="status-indicator-badge">
+            <span class="status-pulse-dot"></span>
+            <span>Available for Consultation</span>
+          </span>
+          <span class="top-bar-sep" aria-hidden="true">•</span>
+          <span class="top-bar-location">Delhi NCR &amp; Global</span>
+          <span class="top-bar-sep desktop-only" aria-hidden="true">•</span>
+          <span class="top-bar-metric desktop-only">10+ Yrs Exp • 100% White Hat Growth</span>
+        </div>
+        <div class="top-bar-right">
+          <a href="tel:+919718159724" class="top-contact-link">
+            <svg class="top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>+91 97181 59724</span>
+          </a>
+          <span class="top-bar-sep" aria-hidden="true">•</span>
+          <a href="mailto:info@shiprachauhan.in" class="top-contact-link desktop-only">
+            <svg class="top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span>info@shiprachauhan.in</span>
+          </a>
+          <span class="top-bar-sep desktop-only" aria-hidden="true">•</span>
+          <a href="https://wa.me/919718159724?text=Hello%20Shipra,%20I%20would%20like%20to%20discuss%20an%20SEO%20project." target="_blank" rel="noopener noreferrer" class="top-whatsapp-pill">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span>WhatsApp Direct</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 2: Main Navigation Bar -->
+    <nav class="navbar-full" id="navbar" aria-label="Main Navigation">
+      <div class="navbar-full-container">
+        <a href="/" class="nav-brand-modern" aria-label="Shipra Chauhan SEO Expert">
+          <div class="brand-monogram-box">
+            <span>SC</span>
+          </div>
+          <div class="brand-text-group">
+            <span class="brand-name">Shipra <span>Chauhan</span></span>
+            <span class="brand-role">Senior SEO Consultant · Delhi</span>
+          </div>
+        </a>
+
+        <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li class="nav-dropdown">
+            <a href="/#services" class="nav-link">
+              <span>Services</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </a>
+            <div class="services-mega-menu">
+              <a href="/ecommerce-seo" class="mega-item">
+                <svg class="mega-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                <div>
+                  <span class="mega-title">Ecommerce SEO</span>
+                  <span class="mega-desc">Shopify &amp; WooCommerce</span>
+                </div>
+              </a>
+              <a href="/geo-services" class="mega-item">
+                <svg class="mega-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
+                <div>
+                  <span class="mega-title">Generative Engine Optimization</span>
+                  <span class="mega-desc">AI Overviews &amp; LLM Citations</span>
+                </div>
+              </a>
+              <a href="/local-seo" class="mega-item">
+                <svg class="mega-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div>
+                  <span class="mega-title">Local SEO</span>
+                  <span class="mega-desc">Google Business Profile</span>
+                </div>
+              </a>
+              <a href="/off-page-seo" class="mega-item">
+                <svg class="mega-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                <div>
+                  <span class="mega-title">Off-Page SEO</span>
+                  <span class="mega-desc">Authority &amp; Digital PR</span>
+                </div>
+              </a>
+              <a href="/on-page-seo" class="mega-item">
+                <svg class="mega-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <div>
+                  <span class="mega-title">On-Page SEO</span>
+                  <span class="mega-desc">Content &amp; Intent Alignment</span>
+                </div>
+              </a>
+              <a href="/technical-seo" class="mega-item">
+                <svg class="mega-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                <div>
+                  <span class="mega-title">Technical SEO</span>
+                  <span class="mega-desc">Core Web Vitals &amp; Speed</span>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li><a href="/about" class="nav-link">About</a></li>
+          <li><a href="/blogs" class="nav-link active">Blogs</a></li>
+          <li><a href="/contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="header-cta-group">
+          <a href="/contact" class="btn-header-audit">Free Audit</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top: 8rem; padding-bottom: 5rem;">
+      <div class="container">
+        
+        <!-- Breadcrumbs -->
+        <div class="breadcrumb-nav">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/blogs">Blogs</a>
+          <span>/</span>
+          <span>Multi-Location SEO: How to Avoid Cannibalization Across City Pages</span>
+        </div>
+
+        <!-- 2-Column Article Layout -->
+        <div class="blog-article-layout">
+          
+          <!-- LEFT COLUMN: Main Article Content -->
+          <article class="blog-article-content">
+            
+            <header class="article-hero-header">
+              <div class="article-meta-strip">
+                <span class="blog-category-tag">Local Architecture</span>
+                <span>•</span>
+                <span>9 min read</span>
+                <span>•</span>
+                <span>October 11, 2026</span>
+                <span>•</span>
+                <span>By krishna</span>
+                <span>•</span>
+                <span>Verified by Shipra Chauhan</span>
+              </div>
+
+              <h1 class="article-main-title">
+                Multi-Location SEO: How to Avoid Cannibalization Across City Pages
+              </h1>
+
+              <p style="font-size: 1.15rem; color: var(--color-grey-dark); line-height: 1.7; font-weight: 500;">
+                Multi location SEO cannibalization happens when two or more of your city pages compete for the same search query, so Google splits ranking signals between them. Learn how unique local content and proper internal linking prevent this.
+              </p>
+            </header>
+
+            <div class="article-featured-image-box">
+              <img src="/assets/images/local-multi.webp" alt="Multi-Location SEO: How to Avoid Cannibalization Across City Pages" class="article-featured-image" loading="eager">
+            </div>
+
+            <div class="article-prose">
+              
+              <h2 id="cannibalization-dynamics">1. What Causes Multi-Location Cannibalization?</h2>
+              <p>When businesses expand across multiple territories—such as South Delhi, Noida, Gurgaon, and West Delhi—the quickest approach often looks tempting: duplicate a single landing page and swap only the city name. This creates fatal programmatic duplicate content.<br><br>Google detects nearly identical text across dozens of URLs. Rather than ranking each page in its respective district, the algorithm splits topical authority, resulting in fluctuating positions and zero page dominance.</p>
+
+              <h2 id="unique-value-per-location">2. Injecting Unique Proof and Local Market Signals</h2>
+              <p>Every location landing page must demonstrate genuine physical or operational presence. Replace generic boilerplate text with district-specific case studies, local client testimonials, neighborhood landmarks, and localized pricing or logistical considerations.<br><br>A South Delhi page should speak to corporate enterprises and high-value consultancies, while an industrial area page should focus on manufacturing and B2B logistics.</p>
+
+              <h2 id="silo-linking-hierarchy">3. Topic Siloing and Clean Internal Linking Hierarchies</h2>
+              <p>Never link all city pages randomly to one another in footer link-farms. Establish a hierarchical directory structure: <code>/locations/delhi-ncr/south-delhi</code> and route internal links strictly upward to the regional pillar page.<br><br>This architecture establishes unambiguous geographic containment and prevents internal PageRank dilution.</p>
+
+              <h2 id="canonical-canonicalization">4. Canonical and Geotargeted Meta Scaffolding</h2>
+              <p>Each localized landing page must carry a self-referencing canonical tag to affirm its status as an independent entity. Ensure the Open Graph metadata, title tags, and meta descriptions distinctly incorporate the primary municipal sub-district.</p>
+
+              <h2 id="audit-remedies">5. Diagnostic Workflow to Resolve Existing Cannibalization</h2>
+              <p>If your city pages are already competing against each other:
+        <ul>
+          <li>Audit Google Search Console query performance to identify URLs swapping ranking impressions.</li>
+          <li>Consolidate overlapping thin pages into comprehensive regional hubs using 301 redirects.</li>
+          <li>Rewrite each remaining page to deliver at least 65% distinct, locally-grounded content.</li>
+        </ul></p>
+
+              <div class="article-callout-box">
+                <div class="article-callout-title">
+                  <span>⚡</span>
+                  <span>Architectural Insight</span>
+                </div>
+                <div class="article-callout-desc">
+                  Websites that eliminate local cannibalization routinely see organic impressions jump by 40% within 60 days by consolidating divided ranking signals.
+                </div>
+              </div>
+            </div>
+
+            <!-- In-Article Advisory CTA Banner -->
+            <div class="article-footer-cta">
+              <div class="popup-badge" style="margin-bottom: 0.5rem;">
+                <span class="status-pulse-dot"></span>
+                <span>Direct Search Advisory</span>
+              </div>
+              <h3 style="font-size: 1.6rem; font-weight: 800; color: #142820; margin-bottom: 0.5rem;">
+                Ready to Upgrade Your Search Rankings in Delhi NCR?
+              </h3>
+              <p style="color: #3E443C; max-width: 600px; margin: 0 auto 1.5rem; font-size: 0.95rem;">
+                Audit your technical site architecture, content citability, or local profile directly with Shipra Chauhan.
+              </p>
+              <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="/contact" class="btn btn-primary">Book Consultation Session →</a>
+                <a href="/blogs" class="btn btn-outline" style="border-color: #123C32; color: #123C32;">Browse More Articles</a>
+              </div>
+            </div>
+
+            <!-- Next & Previous Article Navigation -->
+            <div class="article-nav-row">
+              <a href="/blogs/voice-search-local-seo" class="article-nav-card">
+                <span class="article-nav-label">← Previous Article</span>
+                <span class="article-nav-title">Voice Search and Local SEO: What "Near Me" Queries Actually Need</span>
+              </a>
+              <a href="/blogs/review-response-local-seo" class="article-nav-card" style="text-align: right;">
+                <span class="article-nav-label">Next Article →</span>
+                <span class="article-nav-title">Review Response Strategy: How Responding to Reviews Affects Local Rankings</span>
+              </a>
+            </div>
+
+          </article>
+
+          <!-- RIGHT SIDEBAR: TOC, Advisory Form, Tags, Author -->
+          <aside class="blog-sidebar-sticky" aria-label="Article Outline and Metadata">
+            
+            <!-- Table of Contents -->
+            <div class="toc-card">
+              <div class="toc-header">
+                <span>🧭</span>
+                <span>Table of Contents</span>
+              </div>
+              <ul class="toc-list">
+                <li class="toc-item"><a href="#cannibalization-dynamics" class="toc-link active">1. What Causes Multi-Location Cannibalization?</a></li>
+                <li class="toc-item"><a href="#unique-value-per-location" class="toc-link ">2. Injecting Unique Proof and Local Market Signals</a></li>
+                <li class="toc-item"><a href="#silo-linking-hierarchy" class="toc-link ">3. Topic Siloing and Clean Internal Linking Hierarchies</a></li>
+                <li class="toc-item"><a href="#canonical-canonicalization" class="toc-link ">4. Canonical and Geotargeted Meta Scaffolding</a></li>
+                <li class="toc-item"><a href="#audit-remedies" class="toc-link ">5. Diagnostic Workflow to Resolve Existing Cannibalization</a></li>
+              </ul>
+            </div>
+
+            <!-- Quick Advisory Consultation Form Card -->
+            <div class="blog-form-card">
+              <div class="toc-header" style="border-bottom: none; margin-bottom: 0.5rem; padding-bottom: 0;">
+                <span>⚡</span>
+                <span>Get Strategic Advisory</span>
+              </div>
+              <p style="font-size: 0.8rem; color: #3E443C; line-height: 1.45; margin-bottom: 1rem;">
+                Connect directly with Shipra Chauhan — Senior SEO Consultant Delhi.
+              </p>
+              
+              <form class="blog-sidebar-form">
+                <div class="form-group" style="margin-bottom: 0.65rem;">
+                  <input type="text" class="form-input" style="padding: 0.6rem 0.8rem; font-size: 0.825rem; width: 100%; box-sizing: border-box;" placeholder="Your Name *" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 0.65rem;">
+                  <input type="tel" class="form-input" style="padding: 0.6rem 0.8rem; font-size: 0.825rem; width: 100%; box-sizing: border-box;" placeholder="Phone / WhatsApp *" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 0.65rem;">
+                  <input type="email" class="form-input" style="padding: 0.6rem 0.8rem; font-size: 0.825rem; width: 100%; box-sizing: border-box;" placeholder="Email Address *" required>
+                </div>
+                <button type="submit" class="btn-service-submit" style="padding: 0.65rem; font-size: 0.82rem; width: 100%;">
+                  <span>Claim Advisory Call →</span>
+                </button>
+                <div style="font-size: 0.7rem; color: #77766F; text-align: center; margin-top: 0.4rem;">
+                  🔒 Strict NDA • Direct review &lt; 4h
+                </div>
+              </form>
+              <div class="service-form-success" style="display: none; padding: 0.75rem; font-size: 0.8rem;">
+                <strong>✓ Request Sent!</strong> Shipra will connect within 4 hours.
+              </div>
+            </div>
+
+            <!-- Article Tags -->
+            <div class="tags-card">
+              <div class="tags-header">
+                <span>🏷️</span>
+                <span>Article Tags</span>
+              </div>
+              <div class="article-tags-cloud">
+                <a href="/blogs" class="article-tag">#MultiLocationSEO</a>
+                <a href="/blogs" class="article-tag">#KeywordCannibalization</a>
+                <a href="/blogs" class="article-tag">#CityPages</a>
+                <a href="/blogs" class="article-tag">#InternalLinking</a>
+                <a href="/blogs" class="article-tag">#LocalCitations</a>
+              </div>
+            </div>
+
+            <!-- Author & Reviewer Profile -->
+            <div class="author-card-sidebar">
+              <div class="author-sidebar-flex">
+                <img src="/assets/images/about-hero.webp" alt="Shipra Chauhan" class="author-sidebar-avatar">
+                <div>
+                  <div class="author-sidebar-name">Shipra Chauhan</div>
+                  <div class="author-sidebar-title">Senior SEO Consultant Delhi</div>
+                </div>
+              </div>
+              <p style="font-size: 0.825rem; color: #3E443C; line-height: 1.5; margin-bottom: 0.85rem;">
+                Written by krishna &amp; reviewed by Shipra Chauhan — 10+ years hands-on experience optimizing high-growth organic systems.
+              </p>
+              <a href="/contact" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.6rem; font-size: 0.82rem; text-decoration: none; box-sizing: border-box;">
+                Consult With Shipra →
+              </a>
+            </div>
+
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Master Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="/" class="footer-logo">Shipra <span>Chauhan</span></a>
+          <p class="footer-desc">
+            SEO consultant in Delhi helping businesses build sustainable organic growth through technical, on-page, and off-page strategy — not shortcuts.
+          </p>
+        </div>
+
+        <div>
+          <p class="footer-heading">Services</p>
+          <ul class="footer-links">
+            <li><a href="/on-page-seo">On-Page SEO</a></li>
+            <li><a href="/technical-seo">Technical SEO</a></li>
+            <li><a href="/off-page-seo">Off-Page SEO</a></li>
+            <li><a href="/local-seo">Local SEO</a></li>
+            <li><a href="/ecommerce-seo">Ecommerce SEO</a></li>
+            <li><a href="/geo-services">Generative Engine Optimization</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-heading">Company</p>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-heading">Get In Touch</p>
+          <div class="footer-contact-list">
+            <a href="mailto:info@shiprachauhan.in" class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              <span>info@shiprachauhan.in</span>
+            </a>
+            <a href="tel:+919718159724" class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+91 97181 59724</span>
+            </a>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Delhi, India</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Shipra Chauhan. All rights reserved.</span>
+        <span>SEO Consultant &amp; Strategist Delhi</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 3-Second Timed Animated Lead Pop-up Modal -->
+  <div class="auto-popup-overlay" id="autoPopupOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="auto-popup-card">
+      <button class="popup-close-btn" id="closeAutoPopupBtn" aria-label="Close Pop-up">×</button>
+      
+      <div class="popup-badge">
+        <span class="status-pulse-dot"></span>
+        <span>Senior SEO Advisory</span>
+      </div>
+
+      <h2 class="popup-title" id="popupTitle">Accelerate Your Search Rankings</h2>
+      <p class="popup-desc">
+        Connect directly with Shipra Chauhan — Senior SEO Consultant Delhi. Receive a comprehensive evaluation of your technical health and AI search visibility.
+      </p>
+
+      <form class="popup-form" id="autoPopupForm">
+        <div class="form-group">
+          <label for="popupName">Full Name *</label>
+          <input type="text" id="popupName" class="form-input" placeholder="Your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="popupContact">Phone / WhatsApp *</label>
+          <input type="tel" id="popupContact" class="form-input" placeholder="+91 98765 43210" required>
+        </div>
+
+        <div class="form-group">
+          <label for="popupEmail">Business Email *</label>
+          <input type="email" id="popupEmail" class="form-input" placeholder="name@company.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="popupService">Service Required *</label>
+          <select id="popupService" class="form-select" required>
+            <option value="" disabled selected>Select an SEO Service</option>
+            <option value="Ecommerce SEO">Ecommerce SEO</option>
+            <option value="Generative Engine Optimization (GEO)">Generative Engine Optimization (GEO)</option>
+            <option value="Local SEO">Local SEO &amp; Google Business Profile</option>
+            <option value="Off-Page SEO">Off-Page SEO &amp; Authority Links</option>
+            <option value="On-Page SEO">On-Page SEO &amp; Content Architecture</option>
+            <option value="Technical SEO">Technical SEO &amp; Site Speed</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="popupMessage">Website URL / Project Scope (Optional)</label>
+          <textarea id="popupMessage" class="form-textarea" placeholder="Enter your website URL or current search challenges..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-popup-submit" id="popupSubmitBtn">
+          <span>Request Strategic Consultation →</span>
+        </button>
+
+        <div class="popup-footer-note">
+          🔒 Strict NDA Protection • Direct Senior Response Within 4 Hours
+        </div>
+      </form>
+
+      <div class="popup-success-banner" id="popupSuccessBanner">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem; color: #123C32;">✓</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; color: #142820; margin-bottom: 0.35rem;">Request Received!</h3>
+        <p style="font-size: 0.88rem; color: #3E443C; margin-bottom: 1rem;">
+          Shipra Chauhan will personally review your website and connect within 4 hours.
+        </p>
+        <button type="button" class="btn-service-submit" id="popupSuccessCloseBtn" style="max-width: 180px; margin: 0 auto;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Quick Actions (Desktop) -->
+  <div class="floating-quick-actions" aria-label="Quick Communication">
+    <a href="https://wa.me/919718159724?text=Hello%20Shipra,%20I%20would%20like%20to%20discuss%20an%20SEO%20project." target="_blank" rel="noopener noreferrer" class="floating-action-btn floating-whatsapp" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+      </svg>
+    </a>
+    <a href="tel:+919718159724" class="floating-action-btn floating-call" aria-label="Call Directly">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Mobile Bottom App Bar (<768px) -->
+  <div class="mobile-bottom-bar" aria-label="Mobile Bottom Actions">
+    <div class="mobile-bottom-inner">
+      <a href="tel:+919718159724" class="mobile-bottom-btn mobile-btn-call">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span>Call Now</span>
+      </a>
+      <a href="https://wa.me/919718159724?text=Hello%20Shipra,%20I%20would%20like%20to%20discuss%20an%20SEO%20project." target="_blank" rel="noopener noreferrer" class="mobile-bottom-btn mobile-btn-whatsapp">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top-btn" aria-label="Scroll to top of page">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

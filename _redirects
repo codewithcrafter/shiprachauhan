@@ -1,0 +1,9 @@
+# Netlify & Cloudflare Pages Clean URLs Redirection Rules
+# Strictly NO .html and NO trailing slashes
+/index.html                     /                               301!
+/about-shipra-chauhan/          /about-shipra-chauhan           301!
+/about/                         /about                          301!
+/blogs/                         /blogs                          301!
+/contact/                       /contact                        301!
+/services/*                     /services/:splat                301!
+/blogs/*                        /blogs/:splat                   301!

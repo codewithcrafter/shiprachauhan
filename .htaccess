@@ -1,0 +1,54 @@
+# ==============================================================================
+# SHIPRA CHAUHAN - APACHE / LITESPEED / CPANEL CLEAN URL CONFIGURATION
+# STRICTLY NO .HTML AND NO TRAILING SLASHES
+# ==============================================================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Redirect /index.html directly to root domain /
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/index\.html [NC]
+  RewriteRule ^index\.html$ / [R=301,L]
+
+  # 2. Redirect /subfolder/index.html to /subfolder (NO trailing slash)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/(.*)/index\.html [NC]
+  RewriteRule ^(.*)/index\.html$ /$1 [R=301,L]
+
+  # 3. Permanent 301 Redirect from any request ending in .html to Clean URL
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+  RewriteRule ^ %1 [R=301,L]
+
+  # 4. Remove trailing slash from all non-root URLs (e.g. /about/ -> /about)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^(.+)/$
+  RewriteRule ^(.+)/$ $1 [R=301,L]
+
+  # 5. Internally route Clean URLs to the corresponding .html file
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.*)$ $1.html [NC,L]
+
+  # 6. Fallback internal route to directory index.html
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^(.*)$ $1/index.html [NC,L]
+</IfModule>
+
+# Browser Caching & Performance
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
