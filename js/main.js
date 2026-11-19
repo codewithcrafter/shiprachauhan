@@ -507,45 +507,56 @@ function initTwoWayScrollAnimations() {
  * 7. Mobile Navigation Drawer & Submenu Accordion
  */
 function initMobileNav() {
-  const toggle = document.querySelector('.mobile-toggle');
-  const navMenu = document.querySelector('.nav-menu');
-  const dropdownParents = document.querySelectorAll('.nav-item-dropdown');
+  const toggle = document.querySelector('.mobile-nav-toggle, .mobile-toggle');
+  const navMenu = document.querySelector('.site-header-full .nav-menu, .nav-menu');
+  const dropdownParents = document.querySelectorAll('.nav-dropdown, .nav-item-dropdown');
 
   if (!toggle || !navMenu) return;
 
-  toggle.addEventListener('click', () => {
-    const isOpen = toggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    toggle.setAttribute('aria-expanded', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const isOpen = navMenu.classList.toggle('open');
+    navMenu.classList.toggle('active', isOpen);
+    toggle.classList.toggle('active', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
   });
 
   dropdownParents.forEach(item => {
-    const link = item.querySelector('.nav-link');
+    const link = item.querySelector('.nav-link, a');
     if (!link) return;
 
     link.addEventListener('click', (e) => {
       if (window.innerWidth <= 960) {
         e.preventDefault();
+        e.stopPropagation();
+        item.classList.toggle('open');
         item.classList.toggle('mobile-open');
       }
     });
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+  // Close when clicking nav links
+  navMenu.querySelectorAll('a:not(.nav-dropdown > a)').forEach(link => {
+    link.addEventListener('click', () => {
       toggle.classList.remove('active');
-      navMenu.classList.remove('active');
-      document.body.style.overflow = '';
+      navMenu.classList.remove('active', 'open');
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && (navMenu.classList.contains('active') || navMenu.classList.contains('open'))) {
+      toggle.classList.remove('active');
+      navMenu.classList.remove('active', 'open');
       toggle.focus();
     }
   });
 
   document.addEventListener('click', (e) => {
-    if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !toggle.contains(e.target)) {
+    if ((navMenu.classList.contains('active') || navMenu.classList.contains('open')) &&
+        !navMenu.contains(e.target) && !toggle.contains(e.target)) {
       toggle.classList.remove('active');
-      navMenu.classList.remove('active');
-      document.body.style.overflow = '';
+      navMenu.classList.remove('active', 'open');
     }
   });
 }
