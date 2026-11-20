@@ -685,34 +685,69 @@ svg {
 
 .mobile-toggle {
   display: none;
-  background: none;
-  border: none;
+  background: rgba(183, 154, 98, 0.08);
+  border: 1.5px solid rgba(183, 154, 98, 0.35);
+  border-radius: 10px;
   cursor: pointer;
-  padding: 0.5rem;
-  width: 40px;
-  height: 40px;
+  padding: 0;
+  width: 42px;
+  height: 42px;
   position: relative;
-  z-index: 1020;
+  z-index: 1025;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .mobile-toggle span {
   display: block;
-  width: 24px;
+  width: 20px;
   height: 2px;
+  background-color: #C9B283;
+  border-radius: 2px;
+  margin: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.mobile-toggle span:nth-child(2) {
+  width: 15px;
   background-color: #FAF8F3;
-  margin: 5px auto;
-  transition: all 0.25s ease;
+}
+
+.mobile-toggle:hover {
+  background: rgba(183, 154, 98, 0.18);
+  border-color: #B79A62;
+  box-shadow: 0 4px 14px rgba(183, 154, 98, 0.25);
+  transform: translateY(-1px);
+}
+
+.mobile-toggle:active {
+  transform: scale(0.94);
+}
+
+.mobile-toggle.active {
+  background: rgba(183, 154, 98, 0.22);
+  border-color: #B79A62;
 }
 
 .mobile-toggle.active span:nth-child(1) {
+  width: 20px;
+  background-color: #FAF8F3;
   transform: translateY(7px) rotate(45deg);
 }
 
 .mobile-toggle.active span:nth-child(2) {
   opacity: 0;
+  transform: scaleX(0);
 }
 
 .mobile-toggle.active span:nth-child(3) {
+  width: 20px;
+  background-color: #FAF8F3;
   transform: translateY(-7px) rotate(-45deg);
 }
 
@@ -1965,7 +2000,11 @@ html.no-js .reveal-mask {
 
   /* Mobile Drawer Menu */
   .mobile-toggle {
-    display: block;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
   }
 
   .nav-menu {
@@ -5772,9 +5811,11 @@ html.no-js .tableau-card,
 
   .mobile-toggle,
   .mobile-nav-toggle {
-    display: inline-flex !important;
+    display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+    gap: 5px !important;
   }
 
   .desktop-only,
