@@ -6277,3 +6277,49 @@ pre, code {
   min-height: 80px;
   resize: vertical;
 }
+
+/* ==============================================================================
+   Article Tables (Luxury Editorial Styling for Single Blog Posts)
+   ============================================================================== */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 12px;
+  border: 1.5px solid rgba(18, 60, 50, 0.12);
+  background: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(18, 60, 50, 0.04);
+}
+
+.article-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+  background: #FFFFFF;
+}
+
+.article-table th {
+  background: #123C32;
+  color: #FAF8F3;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+}
+
+.article-table td {
+  padding: 0.95rem 1.25rem;
+  border: 1px solid rgba(18, 60, 50, 0.08);
+  color: #2D3748;
+  line-height: 1.6;
+}
+
+.article-table tbody tr:nth-child(even) {
+  background-color: #FAF8F3;
+}
+
+.article-table tbody tr:hover {
+  background-color: rgba(183, 154, 98, 0.1);
+}

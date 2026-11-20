@@ -5,6 +5,8 @@
 require_once dirname(__DIR__) . '/config/db.php';
 
 $pdo = getDbConnection();
+$appBase = getAppBaseUrl();
+$adminBase = getAdminBaseUrl();
 $error = null;
 $success = null;
 
@@ -28,6 +30,10 @@ $categories = [
 if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title'] ?? '');
     $category = trim($_POST['category'] ?? 'SEO Strategy');
+    if ($category === 'Other') {
+        $customCat = trim($_POST['custom_category'] ?? '');
+        $category = !empty($customCat) ? $customCat : 'General SEO';
+    }
     $slug = trim($_POST['slug'] ?? '');
     if (empty($slug)) {
         $slug = slugify($title);
@@ -69,7 +75,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
                 $destPath = $uploadDir . $newFileName;
 
                 if (move_uploaded_file($fileTmpPath, $destPath)) {
-                    $featured_image = '/admin/uploads/' . $newFileName;
+                    $featured_image = $appBase . '/admin/uploads/' . $newFileName;
                 }
             } else {
                 $error = "Image size exceeds 5MB limit.";
@@ -119,7 +125,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
                 ':faqs_json' => $faqs_json
             ]);
 
-            header("Location: /admin/index.php?msg=created");
+            header("Location: " . $adminBase . "/index.php?msg=created");
             exit;
         } catch (Exception $e) {
             $error = "Database Error: " . $e->getMessage();
@@ -136,13 +142,13 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/admin/assets/css/admin.css">
+  <link rel="stylesheet" href="<?= $adminBase ?>/assets/css/admin.css">
 </head>
 <body>
 
   <!-- Top Navigation Bar -->
   <header class="admin-navbar">
-    <a href="/admin/index.php" class="admin-brand">
+    <a href="<?= $adminBase ?>/index.php" class="admin-brand">
       <div class="admin-brand-logo">SC</div>
       <div>
         <div class="admin-brand-title">Shipra Chauhan · Editorial Studio</div>
@@ -151,7 +157,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
     </a>
 
     <div class="admin-nav-actions">
-      <a href="/admin/index.php" class="btn-admin btn-admin-outline">
+      <a href="<?= $adminBase ?>/index.php" class="btn-admin btn-admin-outline">
         <span>← Back to Dashboard</span>
       </a>
       <button type="submit" form="composeArticleForm" name="publish_stage" value="draft" class="btn-admin btn-admin-secondary">
@@ -178,7 +184,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
       </div>
     <?php endif; ?>
 
-    <form id="composeArticleForm" method="POST" action="/admin/create.php" enctype="multipart/form-data">
+    <form id="composeArticleForm" method="POST" action="<?= $adminBase ?>/create.php" enctype="multipart/form-data">
       
       <div class="form-grid-layout">
         
@@ -210,13 +216,18 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
               <div>
                 <label class="field-label" for="articleCategory">Category <span class="req">*</span></label>
                 <select id="articleCategory" name="category" class="admin-select" required>
-                  <option value="" disabled selected>Select Category...</option>
+                  <option value="" disabled <?= empty($_POST['category']) ? 'selected' : '' ?>>Select Category...</option>
                   <?php foreach ($categories as $cat): ?>
                     <option value="<?= htmlspecialchars($cat) ?>" <?= (($_POST['category'] ?? '') === $cat) ? 'selected' : '' ?>>
                       <?= htmlspecialchars($cat) ?>
                     </option>
                   <?php endforeach; ?>
+                  <option value="Other" <?= (($_POST['category'] ?? '') === 'Other') ? 'selected' : '' ?>>Other (Custom Category)...</option>
                 </select>
+                <div id="customCategoryBox" style="display: <?= (($_POST['category'] ?? '') === 'Other') ? 'block' : 'none' ?>; margin-top: 0.5rem;">
+                  <label class="field-label" for="customCategoryInput" style="font-size: 0.8rem; margin-bottom: 0.25rem;">Custom Category Name <span class="req">*</span></label>
+                  <input type="text" id="customCategoryInput" name="custom_category" class="admin-input" placeholder="e.g. Enterprise SEO, Voice Search..." value="<?= htmlspecialchars($_POST['custom_category'] ?? '') ?>">
+                </div>
               </div>
               <div>
                 <label class="field-label" for="articleAuthor">Author <span class="req">*</span></label>
@@ -247,6 +258,9 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
               <h3 class="form-group-title" style="margin-bottom: 0;">✍️ Markdown Editor Workspace</h3>
               <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <button type="button" class="btn-admin btn-admin-secondary" id="btnInsertMdTable" style="font-size: 0.78rem; padding: 0.35rem 0.65rem;" title="Insert Markdown Table Template">
+                  <span>📊 Insert Table</span>
+                </button>
                 <label class="btn-admin btn-admin-secondary" style="font-size: 0.78rem; padding: 0.35rem 0.65rem; cursor: pointer;">
                   <span>📂 Upload .md</span>
                   <input type="file" id="mdFileInput" accept=".md,.markdown" style="display: none;">
@@ -310,6 +324,13 @@ Write declarative paragraphs with high data density.
               <button type="button" class="toolbar-btn" data-format-cmd="insertOrderedList">1. Number</button>
               <button type="button" class="toolbar-btn" data-format-cmd="formatBlock" data-format-val="blockquote">“ Quote</button>
               <button type="button" class="toolbar-btn" data-format-cmd="createLink">🔗 Link</button>
+              <span style="color: #CBD5E1;">|</span>
+              <!-- Table Tools -->
+              <button type="button" class="toolbar-btn toolbar-btn-highlight" id="btnInsertTable" title="Insert Responsive Table">📊 Table</button>
+              <button type="button" class="toolbar-btn" id="btnAddTableRow" title="Add Row to Table">+ Row</button>
+              <button type="button" class="toolbar-btn" id="btnAddTableCol" title="Add Column to Table">+ Col</button>
+              <button type="button" class="toolbar-btn toolbar-btn-danger" id="btnDeleteTable" title="Delete current table">✕ Table</button>
+              <span style="color: #CBD5E1;">|</span>
               <button type="button" class="toolbar-btn" data-format-cmd="removeFormat">✕ Clear</button>
             </div>
 
@@ -483,6 +504,6 @@ Write declarative paragraphs with high data density.
 
   </main>
 
-  <script src="/admin/assets/js/admin.js"></script>
+  <script src="<?= $adminBase ?>/assets/js/admin.js"></script>
 </body>
 </html>

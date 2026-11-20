@@ -6,6 +6,8 @@
 require_once __DIR__ . '/config/db.php';
 
 $pdo = getDbConnection();
+$appBase = getAppBaseUrl();
+$adminBase = getAdminBaseUrl();
 $blogs = [];
 
 if ($pdo) {
@@ -50,7 +52,7 @@ foreach ($blogs as $b) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/style.css?v=20261120">
+  <link rel="stylesheet" href="<?= $appBase ?>/css/style.css?v=20261120">
   <script>
     if (sessionStorage.getItem('curtain_reveal')) {
       document.documentElement.classList.add('curtain-incoming');
@@ -231,7 +233,7 @@ foreach ($blogs as $b) {
           <?php if (empty($blogs)): ?>
             <div style="padding: 3rem; text-align: center; background: #FAF8F3; border-radius: 12px;">
               <h3 style="color: #123C32; margin-bottom: 0.5rem;">No Articles Published Yet</h3>
-              <p style="color: #64748B;">Please visit the <a href="/admin/index.php" style="color: #B79A62; font-weight: 700;">Admin Studio</a> to compose your first post.</p>
+              <p style="color: #64748B;">Please visit the <a href="<?= $adminBase ?>/index.php" style="color: #B79A62; font-weight: 700;">Admin Studio</a> to compose your first post.</p>
             </div>
           <?php else: ?>
             <?php foreach ($blogs as $blog): ?>
@@ -243,12 +245,13 @@ foreach ($blogs as $b) {
                 $pubDate = !empty($blog['publication_date']) ? date('F j, Y', strtotime($blog['publication_date'])) : 'October 2026';
                 $readTime = intval($blog['read_time'] ?? 5);
                 $excerpt = htmlspecialchars($blog['short_excerpt'] ?? '');
-                $image = !empty($blog['featured_image']) ? htmlspecialchars($blog['featured_image']) : '/assets/images/local-hero.webp';
+                $rawImg = !empty($blog['featured_image']) ? $blog['featured_image'] : '/assets/images/local-hero.webp';
+                $image = (strpos($rawImg, 'http') === 0 || strpos($rawImg, $appBase) === 0) ? htmlspecialchars($rawImg) : htmlspecialchars($appBase . $rawImg);
                 $imageAlt = !empty($blog['featured_image_alt']) ? htmlspecialchars($blog['featured_image_alt']) : $title;
               ?>
               <article class="blog-card reveal-init">
                 <div class="blog-image-box">
-                  <a href="/blogs/<?= $slug ?>" tabindex="-1" aria-hidden="true">
+                  <a href="<?= $appBase ?>/blogs/<?= $slug ?>" tabindex="-1" aria-hidden="true">
                     <img src="<?= $image ?>" alt="<?= $imageAlt ?>" class="blog-image" loading="lazy">
                   </a>
                 </div>
@@ -263,7 +266,7 @@ foreach ($blogs as $b) {
                     <span><?= $readTime ?> min read</span>
                   </div>
                   <h2 class="blog-card-title">
-                    <a href="/blogs/<?= $slug ?>">
+                    <a href="<?= $appBase ?>/blogs/<?= $slug ?>">
                       <?= $title ?>
                     </a>
                   </h2>
@@ -271,7 +274,7 @@ foreach ($blogs as $b) {
                     <?= $excerpt ?>
                   </p>
                   <div class="blog-card-footer">
-                    <a href="/blogs/<?= $slug ?>" class="blog-read-btn">
+                    <a href="<?= $appBase ?>/blogs/<?= $slug ?>" class="blog-read-btn">
                       Continue Reading <span aria-hidden="true">→</span>
                     </a>
                     <span style="font-size: 0.8rem; color: #8C9488; font-weight: 500;">Direct Technical Analysis</span>
@@ -309,7 +312,7 @@ foreach ($blogs as $b) {
               foreach ($recentArticles as $recent):
             ?>
               <li>
-                <a href="/blogs/<?= htmlspecialchars($recent['slug'] ?? '') ?>">
+                <a href="<?= $appBase ?>/blogs/<?= htmlspecialchars($recent['slug'] ?? '') ?>">
                   <?= htmlspecialchars($recent['title'] ?? '') ?>
                 </a>
               </li>
@@ -322,11 +325,11 @@ foreach ($blogs as $b) {
           <h3 class="blog-sidebar-title">Categories</h3>
           <ul class="blog-sidebar-links">
             <?php if (empty($categories)): ?>
-              <li><a href="/blogs">SEO Strategy</a></li>
+              <li><a href="<?= $appBase ?>/blogs">SEO Strategy</a></li>
             <?php else: ?>
               <?php foreach ($categories as $catName => $count): ?>
                 <li>
-                  <a href="/blogs?cat=<?= urlencode($catName) ?>">
+                  <a href="<?= $appBase ?>/blogs?cat=<?= urlencode($catName) ?>">
                     <?= htmlspecialchars($catName) ?> (<?= $count ?>)
                   </a>
                 </li>
@@ -341,7 +344,7 @@ foreach ($blogs as $b) {
           <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 0.75rem;">
             Authorized administrators can compose, edit, or delete articles via the backend studio.
           </p>
-          <a href="/admin/index.php" style="display: inline-flex; align-items: center; gap: 0.35rem; color: #B79A62; font-weight: 700; font-size: 0.85rem;">
+          <a href="<?= $adminBase ?>/index.php" style="display: inline-flex; align-items: center; gap: 0.35rem; color: #B79A62; font-weight: 700; font-size: 0.85rem;">
             <span>Open Admin Studio</span>
             <span>→</span>
           </a>
@@ -510,3 +513,4 @@ foreach ($blogs as $b) {
 
 </body>
 </html>
+

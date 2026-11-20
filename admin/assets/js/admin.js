@@ -6,11 +6,13 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   initSlugGenerator();
+  initCategoryOtherToggle();
   initTagsPills();
   initImageDropzone();
   initSerpPreview();
   initSchemaToggle();
   initMarkdownAndRichEditor();
+  initTableTools();
   initFaqRepeater();
 });
 
@@ -59,6 +61,29 @@ function updateSerpUrl(slug) {
   if (serpUrlEl) {
     serpUrlEl.textContent = `https://shiprachauhan.in/blogs/${slug || 'your-article-slug'}`;
   }
+}
+
+// -----------------------------------------------------------------------------
+// 1b. Category "Other" Custom Input Toggle
+// -----------------------------------------------------------------------------
+function initCategoryOtherToggle() {
+  const catSelect = document.getElementById('articleCategory');
+  const customBox = document.getElementById('customCategoryBox');
+  const customInput = document.getElementById('customCategoryInput');
+
+  if (!catSelect || !customBox) return;
+
+  function checkCategory() {
+    if (catSelect.value === 'Other') {
+      customBox.style.display = 'block';
+      if (customInput) customInput.focus();
+    } else {
+      customBox.style.display = 'none';
+    }
+  }
+
+  catSelect.addEventListener('change', checkCategory);
+  checkCategory();
 }
 
 // -----------------------------------------------------------------------------
@@ -227,9 +252,39 @@ function initMarkdownAndRichEditor() {
   const mdPane = document.getElementById('markdownPane');
   const previewPane = document.getElementById('previewPane');
 
-  // Simple Markdown to HTML Parser
+  // Simple Markdown to HTML Parser with Table Support
   function parseMd(md) {
     if (!md) return '';
+
+    // Parse Markdown Tables
+    md = md.replace(/(?:^|\n)((?:\|.+?\|\r?\n)+)/g, function (match, tableBlock) {
+      const lines = tableBlock.trim().split(/\r?\n/).filter(line => line.includes('|'));
+      if (lines.length < 2) return match;
+
+      const parseRow = (line) => line.split('|').slice(1, -1).map(c => c.trim());
+      const headers = parseRow(lines[0]);
+      
+      const isSeparator = /^\|?[\s:-|-]+\|?$/.test(lines[1]);
+      const startIndex = isSeparator ? 2 : 1;
+
+      let tableHtml = '<div class="table-responsive"><table class="article-table"><thead><tr>';
+      headers.forEach(h => {
+        tableHtml += `<th>${h}</th>`;
+      });
+      tableHtml += '</tr></thead><tbody>';
+
+      for (let i = startIndex; i < lines.length; i++) {
+        const row = parseRow(lines[i]);
+        tableHtml += '<tr>';
+        row.forEach(cell => {
+          tableHtml += `<td>${cell}</td>`;
+        });
+        tableHtml += '</tr>';
+      }
+      tableHtml += '</tbody></table></div>\n';
+      return '\n' + tableHtml + '\n';
+    });
+
     let html = md
       .replace(/^### (.*$)/gim, '<h3>$1</h3>')
       .replace(/^## (.*$)/gim, '<h2>$1</h2>')
@@ -339,6 +394,171 @@ function initMarkdownAndRichEditor() {
 }
 
 // -----------------------------------------------------------------------------
+// 6b. Interactive Table Tools (WYSIWYG & Markdown)
+// -----------------------------------------------------------------------------
+function initTableTools() {
+  const btnInsertTable = document.getElementById('btnInsertTable');
+  const btnAddRow = document.getElementById('btnAddTableRow');
+  const btnAddCol = document.getElementById('btnAddTableCol');
+  const btnDeleteTable = document.getElementById('btnDeleteTable');
+  const btnInsertMdTable = document.getElementById('btnInsertMdTable');
+
+  const richEditor = document.getElementById('richEditorContent');
+  const hiddenBody = document.getElementById('bodyContentInput');
+  const mdTextarea = document.getElementById('markdownContent');
+
+  function syncEditor() {
+    if (richEditor && hiddenBody) {
+      hiddenBody.value = richEditor.innerHTML;
+      richEditor.dispatchEvent(new Event('input'));
+    }
+  }
+
+  function getActiveTable() {
+    if (!richEditor) return null;
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount > 0) {
+      let node = sel.getRangeAt(0).commonAncestorContainer;
+      while (node && node !== richEditor) {
+        if (node.nodeName === 'TABLE') return node;
+        node = node.parentNode;
+      }
+    }
+    // Fallback to the last table in rich editor
+    const tables = richEditor.querySelectorAll('table');
+    return tables.length > 0 ? tables[tables.length - 1] : null;
+  }
+
+  // 1. Insert WYSIWYG Table
+  if (btnInsertTable && richEditor) {
+    btnInsertTable.addEventListener('click', function (e) {
+      e.preventDefault();
+      const colsPrompt = prompt('Enter number of columns (1-10):', '3');
+      if (colsPrompt === null) return;
+      const cols = Math.max(1, Math.min(10, parseInt(colsPrompt) || 3));
+
+      const rowsPrompt = prompt('Enter number of data rows (1-25):', '3');
+      if (rowsPrompt === null) return;
+      const rows = Math.max(1, Math.min(25, parseInt(rowsPrompt) || 3));
+
+      let tableHtml = '<div class="table-responsive"><table class="article-table"><thead><tr>';
+      for (let c = 1; c <= cols; c++) {
+        tableHtml += `<th>Header ${c}</th>`;
+      }
+      tableHtml += '</tr></thead><tbody>';
+      for (let r = 1; r <= rows; r++) {
+        tableHtml += '<tr>';
+        for (let c = 1; c <= cols; c++) {
+          tableHtml += `<td>Cell ${r}.${c}</td>`;
+        }
+        tableHtml += '</tr>';
+      }
+      tableHtml += '</tbody></table></div><p><br></p>';
+
+      richEditor.focus();
+      try {
+        if (!document.execCommand('insertHTML', false, tableHtml)) {
+          richEditor.insertAdjacentHTML('beforeend', tableHtml);
+        }
+      } catch (err) {
+        richEditor.insertAdjacentHTML('beforeend', tableHtml);
+      }
+      syncEditor();
+    });
+  }
+
+  // 2. Add Row to Table
+  if (btnAddRow && richEditor) {
+    btnAddRow.addEventListener('click', function (e) {
+      e.preventDefault();
+      const table = getActiveTable();
+      if (!table) {
+        alert('Please click inside a table to add a row, or insert a table first.');
+        return;
+      }
+      let tbody = table.querySelector('tbody');
+      if (!tbody) {
+        tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+      }
+      const colCount = (table.querySelector('thead tr') ? table.querySelectorAll('thead tr th').length : 0) ||
+                       (tbody.querySelector('tr') ? tbody.querySelector('tr').children.length : 3);
+
+      const tr = document.createElement('tr');
+      for (let i = 0; i < colCount; i++) {
+        const td = document.createElement('td');
+        td.textContent = 'New Data';
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+      syncEditor();
+    });
+  }
+
+  // 3. Add Column to Table
+  if (btnAddCol && richEditor) {
+    btnAddCol.addEventListener('click', function (e) {
+      e.preventDefault();
+      const table = getActiveTable();
+      if (!table) {
+        alert('Please click inside a table to add a column, or insert a table first.');
+        return;
+      }
+      const theadTr = table.querySelector('thead tr');
+      if (theadTr) {
+        const th = document.createElement('th');
+        th.textContent = `Header ${theadTr.children.length + 1}`;
+        theadTr.appendChild(th);
+      }
+      const rows = table.querySelectorAll('tbody tr');
+      rows.forEach(tr => {
+        const td = document.createElement('td');
+        td.textContent = 'New Cell';
+        tr.appendChild(td);
+      });
+      syncEditor();
+    });
+  }
+
+  // 4. Delete Table
+  if (btnDeleteTable && richEditor) {
+    btnDeleteTable.addEventListener('click', function (e) {
+      e.preventDefault();
+      const table = getActiveTable();
+      if (!table) {
+        alert('Please click inside the table you wish to delete.');
+        return;
+      }
+      if (confirm('Are you sure you want to delete this table?')) {
+        const wrapper = table.closest('.table-responsive');
+        if (wrapper) {
+          wrapper.remove();
+        } else {
+          table.remove();
+        }
+        syncEditor();
+      }
+    });
+  }
+
+  // 5. Insert Markdown Table Template
+  if (btnInsertMdTable && mdTextarea) {
+    btnInsertMdTable.addEventListener('click', function (e) {
+      e.preventDefault();
+      const template = '\n\n| Feature / Metric | Description | Value / Impact |\n| :--- | :--- | :--- |\n| Core Architecture | Clean URL structures & schema | High Priority |\n| Search Performance | Fast loading & AI readiness | 95+ Score |\n\n';
+
+      const start = mdTextarea.selectionStart || 0;
+      const end = mdTextarea.selectionEnd || 0;
+      const val = mdTextarea.value;
+      mdTextarea.value = val.substring(0, start) + template + val.substring(end);
+      mdTextarea.selectionStart = mdTextarea.selectionEnd = start + template.length;
+      mdTextarea.focus();
+      mdTextarea.dispatchEvent(new Event('input'));
+    });
+  }
+}
+
+// -----------------------------------------------------------------------------
 // 7. Dynamic FAQ Repeater
 // -----------------------------------------------------------------------------
 function initFaqRepeater() {
@@ -432,3 +652,4 @@ function initFaqRepeater() {
 
   renderFaqs();
 }
+

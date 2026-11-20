@@ -5,6 +5,8 @@
  */
 require_once __DIR__ . '/config/db.php';
 
+$appBase = getAppBaseUrl();
+$adminBase = getAdminBaseUrl();
 $slug = trim($_GET['slug'] ?? '');
 if (empty($slug)) {
     // Attempt to extract slug from REQUEST_URI if accessed directly
@@ -45,7 +47,7 @@ if (!$article && !empty($slug)) {
 // If still not found, return 404
 if (!$article) {
     http_response_code(404);
-    header("Location: /blogs");
+    header("Location: " . $appBase . "/blogs");
     exit;
 }
 
@@ -215,7 +217,7 @@ if (($article['schema_type'] ?? 'automatic') === 'custom' && !empty($article['cu
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/style.css?v=20261120">
+  <link rel="stylesheet" href="<?= $appBase ?>/css/style.css?v=20261120">
   <script>
     if (sessionStorage.getItem('curtain_reveal')) {
       document.documentElement.classList.add('curtain-incoming');
@@ -366,9 +368,9 @@ if (($article['schema_type'] ?? 'automatic') === 'custom' && !empty($article['cu
         
         <!-- Breadcrumbs -->
         <div class="breadcrumb-nav">
-          <a href="/">Home</a>
+          <a href="<?= $appBase ?>/">Home</a>
           <span>/</span>
-          <a href="/blogs">Blogs</a>
+          <a href="<?= $appBase ?>/blogs">Blogs</a>
           <span>/</span>
           <span><?= $title ?></span>
         </div>
@@ -398,7 +400,7 @@ if (($article['schema_type'] ?? 'automatic') === 'custom' && !empty($article['cu
                   <span class="tags-pill-label">🏷️ Article Tags</span>
                   <div class="tags-pill-list">
                     <?php foreach ($tagList as $tag): ?>
-                      <a href="/blogs" class="article-tag">#<?= ltrim($tag, '#') ?></a>
+                      <a href="<?= $appBase ?>/blogs" class="article-tag">#<?= ltrim($tag, '#') ?></a>
                     <?php endforeach; ?>
                   </div>
                 </div>
@@ -409,8 +411,11 @@ if (($article['schema_type'] ?? 'automatic') === 'custom' && !empty($article['cu
             </header>
 
             <?php if (!empty($featuredImage)): ?>
+              <?php 
+                $displayImg = (strpos($featuredImage, 'http') === 0 || strpos($featuredImage, $appBase) === 0) ? $featuredImage : $appBase . $featuredImage;
+              ?>
               <div class="article-featured-image-box" style="margin-bottom: 2.5rem; border-radius: 12px; overflow: hidden; border: 1px solid rgba(183, 154, 98, 0.2);">
-                <img src="<?= $featuredImage ?>" alt="<?= $featuredImageAlt ?>" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                <img src="<?= $displayImg ?>" alt="<?= $featuredImageAlt ?>" style="width: 100%; height: auto; display: block; object-fit: cover;">
               </div>
             <?php endif; ?>
 
@@ -475,7 +480,7 @@ if (($article['schema_type'] ?? 'automatic') === 'custom' && !empty($article['cu
               <p style="font-size: 0.85rem; color: #4A5248; margin-bottom: 1rem;">
                 Speak directly with Shipra Chauhan regarding technical hurdles or algorithm recovery.
               </p>
-              <form class="popup-form" action="/contact" method="get">
+              <form class="popup-form" action="<?= $appBase ?>/contact" method="get">
                 <div class="form-group" style="margin-bottom: 0.75rem;">
                   <input type="text" name="name" class="form-input" placeholder="Your Name *" required>
                 </div>
@@ -496,7 +501,7 @@ if (($article['schema_type'] ?? 'automatic') === 'custom' && !empty($article['cu
 
             <!-- Back to Hub -->
             <div class="blog-sidebar-box reveal-init stagger-2">
-              <a href="/blogs" style="display: flex; align-items: center; gap: 0.5rem; color: #123C32; font-weight: 700; text-decoration: none;">
+              <a href="<?= $appBase ?>/blogs" style="display: flex; align-items: center; gap: 0.5rem; color: #123C32; font-weight: 700; text-decoration: none;">
                 <span>←</span>
                 <span>Return to All Blog Publications</span>
               </a>
@@ -698,3 +703,4 @@ if (($article['schema_type'] ?? 'automatic') === 'custom' && !empty($article['cu
 
 </body>
 </html>
+

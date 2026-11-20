@@ -12,6 +12,27 @@ define('DB_USER', getenv('DB_USER') ?: 'root');
 define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : '');
 
 /**
+ * Computes the root application base URL dynamically for both root domains and localhost subfolders
+ * E.g. "" on root domain, or "/shiprachauhan" when in a XAMPP subdirectory
+ */
+function getAppBaseUrl() {
+    $script = $_SERVER['SCRIPT_NAME'] ?? '';
+    if (strpos($script, '/admin') !== false) {
+        $parts = explode('/admin', $script);
+        return rtrim($parts[0], '/\\');
+    }
+    $dir = dirname($script);
+    return ($dir === '/' || $dir === '\\') ? '' : rtrim($dir, '/\\');
+}
+
+/**
+ * Computes the admin panel base URL dynamically
+ */
+function getAdminBaseUrl() {
+    return getAppBaseUrl() . '/admin';
+}
+
+/**
  * Returns a PDO database connection instance.
  * Automatically initializes database and tables if not already present.
  */
@@ -150,3 +171,4 @@ function getBlogById($id) {
     $stmt->execute([':id' => intval($id)]);
     return $stmt->fetch() ?: null;
 }
+

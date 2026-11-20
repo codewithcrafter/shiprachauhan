@@ -24,6 +24,8 @@ if ($pdo) {
 }
 
 // Calculate Stats
+$appBase = getAppBaseUrl();
+$adminBase = getAdminBaseUrl();
 $totalCount = count($blogs);
 $publishedCount = 0;
 $draftCount = 0;
@@ -50,13 +52,13 @@ $categoriesCount = count($categories);
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/admin/assets/css/admin.css">
+  <link rel="stylesheet" href="<?= $adminBase ?>/assets/css/admin.css">
 </head>
 <body>
 
   <!-- Top Navigation Bar -->
   <header class="admin-navbar">
-    <a href="/admin/index.php" class="admin-brand">
+    <a href="<?= $adminBase ?>/index.php" class="admin-brand">
       <div class="admin-brand-logo">SC</div>
       <div>
         <div class="admin-brand-title">Shipra Chauhan · Editorial Studio</div>
@@ -65,15 +67,15 @@ $categoriesCount = count($categories);
     </a>
 
     <div class="admin-nav-actions">
-      <a href="/" target="_blank" class="btn-admin btn-admin-outline">
+      <a href="<?= $appBase ?>/" target="_blank" class="btn-admin btn-admin-outline">
         <span>View Live Site</span>
         <span>↗</span>
       </a>
-      <a href="/blogs" target="_blank" class="btn-admin btn-admin-outline">
+      <a href="<?= $appBase ?>/blogs" target="_blank" class="btn-admin btn-admin-outline">
         <span>Public Blog Hub</span>
         <span>↗</span>
       </a>
-      <a href="/admin/create.php" class="btn-admin btn-admin-primary">
+      <a href="<?= $adminBase ?>/create.php" class="btn-admin btn-admin-primary">
         <span>+ Compose New Article</span>
       </a>
     </div>
@@ -87,7 +89,7 @@ $categoriesCount = count($categories);
           <strong>⚠️ MySQL Connection Notice (XAMPP):</strong>
           <span>Could not connect to MySQL on localhost:3306. Please ensure <strong>Apache &amp; MySQL</strong> are started in your XAMPP Control Panel. Showing pre-seeded articles in offline preview mode.</span>
         </div>
-        <a href="/admin/index.php" class="btn-admin btn-admin-secondary" style="white-space: nowrap; font-size: 0.8rem;">Retry Connection</a>
+        <a href="<?= $adminBase ?>/index.php" class="btn-admin btn-admin-secondary" style="white-space: nowrap; font-size: 0.8rem;">Retry Connection</a>
       </div>
     <?php endif; ?>
 
@@ -121,7 +123,7 @@ $categoriesCount = count($categories);
           </p>
         </div>
         <div>
-          <a href="/admin/create.php" class="btn-admin btn-admin-primary">
+          <a href="<?= $adminBase ?>/create.php" class="btn-admin btn-admin-primary">
             <span>+ Compose New Article</span>
           </a>
         </div>
@@ -167,7 +169,7 @@ $categoriesCount = count($categories);
                     </td>
                     <td>
                       <div style="font-weight: 700; color: var(--admin-emerald); line-height: 1.35; max-width: 440px;">
-                        <a href="/admin/edit.php?id=<?= $id ?>" style="color: inherit; text-decoration: none;">
+                        <a href="<?= $adminBase ?>/edit.php?id=<?= $id ?>" style="color: inherit; text-decoration: none;">
                           <?= $title ?>
                         </a>
                       </div>
@@ -193,13 +195,13 @@ $categoriesCount = count($categories);
                       <?= $readTime ?> min
                     </td>
                     <td style="text-align: right; white-space: nowrap;">
-                      <a href="/blogs/<?= $slug ?>" target="_blank" class="btn-admin btn-admin-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.78rem;" title="View Live Article">
+                      <a href="<?= $appBase ?>/blogs/<?= $slug ?>" target="_blank" class="btn-admin btn-admin-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.78rem;" title="View Live Article">
                         View ↗
                       </a>
-                      <a href="/admin/edit.php?id=<?= $id ?>" class="btn-admin btn-admin-primary" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" title="Edit Article">
+                      <a href="<?= $adminBase ?>/edit.php?id=<?= $id ?>" class="btn-admin btn-admin-primary" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" title="Edit Article">
                         Edit
                       </a>
-                      <a href="/admin/delete.php?id=<?= $id ?>" class="btn-admin btn-admin-danger" style="padding: 0.35rem 0.65rem; font-size: 0.78rem;" onclick="return confirm('Are you sure you want to delete this article?');" title="Delete Article">
+                      <a href="<?= $adminBase ?>/delete.php?id=<?= $id ?>" class="btn-admin btn-admin-danger" style="padding: 0.35rem 0.65rem; font-size: 0.78rem;" onclick="return confirm('Are you sure you want to delete this article?');" title="Delete Article">
                         Delete
                       </a>
                     </td>
@@ -220,3 +222,4 @@ $categoriesCount = count($categories);
 
 </body>
 </html>
+
