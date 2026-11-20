@@ -1,6 +1,6 @@
 # ==============================================================================
-# SHIPRA CHAUHAN - APACHE / LITESPEED / CPANEL CLEAN URL CONFIGURATION
-# STRICTLY NO .HTML AND NO TRAILING SLASHES
+# SHIPRA CHAUHAN - APACHE / LITESPEED / HOSTINGER HPANEL / CPANEL CLEAN URLS
+# STRICTLY NO .HTML AND NO TRAILING SLASHES — SUPPORTS PHP DYNAMIC BLOGS & ADMIN
 # ==============================================================================
 
 <IfModule mod_rewrite.c>
@@ -8,36 +8,59 @@
   RewriteBase /
 
   # 1. Redirect /index.html directly to root domain /
-  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/index\.html [NC]
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+index\.html [NC]
   RewriteRule ^index\.html$ / [R=301,L]
 
   # 2. Redirect /subfolder/index.html to /subfolder (NO trailing slash)
-  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+(.*)/index\.html [NC]
-  RewriteRule ^(.*)/index\.html$ /$1 [R=301,L]
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+([^/]+)/index\.html [NC]
+  RewriteRule ^ /%1 [R=301,L]
 
   # 3. Permanent 301 Redirect from any request ending in .html to Clean URL
+  # Fixes demo.shiprachauhan.in/blogs.html -> demo.shiprachauhan.in/blogs
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+([^.]+)\.html[\s?] [NC]
   RewriteRule ^ /%1 [R=301,L]
 
-  # 4. Remove trailing slash from all non-root URLs (e.g. /about/ -> /about)
+  # 4. Remove trailing slash from all non-directory URLs (e.g. /about/ -> /about)
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} ^(.+)/$
   RewriteRule ^(.+)/$ $1 [R=301,L]
 
-  # 5. Internally route Clean URLs to the corresponding .html file
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME}.html -f
-  RewriteRule ^(.*)$ $1.html [NC,L]
+  # 5. Route /admin to admin/index.php
+  RewriteRule ^admin/?$ admin/index.php [NC,L]
 
+  # 6. Route /blogs (clean URL) to blogs.php if exists, else blogs.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/blogs.php -f
+  RewriteRule ^blogs/?$ blogs.php [NC,L]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/blogs.html -f
+  RewriteRule ^blogs/?$ blogs.html [NC,L]
+
+  # 7. Route /blogs/{slug} to dynamic blog.php?slug=$1 if blog.php exists, else blogs/$1.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/blog.php -f
+  RewriteRule ^blogs/([^/]+)/?$ blog.php?slug=$1 [NC,L,QSA]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/blogs/$1.html -f
+  RewriteRule ^blogs/([^/]+)/?$ blogs/$1.html [NC,L]
+
+  # 8. Internally route Clean URLs to corresponding .php file (e.g. /about -> /about.php)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1.php -f
+  RewriteRule ^([^/]+)/?$ $1.php [NC,L]
+
+  # 9. Internally route Clean URLs to corresponding .html file (e.g. /about -> /about.html)
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-  RewriteRule ^(.*)$ $1.html [NC,L]
+  RewriteRule ^([^/]+)/?$ $1.html [NC,L]
 
-  # 6. Fallback internal route to directory index.html
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME}/index.html -f
-  RewriteRule ^(.*)$ $1/index.html [NC,L]
-
+  # 10. Fallback internal route to directory index.html
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
   RewriteRule ^(.*)$ $1/index.html [NC,L]
@@ -48,6 +71,7 @@
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
   ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/x-httpd-php "access plus 0 seconds"
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
@@ -56,8 +80,8 @@
 
 # Cache-Control & Security Headers
 <IfModule mod_headers.c>
-  # Ensure HTML is revalidated so fresh updates and asset versions load instantly
-  <FilesMatch "\.(html|htm)$">
+  # Ensure dynamic HTML/PHP is revalidated so fresh updates load instantly without browser cache lag
+  <FilesMatch "\.(html|htm|php)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
     Header set Expires 0
