@@ -43,22 +43,30 @@ function getDbConnection() {
     }
 
     try {
-        // Step 1: Connect to MySQL server (without selecting db) to verify/create database
-        $dsnWithoutDb = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";charset=utf8mb4";
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
         ];
 
-        $serverPdo = new PDO($dsnWithoutDb, DB_USER, DB_PASS, $options);
-        $serverPdo->exec("CREATE DATABASE IF NOT EXISTS `" . DB_NAME . "` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
-
-        // Step 2: Connect directly to the database
+        // Connect directly to the database
         $dsnWithDb = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
-        $pdo = new PDO($dsnWithDb, DB_USER, DB_PASS, $options);
+        
+        try {
+            $pdo = new PDO($dsnWithDb, DB_USER, DB_PASS, $options);
+        } catch (PDOException $e) {
+            // Local fallback: attempt auto-create database if on localhost root
+            if (DB_USER === 'root' && in_array(DB_HOST, ['127.0.0.1', 'localhost'])) {
+                $dsnWithoutDb = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";charset=utf8mb4";
+                $serverPdo = new PDO($dsnWithoutDb, DB_USER, DB_PASS, $options);
+                $serverPdo->exec("CREATE DATABASE IF NOT EXISTS `" . DB_NAME . "` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+                $pdo = new PDO($dsnWithDb, DB_USER, DB_PASS, $options);
+            } else {
+                throw $e;
+            }
+        }
 
-        // Step 3: Ensure table structure exists
+        // Ensure table structure exists
         ensureTablesExist($pdo);
 
         return $pdo;
@@ -102,6 +110,19 @@ function ensureTablesExist($pdo) {
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
 
     $pdo->exec($tableSql);
+
+    // Ensure leads table exists
+    $leadsSql = "CREATE TABLE IF NOT EXISTS `leads` (
+        `id` INT AUTO_INCREMENT PRIMARY KEY,
+        `name` VARCHAR(255) NOT NULL,
+        `email` VARCHAR(255) NOT NULL,
+        `phone` VARCHAR(50) NOT NULL,
+        `challenges_goals` TEXT NULL,
+        `page_source` VARCHAR(255) NULL,
+        `form_type` VARCHAR(100) DEFAULT 'general',
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+    $pdo->exec($leadsSql);
 
     // Check if table is empty; if so, seed from database.sql or scratch seed
     $count = $pdo->query("SELECT COUNT(*) FROM `blogs`")->fetchColumn();
