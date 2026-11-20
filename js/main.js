@@ -702,14 +702,16 @@ function initFormValidation() {
 
       const phoneInput = form.querySelector('input[name="phone"], input[type="tel"]');
       const challengesInput = form.querySelector('textarea, input[name="challenges_goals"], input[name="goals"]');
+      const isContactPage = window.location.pathname.includes('contact') || form.id === 'mainContactForm';
+      const formTypeLabel = isContactPage ? 'Contact Page Form' : (form.id === 'auditForm' ? 'Hero Free Audit Form' : 'Website Consultation Form');
 
       submitLeadData({
         name: nameInput ? nameInput.value.trim() : '',
         email: emailInput ? emailInput.value.trim() : '',
         phone: phoneInput ? phoneInput.value.trim() : '',
         challenges_goals: challengesInput ? challengesInput.value.trim() : '',
-        page_source: window.location.href,
-        form_type: 'audit_consultation_form'
+        page_source: window.location.pathname || '/',
+        form_type: formTypeLabel
       }).then(res => {
         let feedback = form.querySelector('.form-feedback');
         if (!feedback) {
@@ -906,8 +908,8 @@ function init4SecondAutoPopup() {
         email: emailVal,
         phone: phoneVal,
         challenges_goals: challengesVal,
-        page_source: window.location.href,
-        form_type: '4s_timed_popup'
+        page_source: window.location.pathname || '/',
+        form_type: '4-Second Timed Popup Modal'
       }).finally(() => {
         form.style.display = 'none';
         if (successBanner) successBanner.classList.add('visible');
@@ -948,8 +950,8 @@ function initServiceHeroForms() {
         email: emailVal,
         phone: phoneVal,
         challenges_goals: challengesVal,
-        page_source: window.location.href,
-        form_type: 'service_hero_form'
+        page_source: window.location.pathname || '/',
+        form_type: 'Service Page Consultation Form'
       }).finally(() => {
         form.style.display = 'none';
         if (successDiv) successDiv.style.display = 'block';
@@ -984,8 +986,8 @@ function initBlogSidebarForm() {
         email: emailVal,
         phone: phoneVal,
         challenges_goals: challengesVal,
-        page_source: window.location.href,
-        form_type: 'blog_sidebar_form'
+        page_source: window.location.pathname || '/',
+        form_type: 'Blog Sidebar Form'
       }).finally(() => {
         form.style.display = 'none';
         if (successDiv) successDiv.style.display = 'block';

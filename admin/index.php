@@ -2,7 +2,8 @@
 /**
  * SHIPRA CHAUHAN EDITORIAL STUDIO — BLOG ARTICLES DASHBOARD
  */
-require_once dirname(__DIR__) . '/config/db.php';
+require_once dirname(__DIR__) . '/config/auth.php';
+requireAdminAuth();
 
 $pdo = getDbConnection();
 $errorMsg = null;
@@ -77,16 +78,20 @@ $leadsCount = count($leads);
     </a>
 
     <div class="admin-nav-actions">
+      <span style="font-size: 0.8rem; color: #CBD5E1; background: rgba(255,255,255,0.08); padding: 0.45rem 0.8rem; border-radius: 8px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem;">
+        <span>👤</span> <span><?= htmlspecialchars($_SESSION['sc_admin_user'] ?? 'admin') ?></span>
+      </span>
       <a href="<?= $appBase ?>/" target="_blank" class="btn-admin btn-admin-outline">
-        <span>View Live Site</span>
-        <span>↗</span>
+        <span>View Site ↗</span>
       </a>
       <a href="<?= $appBase ?>/blogs" target="_blank" class="btn-admin btn-admin-outline">
-        <span>Public Blog Hub</span>
-        <span>↗</span>
+        <span>Blog Hub ↗</span>
       </a>
       <a href="<?= $adminBase ?>/create.php" class="btn-admin btn-admin-primary">
-        <span>+ Compose New Article</span>
+        <span>+ Compose Article</span>
+      </a>
+      <a href="<?= $adminBase ?>/logout.php" class="btn-admin btn-admin-danger" style="padding: 0.45rem 0.85rem; font-size: 0.825rem;" onclick="return confirm('Sign out of Admin Studio?');">
+        <span>🚪 Sign Out</span>
       </a>
     </div>
   </header>
@@ -131,8 +136,11 @@ $leadsCount = count($leads);
 
     <!-- Stats Bento Grid -->
     <section class="admin-stats-grid">
-      <div class="stat-card">
-        <div class="stat-card-label">Total Articles</div>
+      <div class="stat-card" onclick="switchAdminTab('articles')" style="cursor: pointer; transition: all 0.2s ease;" title="Click to view articles">
+        <div class="stat-card-label" style="display: flex; justify-content: space-between; align-items: center;">
+          <span>Total Articles</span>
+          <span style="font-size: 0.7rem; color: var(--admin-primary); font-weight: 700;">VIEW ➔</span>
+        </div>
         <div class="stat-card-value"><?= $totalCount ?></div>
       </div>
       <div class="stat-card">
@@ -147,25 +155,50 @@ $leadsCount = count($leads);
         <div class="stat-card-label">Active Categories</div>
         <div class="stat-card-value" style="color: var(--admin-gold);"><?= $categoriesCount ?></div>
       </div>
-      <div class="stat-card">
-        <div class="stat-card-label">Client Inquiries</div>
+      <div class="stat-card" onclick="switchAdminTab('leads')" style="cursor: pointer; transition: all 0.2s ease;" title="Click to view all leads">
+        <div class="stat-card-label" style="display: flex; justify-content: space-between; align-items: center;">
+          <span>Client Inquiries</span>
+          <span style="font-size: 0.7rem; color: #2563EB; font-weight: 700;">VIEW ➔</span>
+        </div>
         <div class="stat-card-value" style="color: #2563EB;"><?= $leadsCount ?></div>
       </div>
     </section>
 
-    <!-- Main Content Card -->
-    <div class="admin-card">
-      <div class="admin-card-header">
-        <div>
-          <h2 class="admin-card-title">Manage Published &amp; Draft Blog Articles</h2>
-          <p style="font-size: 0.825rem; color: var(--admin-text-muted); margin-top: 0.2rem;">
-            Full editorial control over technical search insights, meta architecture, and Schema.org rich results.
-          </p>
-        </div>
-        <div>
-          <a href="<?= $adminBase ?>/create.php" class="btn-admin btn-admin-primary">
-            <span>+ Compose New Article</span>
-          </a>
+    
+    <?php if (isset($_GET['lead_deleted'])): ?>
+      <div style="background: #DCFCE7; border: 1.5px solid #10B981; color: #065F46; padding: 0.85rem 1.25rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+        <span>✓ Lead record was successfully removed from the database.</span>
+        <a href="<?= $adminBase ?>/index.php?tab=leads" style="color: #065F46; font-weight: 700; text-decoration: none;">✕ Dismiss</a>
+      </div>
+    <?php endif; ?>
+
+    <!-- View Switcher Tabs (Articles vs Leads) -->
+    <div class="admin-tabs" style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.75rem;">
+      <button type="button" class="admin-tab-btn" id="tabBtnArticles" onclick="switchAdminTab('articles')" style="padding: 0.75rem 1.35rem; font-size: 0.95rem; font-weight: 700; border: none; background: #0F3C2A; color: #FFFFFF; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(15, 60, 42, 0.2);">
+        <span>📝 Blog Articles</span>
+        <span style="background: rgba(255,255,255,0.25); padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.75rem;"><?= $totalCount ?></span>
+      </button>
+      <button type="button" class="admin-tab-btn" id="tabBtnLeads" onclick="switchAdminTab('leads')" style="padding: 0.75rem 1.35rem; font-size: 0.95rem; font-weight: 700; border: 1.5px solid #CBD5E1; background: #FFFFFF; color: #334155; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+        <span>🎯 Client Leads &amp; Inquiries Tracker</span>
+        <span style="background: #2563EB; color: #FFFFFF; padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.75rem; font-weight: 800;"><?= $leadsCount ?></span>
+      </button>
+    </div>
+
+    <!-- Section 1: Blog Articles -->
+    <div id="sectionArticles" class="admin-section">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title">Manage Published &amp; Draft Blog Articles</h2>
+            <p style="font-size: 0.825rem; color: var(--admin-text-muted); margin-top: 0.2rem;">
+              Full editorial control over technical search insights, meta architecture, and Schema.org rich results.
+            </p>
+          </div>
+          <div>
+            <a href="<?= $adminBase ?>/create.php" class="btn-admin btn-admin-primary">
+              <span>+ Compose New Article</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -253,69 +286,211 @@ $leadsCount = count($leads);
         </div>
       </div>
     </div>
+    </div><!-- End #sectionArticles -->
 
-    <!-- Inquiries & Leads Card (Stored in MySQL) -->
-    <div class="admin-card" style="margin-top: 2rem;">
-      <div class="admin-card-header">
-        <div>
-          <h2 class="admin-card-title">Client Leads &amp; SEO Audit Inquiries</h2>
-          <p class="admin-card-subtitle">Real-time submissions from contact forms and 4-second timed popup modal (Stored in MySQL)</p>
+    <!-- Section 2: Client Leads & Inquiries Tracker -->
+    <div id="sectionLeads" class="admin-section" style="display: none;">
+      <div class="admin-card">
+        <div class="admin-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <h2 class="admin-card-title">Client Leads &amp; SEO Audit Inquiries</h2>
+              <span class="badge-status badge-published" style="font-weight: 800; font-size: 0.8rem; background: #DCFCE7; color: #166534;">
+                ● Live Database Active
+              </span>
+            </div>
+            <p class="admin-card-subtitle" style="margin-top: 0.25rem;">
+              Detailed breakdown of leads captured across all website pages, contact forms, and the 4-second timed popup.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <a href="<?= $adminBase ?>/index.php?tab=leads" class="btn-admin btn-admin-secondary" style="font-size: 0.8rem; padding: 0.45rem 0.85rem;">
+              ↻ Refresh Leads
+            </a>
+          </div>
         </div>
-        <span class="badge-status badge-published" style="font-weight: 700;"><?= $leadsCount ?> Total Leads</span>
-      </div>
-      <div class="admin-card-body" style="padding: 0;">
-        <div class="table-responsive">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Date / Time</th>
-                <th>Client Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Search Challenges &amp; Goals</th>
-                <th>Source Page</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php if (empty($leads)): ?>
+
+        <div class="admin-card-body" style="padding: 0;">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
                 <tr>
-                  <td colspan="6" style="text-align: center; padding: 2.5rem; color: var(--admin-text-muted);">
-                    No inquiries recorded in MySQL yet. Test any form on the site to see submissions populate live!
-                  </td>
+                  <th style="min-width: 140px;">Captured Date</th>
+                  <th style="min-width: 160px;">Client Contact</th>
+                  <th style="min-width: 160px;">Source Page (Where from)</th>
+                  <th style="min-width: 160px;">Form Origin (Which Form)</th>
+                  <th style="min-width: 220px;">Search Challenges &amp; Goals</th>
+                  <th style="text-align: right; min-width: 100px;">Actions</th>
                 </tr>
-              <?php else: ?>
-                <?php foreach ($leads as $l): ?>
+              </thead>
+              <tbody>
+                <?php if (empty($leads)): ?>
                   <tr>
-                    <td style="font-size: 0.8rem; color: var(--admin-text-muted); white-space: nowrap;">
-                      <?= date('M d, Y · H:i', strtotime($l['created_at'])) ?>
-                    </td>
-                    <td style="font-weight: 600; color: #1E293B;">
-                      <?= htmlspecialchars($l['name']) ?>
-                    </td>
-                    <td>
-                      <a href="mailto:<?= htmlspecialchars($l['email']) ?>" style="color: var(--admin-primary); text-decoration: none; font-weight: 500;">
-                        <?= htmlspecialchars($l['email']) ?>
-                      </a>
-                    </td>
-                    <td>
-                      <a href="tel:<?= htmlspecialchars($l['phone']) ?>" style="color: #059669; font-weight: 600; text-decoration: none;">
-                        <?= htmlspecialchars($l['phone']) ?>
-                      </a>
-                    </td>
-                    <td style="font-size: 0.85rem; color: #475569; max-width: 250px;">
-                      <?= htmlspecialchars($l['challenges_goals'] ?: 'None provided') ?>
-                    </td>
-                    <td style="font-size: 0.75rem; color: var(--admin-text-muted);">
-                      <span class="badge-category"><?= htmlspecialchars($l['form_type'] ?? 'website') ?></span>
+                    <td colspan="6" style="text-align: center; padding: 3.5rem 1.5rem; color: var(--admin-text-muted);">
+                      <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🎯</div>
+                      <div style="font-weight: 700; font-size: 1.05rem; color: #334155; margin-bottom: 0.25rem;">No Inquiries Received Yet</div>
+                      <p style="font-size: 0.85rem; max-width: 450px; margin: 0 auto;">
+                        When visitors fill out any consultation form, contact page, or the 4-second popup modal on the website, their details and exact source page will automatically appear here!
+                      </p>
                     </td>
                   </tr>
-                <?php endforeach; ?>
-              <?php endif; ?>
-            </tbody>
-          </table>
+                <?php else: ?>
+                  <?php foreach ($leads as $l): ?>
+                    <?php 
+                      $page = $l['page_source'] ?? '/';
+                      $form = $l['form_type'] ?? 'General';
+                      $phoneClean = preg_replace('/[^0-9]/', '', $l['phone']);
+                      if (strlen($phoneClean) === 10) {
+                          $phoneClean = '91' . $phoneClean;
+                      }
+                    ?>
+                    <tr>
+                      <td style="font-size: 0.8rem; color: var(--admin-text-muted); white-space: nowrap; vertical-align: top;">
+                        <strong style="color: #1E293B; display: block; font-size: 0.85rem;">
+                          <?= date('M d, Y', strtotime($l['created_at'])) ?>
+                        </strong>
+                        <span><?= date('h:i A', strtotime($l['created_at'])) ?></span>
+                      </td>
+
+                      <td style="vertical-align: top;">
+                        <div style="font-weight: 700; color: #0F172A; font-size: 0.95rem; margin-bottom: 0.25rem;">
+                          <?= htmlspecialchars($l['name']) ?>
+                        </div>
+                        <div style="font-size: 0.825rem; margin-bottom: 0.25rem;">
+                          <a href="mailto:<?= htmlspecialchars($l['email']) ?>" style="color: var(--admin-primary); text-decoration: none; font-weight: 600;">
+                            ✉️ <?= htmlspecialchars($l['email']) ?>
+                          </a>
+                        </div>
+                        <div style="font-size: 0.825rem; display: flex; align-items: center; gap: 0.5rem;">
+                          <a href="tel:<?= htmlspecialchars($l['phone']) ?>" style="color: #059669; font-weight: 700; text-decoration: none;">
+                            📞 <?= htmlspecialchars($l['phone']) ?>
+                          </a>
+                          <?php if (!empty($phoneClean)): ?>
+                            <a href="https://wa.me/<?= $phoneClean ?>?text=<?= urlencode('Hello ' . $l['name'] . ', thank you for reaching out regarding your SEO project.') ?>" target="_blank" style="background: #25D366; color: #FFFFFF; font-size: 0.7rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; text-decoration: none;" title="Chat on WhatsApp">
+                              WhatsApp ↗
+                            </a>
+                          <?php endif; ?>
+                        </div>
+                      </td>
+
+                      <!-- Source Page -->
+                      <td style="vertical-align: top;">
+                        <div style="margin-bottom: 0.25rem;">
+                          <a href="<?= $appBase . (str_starts_with($page, '/') ? $page : '/' . $page) ?>" target="_blank" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #E0F2FE; color: #0369A1; padding: 0.25rem 0.65rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; text-decoration: none; border: 1px solid #BAE6FD;" title="View Page">
+                            <span>📍</span>
+                            <span><?= htmlspecialchars($page ?: '/') ?></span>
+                            <span style="font-size: 0.65rem;">↗</span>
+                          </a>
+                        </div>
+                      </td>
+
+                      <!-- Form Origin -->
+                      <td style="vertical-align: top;">
+                        <?php if (stripos($form, 'popup') !== false): ?>
+                          <span class="badge-status" style="background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; font-weight: 700; font-size: 0.775rem;">
+                            ⚡ 4-Second Timed Popup
+                          </span>
+                        <?php elseif (stripos($form, 'contact') !== false): ?>
+                          <span class="badge-status" style="background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; font-weight: 700; font-size: 0.775rem;">
+                            ✉️ Contact Page Form
+                          </span>
+                        <?php elseif (stripos($form, 'audit') !== false): ?>
+                          <span class="badge-status" style="background: #EEF2FF; color: #4338CA; border: 1px solid #C7D2FE; font-weight: 700; font-size: 0.775rem;">
+                            🔍 Hero Audit Form
+                          </span>
+                        <?php elseif (stripos($form, 'service') !== false): ?>
+                          <span class="badge-status" style="background: #CFFAFE; color: #0E7490; border: 1px solid #A5F3FC; font-weight: 700; font-size: 0.775rem;">
+                            ⚙️ Service Page Form
+                          </span>
+                        <?php else: ?>
+                          <span class="badge-status" style="background: #F3E8FF; color: #7E22CE; border: 1px solid #E9D5FF; font-weight: 700; font-size: 0.775rem;">
+                            📑 <?= htmlspecialchars($form) ?>
+                          </span>
+                        <?php endif; ?>
+                      </td>
+
+                      <!-- Challenges & Goals -->
+                      <td style="vertical-align: top;">
+                        <?php if (!empty($l['challenges_goals'])): ?>
+                          <div style="font-size: 0.85rem; color: #334155; background: #F8FAFC; border-left: 3px solid var(--admin-gold); padding: 0.5rem 0.75rem; border-radius: 4px; line-height: 1.45;">
+                            "<?= htmlspecialchars($l['challenges_goals']) ?>"
+                          </div>
+                        <?php else: ?>
+                          <span style="font-size: 0.8rem; color: #94A3B8; font-style: italic;">No specific challenges provided</span>
+                        <?php endif; ?>
+                      </td>
+
+                      <!-- Actions -->
+                      <td style="text-align: right; vertical-align: top; white-space: nowrap;">
+                        <a href="<?= $adminBase ?>/delete-lead.php?id=<?= $l['id'] ?>" class="btn-admin btn-admin-danger" style="padding: 0.35rem 0.65rem; font-size: 0.78rem;" onclick="return confirm('Delete this lead record permanently?');" title="Delete Lead">
+                          ✕ Delete
+                        </a>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
+    </div><!-- End #sectionLeads -->
+
+    <script>
+      function switchAdminTab(tabName) {
+        const secArticles = document.getElementById('sectionArticles');
+        const secLeads = document.getElementById('sectionLeads');
+        const btnArticles = document.getElementById('tabBtnArticles');
+        const btnLeads = document.getElementById('tabBtnLeads');
+
+        if (tabName === 'leads') {
+          secArticles.style.display = 'none';
+          secLeads.style.display = 'block';
+
+          btnArticles.style.background = '#FFFFFF';
+          btnArticles.style.color = '#334155';
+          btnArticles.style.border = '1.5px solid #CBD5E1';
+          btnArticles.style.boxShadow = 'none';
+
+          btnLeads.style.background = '#0F3C2A';
+          btnLeads.style.color = '#FFFFFF';
+          btnLeads.style.border = 'none';
+          btnLeads.style.boxShadow = '0 4px 12px rgba(15, 60, 42, 0.2)';
+
+          // Update URL without reload
+          if (history.pushState) {
+            const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?tab=leads';
+            window.history.pushState({path:newurl},'',newurl);
+          }
+        } else {
+          secLeads.style.display = 'none';
+          secArticles.style.display = 'block';
+
+          btnLeads.style.background = '#FFFFFF';
+          btnLeads.style.color = '#334155';
+          btnLeads.style.border = '1.5px solid #CBD5E1';
+          btnLeads.style.boxShadow = 'none';
+
+          btnArticles.style.background = '#0F3C2A';
+          btnArticles.style.color = '#FFFFFF';
+          btnArticles.style.border = 'none';
+          btnArticles.style.boxShadow = '0 4px 12px rgba(15, 60, 42, 0.2)';
+
+          if (history.pushState) {
+            const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?tab=articles';
+            window.history.pushState({path:newurl},'',newurl);
+          }
+        }
+      }
+
+      // Check URL query param to activate leads tab if requested
+      document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('tab') === 'leads' || params.get('lead_deleted') === '1') {
+          switchAdminTab('leads');
+        }
+      });
+    </script>
 
   </main>
 

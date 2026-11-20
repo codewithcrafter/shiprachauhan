@@ -2,7 +2,8 @@
 /**
  * SHIPRA CHAUHAN EDITORIAL STUDIO — EDIT ARTICLE
  */
-require_once dirname(__DIR__) . '/config/db.php';
+require_once dirname(__DIR__) . '/config/auth.php';
+requireAdminAuth();
 
 $pdo = getDbConnection();
 $appBase = getAppBaseUrl();
