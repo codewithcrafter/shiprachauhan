@@ -143,30 +143,35 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<?= $adminBase ?>/assets/css/admin.css">
+  <link rel="stylesheet" href="<?= $adminBase ?>/assets/css/admin.css?v=<?= time() ?>">
 </head>
 <body>
 
   <!-- Top Navigation Bar -->
   <header class="admin-navbar">
-    <a href="<?= $adminBase ?>/index.php" class="admin-brand">
-      <div class="admin-brand-logo">SC</div>
-      <div>
-        <div class="admin-brand-title">Shipra Chauhan · Editorial Studio</div>
+    <div class="admin-navbar-inner">
+      <div class="admin-navbar-top">
+        <a href="<?= $adminBase ?>/index.php" class="admin-brand">
+          <div class="admin-brand-logo">SC</div>
+          <div class="admin-brand-text">
+            <div class="admin-brand-title">Shipra Chauhan</div>
+            <div class="admin-brand-subtitle">Editorial Studio</div>
+          </div>
+          <span class="admin-brand-tag">Compose</span>
+        </a>
       </div>
-      <span class="admin-brand-tag">Compose Mode</span>
-    </a>
 
-    <div class="admin-nav-actions">
-      <a href="<?= $adminBase ?>/index.php" class="btn-admin btn-admin-outline">
-        <span>← Back to Dashboard</span>
-      </a>
-      <button type="submit" form="composeArticleForm" name="publish_stage" value="draft" class="btn-admin btn-admin-secondary">
-        Save Draft
-      </button>
-      <button type="submit" form="composeArticleForm" name="publish_stage" value="published" class="btn-admin btn-admin-primary">
-        Publish Article →
-      </button>
+      <div class="admin-nav-actions">
+        <a href="<?= $adminBase ?>/index.php" class="btn-admin btn-admin-outline">
+          <span>← Dashboard</span>
+        </a>
+        <button type="submit" form="composeArticleForm" name="publish_stage" value="draft" class="btn-admin btn-admin-secondary">
+          <span>💾 Draft</span>
+        </button>
+        <button type="submit" form="composeArticleForm" name="publish_stage" value="published" class="btn-admin btn-admin-primary">
+          <span>Publish →</span>
+        </button>
+      </div>
     </div>
   </header>
 
