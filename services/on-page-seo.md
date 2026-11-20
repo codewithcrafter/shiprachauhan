@@ -26,9 +26,19 @@ I’m Shipra Chauhan, an on-page SEO consultant helping brands, shops and local 
 
 Search intent mapping, schema scaffolding, and semantic internal linking audit.
 
- Claim Strategic Consultation → 
+ Full Name * 
 
- 🔒 Strict NDA • Direct review < 4h
+ Email Address * 
+
+ Contact No. * 
+
+ Current Search Challenges & Goals (Optional) 
+
+ Claim Free Strategy Session → 
+
+ 🔒 Strict NDA Protected 
+ • 
+ Direct Founder Review 
 
  **✓ Consultation Requested!** Shipra Chauhan will review your website and connect within 4 hours.
 
@@ -156,6 +166,14 @@ The cost of our on-page SEO services depends on the size and requirements of you
 
 You’ll receive a clear quote before we start, and the final scope is agreed together.
 
+ START NOW 
+
+## Ready to Improve Your SERP Rankings? Hire an On-Page SEO Expert Delhi Today
+
+If your pages aren’t ranking, the fix is usually easier to find once you look closer. We’ll review your website, identify the issues, and put a strategy in place. Get started with on-page SEO services Delhi businesses can trust.
+
+ Book a Free Audit Call → 
+
  FAQ 
 
 ## Frequently Asked Questions About On-Page SEO in Delhi
@@ -202,14 +220,6 @@ Pricing typically depends on site size, the number of pages needing optimization
 
 Booking an audit typically starts with a consultation to understand the site and business goals, followed by a structured audit covering the areas above, and a walkthrough of findings before any optimization work begins.
 
- START NOW 
-
-## Ready to Improve Your SERP Rankings? Hire an On-Page SEO Expert Delhi Today
-
-If your pages aren’t ranking, the fix is usually easier to find once you look closer. We’ll review your website, identify the issues, and put a strategy in place. Get started with on-page SEO services Delhi businesses can trust.
-
- Book a Free Audit Call → 
-
  × 
 
  Senior SEO Advisory 
@@ -220,30 +230,24 @@ Connect directly with Shipra Chauhan — Senior SEO Consultant Delhi. Receive a 
 
  Full Name * 
 
- Phone / WhatsApp * 
+ Email Address * 
 
- Business Email * 
+ Contact No. * 
 
- Service Required * 
+ Current Search Challenges & Goals (Optional) 
 
- Select an SEO Service 
- Ecommerce SEO 
- Generative Engine Optimization (GEO) 
- Local SEO & Google Business Profile 
- Off-Page SEO & Authority Links 
- On-Page SEO & Content Architecture 
- Technical SEO & Site Speed 
-
- Website URL / Project Scope (Optional) 
-
- Request Strategic Consultation → 
-
- 🔒 Strict NDA Protection • Direct Senior Response Within 4 Hours
+ Request Free SEO Evaluation → 
 
  ✓ 
 
 ### Request Received!
 
-Shipra Chauhan will personally review your website and connect within 4 hours.
+Shipra Chauhan will personally review your search challenges within 24 hours.
 
- Close
+ Close 
+
+ 🔒 100% Confidential 
+ • 
+ Strict NDA Protection 
+ • 
+ Zero Spam Guarantee

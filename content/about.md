@@ -92,6 +92,15 @@ You will talk directly to Shipra when talking about your strategy. There are no 
 
 Any agency wanting to assess an SEO consultant will be able to verify their claims. All credentials, case studies and proven experience are clearly listed on this page.
 
+ Direct Advisory 
+
+## Ready for Direct SEO & GEO Consultation?
+
+Connect directly with Shipra Chauhan to evaluate your organic search performance, technical health, and AI search visibility. No account managers — direct senior advisory.
+
+ Book Consultation Session → 
+ Explore All Services 
+
  FAQ 
 
 ## Frequently Asked Questions About Shipra Chauhan
@@ -138,15 +147,6 @@ We will list some once confirmed.
 
 Contact us directly to book an initial consultation to discuss your current SEO performance and goals.
 
- Direct Advisory 
-
-## Ready for Direct SEO & GEO Consultation?
-
-Connect directly with Shipra Chauhan to evaluate your organic search performance, technical health, and AI search visibility. No account managers — direct senior advisory.
-
- Book Consultation Session → 
- Explore All Services 
-
  × 
 
  Senior SEO Advisory 
@@ -157,30 +157,24 @@ Connect directly with Shipra Chauhan — Senior SEO Consultant Delhi. Receive a 
 
  Full Name * 
 
- Phone / WhatsApp * 
+ Email Address * 
 
- Business Email * 
+ Contact No. * 
 
- Service Required * 
+ Current Search Challenges & Goals (Optional) 
 
- Select an SEO Service 
- Ecommerce SEO 
- Generative Engine Optimization (GEO) 
- Local SEO & Google Business Profile 
- Off-Page SEO & Authority Links 
- On-Page SEO & Content Architecture 
- Technical SEO & Site Speed 
-
- Website URL / Project Scope (Optional) 
-
- Request Strategic Consultation → 
-
- 🔒 Strict NDA Protection • Direct Senior Response Within 4 Hours
+ Request Free SEO Evaluation → 
 
  ✓ 
 
 ### Request Received!
 
-Shipra Chauhan will personally review your website and connect within 4 hours.
+Shipra Chauhan will personally review your search challenges within 24 hours.
 
- Close
+ Close 
+
+ 🔒 100% Confidential 
+ • 
+ Strict NDA Protection 
+ • 
+ Zero Spam Guarantee

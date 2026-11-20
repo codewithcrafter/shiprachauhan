@@ -11,11 +11,123 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/style.css?v=20261119">
+  <link rel="stylesheet" href="/css/style.css?v=20261120">
   <script>
     if (sessionStorage.getItem('curtain_reveal')) {
       document.documentElement.classList.add('curtain-incoming');
     }
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://shiprachauhan.in/local-seo#service",
+      "name": "High-Impact Local SEO Services Delhi — Shipra Chauhan",
+      "serviceType": "Search Engine Optimization",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Shipra Chauhan — SEO Expert Delhi",
+        "telephone": "+919718159724",
+        "email": "info@shiprachauhan.in",
+        "url": "https://shiprachauhan.in/"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Delhi NCR, India"
+      },
+      "description": "Local SEO services in Delhi to dominate Google Map Pack 3-pack rankings, review velocity, and localized high-intent search traffic."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://shiprachauhan.in/local-seo#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What do local SEO services Delhi businesses receive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You get Google Business Profile optimization, clean and built citations, review management, schema and map ranking tracking. Everything is planned to fit your area, your competitors and the services that bring you the most revenue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long will it take to see results from Google Business Profile optimization?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Changes to your profile will usually be picked up within days. However, rankings will usually take two to three months to improve. If your area is highly competitive or your profile is brand new, it could take longer. I will track your progress with monthly heatmaps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included in my GBP optimization services Delhi plan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Category research, cleaning up your listings, setting up your services and products, guidance on images, posts, Q&As, attributes and monitoring of spam. If your profile has been suspended, I can help you get it back up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does NAP consistency impact my Google Map Pack ranking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Having your name, address and phone number consistent across the web will help Google trust that you are in the correct location. If they aren’t consistent, it can cause confusion and you could fall behind competitors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer local citation building services for new businesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! I will create clean core listings for new businesses, then build onto industry and Delhi-specific directories. For existing businesses, I will audit and correct any old listings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How will review management help my local rankings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fresh, real reviews with relevant keywords and quick responses will show Google and your customers that your business is active and trustworthy. Having a steady flow will also improve your click-through rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much do local SEO services Delhi packages cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pricing will depend on how many locations you have, how competitive your area is and how much cleanup is required. Once we’ve completed a quick audit, I will provide you with a fixed monthly price with a clear scope."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why should I hire a local SEO expert Delhi business owners recommend?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local ranking rules change often, and it’s easy to make mistakes such as incorrect categories and duplicate listings. By using an experienced local SEO expert, you will save months of trial and error and keep your profile safe from suspension."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What factors determine GBP optimization pricing and affordable local SEO services Delhi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pricing depends on how many locations you have, how competitive your area is and how much cleanup is needed. Once your audit has been completed, I will provide you with a fixed monthly price with no hidden costs. Our local SEO services Delhi packages are perfect for single outlets and multiple brands."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I book GBP optimization or hire a local SEO expert in Delhi with Shipra Chauhan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Booking GBP optimization or hiring a local SEO expert starts with a direct audit of your Google Business Profile and local citations. Reach out via the consultation form with your business name, address, and target areas to schedule an introductory strategy session."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>
@@ -180,22 +292,30 @@
           </div>
           <h3 class="service-form-title">Request Local SEO & GBP Audit</h3>
           <p class="service-form-desc">Map pack rankings, multi-location citation audit, and local authority blueprint.</p>
-          <form class="service-form">
+          <form class="service-form" data-validate="true">
             <div class="form-group">
-              <input type="text" class="form-input" placeholder="Your Name *" required>
+              <label>Full Name *</label>
+              <input type="text" name="name" class="form-input" placeholder="Your Full Name *" required>
             </div>
             <div class="form-group">
-              <input type="tel" class="form-input" placeholder="Phone / WhatsApp *" required>
+              <label>Email Address *</label>
+              <input type="email" name="email" class="form-input" placeholder="Your Email Address *" required>
             </div>
             <div class="form-group">
-              <input type="email" class="form-input" placeholder="Work Email *" required>
+              <label>Contact No. *</label>
+              <input type="tel" name="phone" class="form-input" placeholder="Phone / WhatsApp Number *" required>
             </div>
             <div class="form-group">
-              <textarea class="form-textarea" placeholder="Website URL or Project Scope" rows="2"></textarea>
+              <label>Current Search Challenges &amp; Goals (Optional)</label>
+              <textarea name="challenges" class="form-textarea" placeholder="Current Search Challenges &amp; Goals (optional)" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn-service-submit">Claim Strategic Consultation →</button>
-            <div style="font-size: 0.72rem; color: #77766F; text-align: center; margin-top: 0.4rem;">
-              🔒 Strict NDA • Direct review &lt; 4h
+            <button type="submit" class="btn-service-submit">
+              <span>Claim Free Strategy Session →</span>
+            </button>
+            <div class="service-form-trust">
+              <span>🔒 Strict NDA Protected</span>
+              <span>•</span>
+              <span>Direct Founder Review</span>
             </div>
           </form>
           <div class="service-form-success">
@@ -234,9 +354,10 @@
   </section>
 
   <!-- Featured Service Architecture Showcase -->
+    <!-- Featured Service Architecture Showcase -->
   <div class="container">
     <div class="service-hero-showcase reveal-init">
-      <img src="assets/images/local-hero.webp" alt="High-Impact Local SEO Services Delhi — Shipra Chauhan" width="600" height="600" fetchpriority="high">
+      <img src="/assets/images/local-multi.webp" alt="High-Impact Local SEO Services & Google Business Profile 3-Pack Optimization Delhi — Shipra Chauhan" width="1200" height="600" fetchpriority="high" loading="eager">
     </div>
   </div>
 
@@ -466,7 +587,21 @@
   <!-- FAQs Section -->
 
     <!-- Frequently Asked Questions (Master Sanjeev-Style Accordion) -->
-  <section class="section section-warm" id="faqs" style="padding: 5rem 0; background: rgba(244, 239, 230, 0.45); border-top: 1px solid rgba(183, 154, 98, 0.2); border-bottom: 1px solid rgba(183, 154, 98, 0.2);">
+    <!-- Final CTA Section -->
+  <section class="section section-cream">
+    <div class="container text-center reveal-init">
+      <div class="eyebrow">Start Here</div>
+      <h2>Ready for 3-Pack Dominance? Hire Local SEO Expert Delhi & Book GBP Optimization</h2>
+      <p class="lead-text max-text-measure" style="margin-left: auto; margin-right: auto; margin-bottom: 2rem;">
+        If you’d like more customers to find you on Google Maps, we can start by taking a look at your profile and nearest competitors. You’ll leave knowing exactly how to improve your local SEO services Delhi to appeal to buyers and what to expect moving forward.
+      </p>
+      <a href="/contact" class="btn btn-primary">Book GBP Optimization →</a>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+
+<section class="section section-warm" id="faqs" style="padding: 5rem 0; background: rgba(244, 239, 230, 0.45); border-top: 1px solid rgba(183, 154, 98, 0.2); border-bottom: 1px solid rgba(183, 154, 98, 0.2);">
     <div class="container">
       <div class="section-header text-center reveal-init">
         <div class="eyebrow">FAQ</div>
@@ -578,20 +713,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Final CTA Section -->
-  <section class="section section-cream">
-    <div class="container text-center reveal-init">
-      <div class="eyebrow">Start Here</div>
-      <h2>Ready for 3-Pack Dominance? Hire Local SEO Expert Delhi & Book GBP Optimization</h2>
-      <p class="lead-text max-text-measure" style="margin-left: auto; margin-right: auto; margin-bottom: 2rem;">
-        If you’d like more customers to find you on Google Maps, we can start by taking a look at your profile and nearest competitors. You’ll leave knowing exactly how to improve your local SEO services Delhi to appeal to buyers and what to expect moving forward.
-      </p>
-      <a href="/contact" class="btn btn-primary">Book GBP Optimization →</a>
-    </div>
-  </section>
-
-  <!-- Site Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -657,9 +778,10 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="/js/main.js?v=20261119"></script>
+  <script src="/js/main.js?v=20261120"></script>
 
   <!-- 3-Second Timed Animated Lead Pop-up Modal -->
+    <!-- 4-Second Timed Animated Lead Pop-up Modal (Every Page Load & Refresh) -->
   <div class="auto-popup-overlay" id="autoPopupOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
     <div class="auto-popup-card">
       <button class="popup-close-btn" id="closeAutoPopupBtn" aria-label="Close Pop-up">×</button>
@@ -677,53 +799,42 @@
       <form class="popup-form" id="autoPopupForm">
         <div class="form-group">
           <label for="popupName">Full Name *</label>
-          <input type="text" id="popupName" class="form-input" placeholder="Your full name" required>
+          <input type="text" id="popupName" name="name" class="form-input" placeholder="Your Full Name *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupContact">Phone / WhatsApp *</label>
-          <input type="tel" id="popupContact" class="form-input" placeholder="+91 98765 43210" required>
+          <label for="popupEmail">Email Address *</label>
+          <input type="email" id="popupEmail" name="email" class="form-input" placeholder="Your Email Address *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupEmail">Business Email *</label>
-          <input type="email" id="popupEmail" class="form-input" placeholder="name@company.com" required>
+          <label for="popupContact">Contact No. *</label>
+          <input type="tel" id="popupContact" name="phone" class="form-input" placeholder="Phone / WhatsApp Number *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupService">Service Required *</label>
-          <select id="popupService" class="form-select" required>
-            <option value="" disabled selected>Select an SEO Service</option>
-            <option value="Ecommerce SEO">Ecommerce SEO</option>
-            <option value="Generative Engine Optimization (GEO)">Generative Engine Optimization (GEO)</option>
-            <option value="Local SEO">Local SEO &amp; Google Business Profile</option>
-            <option value="Off-Page SEO">Off-Page SEO &amp; Authority Links</option>
-            <option value="On-Page SEO">On-Page SEO &amp; Content Architecture</option>
-            <option value="Technical SEO">Technical SEO &amp; Site Speed</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="popupMessage">Website URL / Project Scope (Optional)</label>
-          <textarea id="popupMessage" class="form-textarea" placeholder="Enter your website URL or current search challenges..."></textarea>
+          <label for="popupMessage">Current Search Challenges &amp; Goals (Optional)</label>
+          <textarea id="popupMessage" name="challenges" class="form-textarea" placeholder="Current Search Challenges &amp; Goals (optional)" rows="3"></textarea>
         </div>
 
         <button type="submit" class="btn-popup-submit" id="popupSubmitBtn">
-          <span>Request Strategic Consultation →</span>
+          <span>Request Free SEO Evaluation →</span>
         </button>
-
-        <div class="popup-footer-note">
-          🔒 Strict NDA Protection • Direct Senior Response Within 4 Hours
-        </div>
       </form>
 
       <div class="popup-success-banner" id="popupSuccessBanner">
-        <div style="font-size: 2rem; margin-bottom: 0.5rem; color: #123C32;">✓</div>
-        <h3 style="font-size: 1.3rem; font-weight: 800; color: #142820; margin-bottom: 0.35rem;">Request Received!</h3>
-        <p style="font-size: 0.88rem; color: #3E443C; margin-bottom: 1rem;">
-          Shipra Chauhan will personally review your website and connect within 4 hours.
-        </p>
-        <button type="button" class="btn-service-submit" id="popupSuccessCloseBtn" style="max-width: 180px; margin: 0 auto;">Close</button>
+        <div class="success-icon">✓</div>
+        <h3>Request Received!</h3>
+        <p>Shipra Chauhan will personally review your search challenges within 24 hours.</p>
+        <button class="btn btn-secondary" id="popupSuccessCloseBtn" style="margin-top: 1rem; width: 100%;">Close</button>
+      </div>
+
+      <div class="popup-footer-trust">
+        <span>🔒 100% Confidential</span>
+        <span>•</span>
+        <span>Strict NDA Protection</span>
+        <span>•</span>
+        <span>Zero Spam Guarantee</span>
       </div>
     </div>
   </div>

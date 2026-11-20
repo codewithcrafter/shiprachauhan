@@ -26,9 +26,19 @@ As a GEO consultant, you will have direct access to me so you can work with me t
 
 Audit your AI Overviews, Perplexity citations, and LLM entity visibility directly with Shipra.
 
- Claim Strategic Consultation → 
+ Full Name * 
 
- 🔒 Strict NDA • Direct review < 4h
+ Email Address * 
+
+ Contact No. * 
+
+ Current Search Challenges & Goals (Optional) 
+
+ Claim Free Strategy Session → 
+
+ 🔒 Strict NDA Protected 
+ • 
+ Direct Founder Review 
 
  **✓ Consultation Requested!** Shipra Chauhan will review your website and connect within 4 hours.
 
@@ -188,6 +198,14 @@ Models will find, rank and summarise your content. We will ensure you are:
 
 I will manage your calls, audits and monthly reviews. You will always know what is happening and why.
 
+ -->
+
+## Optimise for the future of search.
+
+Let’s look at where your brand appears in AI answers and what it will take to move up. Book a call to create generative engine optimisation services in Delhi tailored to your business and buyers.
+
+ Book a Generative Engine Consultation. → 
+
  Knowledge Base 
 
 ## FAQs - GEO and AI Overview Optimisation in Delhi
@@ -230,14 +248,6 @@ We will need your website details, main services, target locations and competito
 
 Reach out directly to discuss your specific business and which AI search platforms matter most for your customers — the right starting point depends on where your audience is already searching.
 
- -->
-
-## Optimise for the future of search.
-
-Let’s look at where your brand appears in AI answers and what it will take to move up. Book a call to create generative engine optimisation services in Delhi tailored to your business and buyers.
-
- Book a Generative Engine Consultation. → 
-
  × 
 
  Senior SEO Advisory 
@@ -248,30 +258,24 @@ Connect directly with Shipra Chauhan — Senior SEO Consultant Delhi. Receive a 
 
  Full Name * 
 
- Phone / WhatsApp * 
+ Email Address * 
 
- Business Email * 
+ Contact No. * 
 
- Service Required * 
+ Current Search Challenges & Goals (Optional) 
 
- Select an SEO Service 
- Ecommerce SEO 
- Generative Engine Optimization (GEO) 
- Local SEO & Google Business Profile 
- Off-Page SEO & Authority Links 
- On-Page SEO & Content Architecture 
- Technical SEO & Site Speed 
-
- Website URL / Project Scope (Optional) 
-
- Request Strategic Consultation → 
-
- 🔒 Strict NDA Protection • Direct Senior Response Within 4 Hours
+ Request Free SEO Evaluation → 
 
  ✓ 
 
 ### Request Received!
 
-Shipra Chauhan will personally review your website and connect within 4 hours.
+Shipra Chauhan will personally review your search challenges within 24 hours.
 
- Close
+ Close 
+
+ 🔒 100% Confidential 
+ • 
+ Strict NDA Protection 
+ • 
+ Zero Spam Guarantee

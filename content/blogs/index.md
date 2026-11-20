@@ -213,30 +213,24 @@ Connect directly with Shipra Chauhan — Senior SEO Consultant Delhi. Receive a 
 
  Full Name * 
 
- Phone / WhatsApp * 
+ Email Address * 
 
- Business Email * 
+ Contact No. * 
 
- Service Required * 
+ Current Search Challenges & Goals (Optional) 
 
- Select an SEO Service 
- Ecommerce SEO 
- Generative Engine Optimization (GEO) 
- Local SEO & Google Business Profile 
- Off-Page SEO & Authority Links 
- On-Page SEO & Content Architecture 
- Technical SEO & Site Speed 
-
- Website URL / Project Scope (Optional) 
-
- Request Strategic Consultation → 
-
- 🔒 Strict NDA Protection • Direct Senior Response Within 4 Hours
+ Request Free SEO Evaluation → 
 
  ✓ 
 
 ### Request Received!
 
-Shipra Chauhan will personally review your website and connect within 4 hours.
+Shipra Chauhan will personally review your search challenges within 24 hours.
 
- Close
+ Close 
+
+ 🔒 100% Confidential 
+ • 
+ Strict NDA Protection 
+ • 
+ Zero Spam Guarantee

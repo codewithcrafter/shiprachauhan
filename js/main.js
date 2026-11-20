@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initUrlParamPrefill();
   initLiveDelhiTime();
   initCleanUrlTrailingSlash();
-  init3SecondAutoPopup();
+  init4SecondAutoPopup();
   initServiceHeroForms();
   initBlogSidebarForm();
   initTocScrollSpy();
@@ -787,26 +787,20 @@ function initCleanUrlTrailingSlash() {
 /**
  * 15. 3-Second Timed Kinetic Lead Pop-Up Modal (Session-Aware Dismissal)
  */
-function init3SecondAutoPopup() {
-  // Never fire popup on contact page (user is already on the inquiry form)
-  if (window.location.pathname.includes('contact') || document.getElementById('mainContactForm') || document.querySelector('.contact-info, .contact-bento-hero')) {
-    return;
-  }
+function init4SecondAutoPopup() {
   const popupOverlay = document.getElementById('autoPopupOverlay');
   if (!popupOverlay) return;
 
   const openPopup = () => {
-    if (sessionStorage.getItem('shipra_lead_popup_dismissed') === 'true') return;
     popupOverlay.classList.add('open');
     popupOverlay.setAttribute('aria-hidden', 'false');
-    const firstInput = popupOverlay.querySelector('#popupName');
+    const firstInput = popupOverlay.querySelector('#popupName') || popupOverlay.querySelector('input[type="text"]');
     if (firstInput) setTimeout(() => firstInput.focus(), 300);
   };
 
   const closePopup = () => {
     popupOverlay.classList.remove('open');
     popupOverlay.setAttribute('aria-hidden', 'true');
-    sessionStorage.setItem('shipra_lead_popup_dismissed', 'true');
   };
 
   // Close Button
@@ -851,10 +845,8 @@ function init3SecondAutoPopup() {
     });
   }
 
-  // Trigger precisely after 3 seconds if not already dismissed
-  if (!sessionStorage.getItem('shipra_lead_popup_dismissed')) {
-    setTimeout(openPopup, 3000);
-  }
+  // Trigger precisely after 4 seconds on every page load and refresh
+  setTimeout(openPopup, 4000);
 }
 
 /**

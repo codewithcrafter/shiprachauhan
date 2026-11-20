@@ -11,11 +11,123 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/style.css?v=20261119">
+  <link rel="stylesheet" href="/css/style.css?v=20261120">
   <script>
     if (sessionStorage.getItem('curtain_reveal')) {
       document.documentElement.classList.add('curtain-incoming');
     }
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://shiprachauhan.in/technical-seo#service",
+      "name": "Technical SEO Audit & Technical SEO Services Delhi — Shipra Chauhan",
+      "serviceType": "Search Engine Optimization",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Shipra Chauhan — SEO Expert Delhi",
+        "telephone": "+919718159724",
+        "email": "info@shiprachauhan.in",
+        "url": "https://shiprachauhan.in/"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Delhi NCR, India"
+      },
+      "description": "Advanced technical SEO audit and infrastructure optimization services in Delhi covering crawl budget, indexability, Core Web Vitals, and log file analysis."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://shiprachauhan.in/technical-seo#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is technical SEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Technical SEO refers to all the elements on your site code and infrastructure that can help search engines crawl, render, index and understand your site. A technical SEO audit will show you any crawl errors, index coverage, speed, structured data, canonical tags and site architecture issues to help you identify what is stopping you from increasing your organic visibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do Core Web Vitals impact rankings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "LCP, INP & CLS are part of Google Page Experience Signals. To improve your scores you need to improve your server speed, delay any unnecessary JavaScript, set dimensions on your images and embeds and compress your assets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What causes a slow website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually large images, render blocking JavaScript, un-compressed code and slow hosting. To improve this you need to implement caching using a CDN, use WebP/AVIF images, delay JavaScript and optimise your database. All of this will be tested on real mobile networks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Google crawl a website and how can I improve my crawl budget?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Googlebot will crawl your site using links and sitemaps. Google have allocated a crawl budget for your domain. You can improve your crawl budget by blocking any low value parameter URLs, fixing redirect chains and broken links, removing any soft 404s and keeping your XML sitemap clean."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the most common signs I need a technical audit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sudden traffic/impression drop, pages going out of index, slow mobile site speeds, increasing ‘Crawled - currently not indexed’ / ‘Discovered - currently not indexed’ in Search Console and a recent redesign/migration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included in a technical SEO audit for ecommerce websites?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Catalogue crawl efficiency, Faceted navigation & Filter canonicals, Out of stock products, Product & Review schema, Pagination & Mobile product page speed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a technical SEO audit cost in Delhi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The cost of a technical SEO audit in Delhi will depend on the size of your site, platform, is it ecommerce or lead generation and if you require assistance with developer ready implementation or diagnosis and recommendations. Ongoing technical SEO support in Delhi will be quoted separately once we know the scope of work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is mobile friendly audit important?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Google will crawl and rank your site using the mobile version for both mobile and desktop. If you are missing content, broken navigation or slow mobile pages you can impact how visible your whole domain is."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why should I choose manual technical SEO services in Delhi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Using automated tools will give you hundreds of pages with small issues. They will Miss The issues that are impacting your revenue. A manual audit will help you find the 2-3 issues that will help improve your rankings. This is what you are paying for."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I book an SEO audit or technical SEO expert in Delhi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Just send us your URL and main concerns. After a quick look we will let you know whether it would be best to begin with a crawlability review, Core Web Vitals or migration check."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>
@@ -181,22 +293,30 @@
           </div>
           <h3 class="service-form-title">Request Technical SEO Audit</h3>
           <p class="service-form-desc">Core Web Vitals diagnostic, sub-second TTFB optimization, and crawlability architecture.</p>
-          <form class="service-form">
+          <form class="service-form" data-validate="true">
             <div class="form-group">
-              <input type="text" class="form-input" placeholder="Your Name *" required>
+              <label>Full Name *</label>
+              <input type="text" name="name" class="form-input" placeholder="Your Full Name *" required>
             </div>
             <div class="form-group">
-              <input type="tel" class="form-input" placeholder="Phone / WhatsApp *" required>
+              <label>Email Address *</label>
+              <input type="email" name="email" class="form-input" placeholder="Your Email Address *" required>
             </div>
             <div class="form-group">
-              <input type="email" class="form-input" placeholder="Work Email *" required>
+              <label>Contact No. *</label>
+              <input type="tel" name="phone" class="form-input" placeholder="Phone / WhatsApp Number *" required>
             </div>
             <div class="form-group">
-              <textarea class="form-textarea" placeholder="Website URL or Project Scope" rows="2"></textarea>
+              <label>Current Search Challenges &amp; Goals (Optional)</label>
+              <textarea name="challenges" class="form-textarea" placeholder="Current Search Challenges &amp; Goals (optional)" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn-service-submit">Claim Strategic Consultation →</button>
-            <div style="font-size: 0.72rem; color: #77766F; text-align: center; margin-top: 0.4rem;">
-              🔒 Strict NDA • Direct review &lt; 4h
+            <button type="submit" class="btn-service-submit">
+              <span>Claim Free Strategy Session →</span>
+            </button>
+            <div class="service-form-trust">
+              <span>🔒 Strict NDA Protected</span>
+              <span>•</span>
+              <span>Direct Founder Review</span>
             </div>
           </form>
           <div class="service-form-success">
@@ -235,9 +355,10 @@
   </section>
 
   <!-- Featured Service Architecture Showcase -->
+    <!-- Featured Service Architecture Showcase -->
   <div class="container">
     <div class="service-hero-showcase reveal-init">
-      <img src="assets/images/technical-hero.webp" alt="Advanced Technical SEO Audit &amp; Services Delhi — Shipra Chauhan" width="600" height="600" fetchpriority="high">
+      <img src="/assets/images/technical-hero.webp" alt="Advanced Technical SEO Audit & Core Web Vitals Optimization Delhi — Shipra Chauhan" width="1200" height="600" fetchpriority="high" loading="eager">
     </div>
   </div>
 
@@ -478,7 +599,58 @@
   <!-- FAQs Section -->
 
     <!-- Frequently Asked Questions (Master Sanjeev-Style Accordion) -->
-  <section class="section section-warm" id="faqs" style="padding: 5rem 0; background: rgba(244, 239, 230, 0.45); border-top: 1px solid rgba(183, 154, 98, 0.2); border-bottom: 1px solid rgba(183, 154, 98, 0.2);">
+    <!-- Get Started Section with Quick Message Form -->
+  <section class="section section-navy" id="get-started">
+    <div class="container">
+      <div class="grid-2 align-center">
+        <div class="reveal-init stagger-1">
+          <div class="eyebrow" style="color: var(--accent-gold);">Book Now</div>
+          <h2 style="color: var(--cream-50);"> Fix your technical errors by booking an SEO Audit in Delhi and hiring a Technical SEO Expert in Delhi.</h2>
+          <p class="lead-text" style="color: var(--navy-200);">
+             Every week that you have technical errors on your site you are losing out on crawl budget, indexed pages and ranking potential. Book a reliable technical SEO audit in Delhi to get a clear priority list of exactly what is holding you back.
+          </p>
+          <div style="margin-top: 1.5rem;">
+            <a href="/contact" class="btn btn-primary">Get In Touch With Shipra →</a>
+          </div>
+        </div>
+
+        <div class="feature-card reveal-init stagger-2" style="background: var(--navy-800); border-color: rgba(255,255,255,0.1); color: var(--navy-200);">
+          <h3 style="color: var(--cream-50);">Send a Quick Message</h3>
+          <p style="font-size: 0.9rem; margin-bottom: 1.25rem;">Share a few details and Shipra will get back to you. For the full consultation form, visit the Contact page.</p>
+          
+          <form class="contact-form" action="contact.html" method="get">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="tech-name" style="color: var(--navy-100);">Name</label>
+                <input type="text" id="tech-name" name="name" class="form-control" placeholder="Your name" required style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); color: white;">
+              </div>
+              <div class="form-group">
+                <label for="tech-phone" style="color: var(--navy-100);">Phone</label>
+                <input type="tel" id="tech-phone" name="phone" class="form-control" placeholder="Your phone number" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); color: white;">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="tech-email" style="color: var(--navy-100);">Email</label>
+              <input type="email" id="tech-email" name="email" class="form-control" placeholder="you@example.com" required style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); color: white;">
+            </div>
+
+            <div class="form-group">
+              <label for="tech-message" style="color: var(--navy-100);">Message</label>
+              <textarea id="tech-message" name="message" class="form-control" placeholder="Tell us a bit about your website and what's not working" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); color: white;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Continue to Contact Page →</button>
+            <p style="font-size: 0.8rem; color: var(--navy-400); margin-top: 0.75rem; text-align: center;">This connects directly to the consultation desk.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+
+<section class="section section-warm" id="faqs" style="padding: 5rem 0; background: rgba(244, 239, 230, 0.45); border-top: 1px solid rgba(183, 154, 98, 0.2); border-bottom: 1px solid rgba(183, 154, 98, 0.2);">
     <div class="container">
       <div class="section-header text-center reveal-init">
         <div class="eyebrow">FAQ</div>
@@ -590,57 +762,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Get Started Section with Quick Message Form -->
-  <section class="section section-navy" id="get-started">
-    <div class="container">
-      <div class="grid-2 align-center">
-        <div class="reveal-init stagger-1">
-          <div class="eyebrow" style="color: var(--accent-gold);">Book Now</div>
-          <h2 style="color: var(--cream-50);"> Fix your technical errors by booking an SEO Audit in Delhi and hiring a Technical SEO Expert in Delhi.</h2>
-          <p class="lead-text" style="color: var(--navy-200);">
-             Every week that you have technical errors on your site you are losing out on crawl budget, indexed pages and ranking potential. Book a reliable technical SEO audit in Delhi to get a clear priority list of exactly what is holding you back.
-          </p>
-          <div style="margin-top: 1.5rem;">
-            <a href="/contact" class="btn btn-primary">Get In Touch With Shipra →</a>
-          </div>
-        </div>
-
-        <div class="feature-card reveal-init stagger-2" style="background: var(--navy-800); border-color: rgba(255,255,255,0.1); color: var(--navy-200);">
-          <h3 style="color: var(--cream-50);">Send a Quick Message</h3>
-          <p style="font-size: 0.9rem; margin-bottom: 1.25rem;">Share a few details and Shipra will get back to you. For the full consultation form, visit the Contact page.</p>
-          
-          <form class="contact-form" action="contact.html" method="get">
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="tech-name" style="color: var(--navy-100);">Name</label>
-                <input type="text" id="tech-name" name="name" class="form-control" placeholder="Your name" required style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); color: white;">
-              </div>
-              <div class="form-group">
-                <label for="tech-phone" style="color: var(--navy-100);">Phone</label>
-                <input type="tel" id="tech-phone" name="phone" class="form-control" placeholder="Your phone number" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); color: white;">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="tech-email" style="color: var(--navy-100);">Email</label>
-              <input type="email" id="tech-email" name="email" class="form-control" placeholder="you@example.com" required style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); color: white;">
-            </div>
-
-            <div class="form-group">
-              <label for="tech-message" style="color: var(--navy-100);">Message</label>
-              <textarea id="tech-message" name="message" class="form-control" placeholder="Tell us a bit about your website and what's not working" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); color: white;"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Continue to Contact Page →</button>
-            <p style="font-size: 0.8rem; color: var(--navy-400); margin-top: 0.75rem; text-align: center;">This connects directly to the consultation desk.</p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Site Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -706,9 +827,10 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="/js/main.js?v=20261119"></script>
+  <script src="/js/main.js?v=20261120"></script>
 
   <!-- 3-Second Timed Animated Lead Pop-up Modal -->
+    <!-- 4-Second Timed Animated Lead Pop-up Modal (Every Page Load & Refresh) -->
   <div class="auto-popup-overlay" id="autoPopupOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
     <div class="auto-popup-card">
       <button class="popup-close-btn" id="closeAutoPopupBtn" aria-label="Close Pop-up">×</button>
@@ -726,53 +848,42 @@
       <form class="popup-form" id="autoPopupForm">
         <div class="form-group">
           <label for="popupName">Full Name *</label>
-          <input type="text" id="popupName" class="form-input" placeholder="Your full name" required>
+          <input type="text" id="popupName" name="name" class="form-input" placeholder="Your Full Name *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupContact">Phone / WhatsApp *</label>
-          <input type="tel" id="popupContact" class="form-input" placeholder="+91 98765 43210" required>
+          <label for="popupEmail">Email Address *</label>
+          <input type="email" id="popupEmail" name="email" class="form-input" placeholder="Your Email Address *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupEmail">Business Email *</label>
-          <input type="email" id="popupEmail" class="form-input" placeholder="name@company.com" required>
+          <label for="popupContact">Contact No. *</label>
+          <input type="tel" id="popupContact" name="phone" class="form-input" placeholder="Phone / WhatsApp Number *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupService">Service Required *</label>
-          <select id="popupService" class="form-select" required>
-            <option value="" disabled selected>Select an SEO Service</option>
-            <option value="Ecommerce SEO">Ecommerce SEO</option>
-            <option value="Generative Engine Optimization (GEO)">Generative Engine Optimization (GEO)</option>
-            <option value="Local SEO">Local SEO &amp; Google Business Profile</option>
-            <option value="Off-Page SEO">Off-Page SEO &amp; Authority Links</option>
-            <option value="On-Page SEO">On-Page SEO &amp; Content Architecture</option>
-            <option value="Technical SEO">Technical SEO &amp; Site Speed</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="popupMessage">Website URL / Project Scope (Optional)</label>
-          <textarea id="popupMessage" class="form-textarea" placeholder="Enter your website URL or current search challenges..."></textarea>
+          <label for="popupMessage">Current Search Challenges &amp; Goals (Optional)</label>
+          <textarea id="popupMessage" name="challenges" class="form-textarea" placeholder="Current Search Challenges &amp; Goals (optional)" rows="3"></textarea>
         </div>
 
         <button type="submit" class="btn-popup-submit" id="popupSubmitBtn">
-          <span>Request Strategic Consultation →</span>
+          <span>Request Free SEO Evaluation →</span>
         </button>
-
-        <div class="popup-footer-note">
-          🔒 Strict NDA Protection • Direct Senior Response Within 4 Hours
-        </div>
       </form>
 
       <div class="popup-success-banner" id="popupSuccessBanner">
-        <div style="font-size: 2rem; margin-bottom: 0.5rem; color: #123C32;">✓</div>
-        <h3 style="font-size: 1.3rem; font-weight: 800; color: #142820; margin-bottom: 0.35rem;">Request Received!</h3>
-        <p style="font-size: 0.88rem; color: #3E443C; margin-bottom: 1rem;">
-          Shipra Chauhan will personally review your website and connect within 4 hours.
-        </p>
-        <button type="button" class="btn-service-submit" id="popupSuccessCloseBtn" style="max-width: 180px; margin: 0 auto;">Close</button>
+        <div class="success-icon">✓</div>
+        <h3>Request Received!</h3>
+        <p>Shipra Chauhan will personally review your search challenges within 24 hours.</p>
+        <button class="btn btn-secondary" id="popupSuccessCloseBtn" style="margin-top: 1rem; width: 100%;">Close</button>
+      </div>
+
+      <div class="popup-footer-trust">
+        <span>🔒 100% Confidential</span>
+        <span>•</span>
+        <span>Strict NDA Protection</span>
+        <span>•</span>
+        <span>Zero Spam Guarantee</span>
       </div>
     </div>
   </div>

@@ -11,11 +11,68 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/style.css?v=20261119">
+  <link rel="stylesheet" href="/css/style.css?v=20261120">
   <script>
     if (sessionStorage.getItem('curtain_reveal')) {
       document.documentElement.classList.add('curtain-incoming');
     }
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "https://shiprachauhan.in/contact#webpage",
+      "url": "https://shiprachauhan.in/contact",
+      "name": "Contact Shipra Chauhan — SEO & GEO Consultant Delhi",
+      "description": "Contact Shipra Chauhan for hands-on SEO audits, technical consulting, generative search strategy, and enterprise retainers in Delhi NCR."
+    },
+    {
+      "@type": "ProfessionalService",
+      "name": "Shipra Chauhan SEO Advisory",
+      "telephone": "+919718159724",
+      "email": "info@shiprachauhan.in",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Delhi",
+        "addressRegion": "Delhi NCR",
+        "addressCountry": "IN"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://shiprachauhan.in/contact#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How soon can we expect a response after submitting the contact form?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All inquiries submitted through this form are reviewed directly by Shipra Chauhan within 24 business hours. If your project aligns with our core advisory competencies, you will receive an invitation to schedule an initial 30-minute technical discovery call alongside initial observations regarding your site's search visibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with businesses outside of Delhi NCR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. While based in Delhi NCR for in-person advisory sessions and client workshops, Shipra works with enterprise brands, e-commerce stores, and high-growth technology companies across India, the United States, Europe, and the Middle East through structured remote consulting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What information should I have ready for the initial consultation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To maximize the value of our first discussion, it is helpful to have access to your Google Search Console coverage reports, an overview of your primary commercial target keywords or product categories, and a summary of any recent structural redesigns or CMS migrations."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>
@@ -242,38 +299,25 @@
           </div>
 
           <form data-validate="true" action="#" method="POST" id="mainContactForm">
-            <div class="form-group-grid">
-              <div class="form-group">
-                <label class="form-label" for="full-name" style="display: block; font-size: 0.86rem; font-weight: 700; color: #142820; margin-bottom: 0.4rem;">Full Name *</label>
-                <input type="text" id="full-name" name="name" class="form-control" placeholder="e.g. Rahul Sharma" required style="width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(183, 154, 98, 0.3); border-radius: 10px; font-size: 0.95rem; background: #FAF8F3;">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="email" style="display: block; font-size: 0.86rem; font-weight: 700; color: #142820; margin-bottom: 0.4rem;">Business Email *</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="rahul@company.com" required style="width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(183, 154, 98, 0.3); border-radius: 10px; font-size: 0.95rem; background: #FAF8F3;">
-              </div>
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+              <label class="form-label" for="full-name" style="display: block; font-size: 0.86rem; font-weight: 700; color: #142820; margin-bottom: 0.4rem;">Full Name *</label>
+              <input type="text" id="full-name" name="name" class="form-control" placeholder="e.g. Rahul Sharma" required style="width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(183, 154, 98, 0.3); border-radius: 10px; font-size: 0.95rem; background: #FAF8F3;">
             </div>
 
-            <div class="form-group-grid">
+            <div class="form-group-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
               <div class="form-group">
-                <label class="form-label" for="website-url" style="display: block; font-size: 0.86rem; font-weight: 700; color: #142820; margin-bottom: 0.4rem;">Website URL *</label>
-                <input type="url" id="website-url" name="website" class="form-control" placeholder="https://yourwebsite.com" required style="width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(183, 154, 98, 0.3); border-radius: 10px; font-size: 0.95rem; background: #FAF8F3;">
+                <label class="form-label" for="email" style="display: block; font-size: 0.86rem; font-weight: 700; color: #142820; margin-bottom: 0.4rem;">Email Address *</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="rahul@company.com" required style="width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(183, 154, 98, 0.3); border-radius: 10px; font-size: 0.95rem; background: #FAF8F3;">
               </div>
               <div class="form-group">
-                <label class="form-label" for="service-interest" style="display: block; font-size: 0.86rem; font-weight: 700; color: #142820; margin-bottom: 0.4rem;">Primary Area of Interest</label>
-                <select id="service-interest" name="service" class="form-control" style="width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(183, 154, 98, 0.3); border-radius: 10px; font-size: 0.95rem; background: #FAF8F3;">
-                  <option value="">Select Primary Focus</option>
-                  <option value="geo">Generative Engine Optimization (GEO) &amp; AI Search</option>
-                  <option value="technical">Technical SEO Audit &amp; Core Web Vitals</option>
-                  <option value="ecommerce">Enterprise E-Commerce SEO</option>
-                  <option value="local">Local SEO &amp; Multi-Location Strategy</option>
-                  <option value="retainer">Comprehensive Organic Search Retainer</option>
-                </select>
+                <label class="form-label" for="contact-phone" style="display: block; font-size: 0.86rem; font-weight: 700; color: #142820; margin-bottom: 0.4rem;">Contact No. *</label>
+                <input type="tel" id="contact-phone" name="phone" class="form-control" placeholder="+91 98765 43210" required style="width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(183, 154, 98, 0.3); border-radius: 10px; font-size: 0.95rem; background: #FAF8F3;">
               </div>
             </div>
 
             <div class="form-group" style="margin-bottom: 1.5rem;">
-              <label class="form-label" for="project-notes" style="display: block; font-size: 0.86rem; font-weight: 700; color: #142820; margin-bottom: 0.4rem;">Current Search Challenges &amp; Goals</label>
-              <textarea id="project-notes" name="notes" class="form-control" rows="3" placeholder="Briefly describe your site's current organic challenges, target markets, or upcoming migrations..." style="width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(183, 154, 98, 0.3); border-radius: 10px; font-size: 0.95rem; background: #FAF8F3;"></textarea>
+              <label class="form-label" for="project-notes" style="display: block; font-size: 0.86rem; font-weight: 700; color: #142820; margin-bottom: 0.4rem;">Current Search Challenges &amp; Goals (Optional)</label>
+              <textarea id="project-notes" name="challenges" class="form-control" rows="3" placeholder="Briefly describe your site's current organic challenges, target markets, or upcoming migrations..." style="width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(183, 154, 98, 0.3); border-radius: 10px; font-size: 0.95rem; background: #FAF8F3;"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1.1rem; font-size: 1.05rem; font-weight: 700; border-radius: 12px;">
@@ -439,9 +483,10 @@
     </svg>
   </button>
 
-  <script src="/js/main.js?v=20261119"></script>
+  <script src="/js/main.js?v=20261120"></script>
 
   <!-- 3-Second Timed Animated Lead Pop-up Modal -->
+    <!-- 4-Second Timed Animated Lead Pop-up Modal (Every Page Load & Refresh) -->
   <div class="auto-popup-overlay" id="autoPopupOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
     <div class="auto-popup-card">
       <button class="popup-close-btn" id="closeAutoPopupBtn" aria-label="Close Pop-up">×</button>
@@ -459,53 +504,42 @@
       <form class="popup-form" id="autoPopupForm">
         <div class="form-group">
           <label for="popupName">Full Name *</label>
-          <input type="text" id="popupName" class="form-input" placeholder="Your full name" required>
+          <input type="text" id="popupName" name="name" class="form-input" placeholder="Your Full Name *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupContact">Phone / WhatsApp *</label>
-          <input type="tel" id="popupContact" class="form-input" placeholder="+91 98765 43210" required>
+          <label for="popupEmail">Email Address *</label>
+          <input type="email" id="popupEmail" name="email" class="form-input" placeholder="Your Email Address *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupEmail">Business Email *</label>
-          <input type="email" id="popupEmail" class="form-input" placeholder="name@company.com" required>
+          <label for="popupContact">Contact No. *</label>
+          <input type="tel" id="popupContact" name="phone" class="form-input" placeholder="Phone / WhatsApp Number *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupService">Service Required *</label>
-          <select id="popupService" class="form-select" required>
-            <option value="" disabled selected>Select an SEO Service</option>
-            <option value="Ecommerce SEO">Ecommerce SEO</option>
-            <option value="Generative Engine Optimization (GEO)">Generative Engine Optimization (GEO)</option>
-            <option value="Local SEO">Local SEO &amp; Google Business Profile</option>
-            <option value="Off-Page SEO">Off-Page SEO &amp; Authority Links</option>
-            <option value="On-Page SEO">On-Page SEO &amp; Content Architecture</option>
-            <option value="Technical SEO">Technical SEO &amp; Site Speed</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="popupMessage">Website URL / Project Scope (Optional)</label>
-          <textarea id="popupMessage" class="form-textarea" placeholder="Enter your website URL or current search challenges..."></textarea>
+          <label for="popupMessage">Current Search Challenges &amp; Goals (Optional)</label>
+          <textarea id="popupMessage" name="challenges" class="form-textarea" placeholder="Current Search Challenges &amp; Goals (optional)" rows="3"></textarea>
         </div>
 
         <button type="submit" class="btn-popup-submit" id="popupSubmitBtn">
-          <span>Request Strategic Consultation →</span>
+          <span>Request Free SEO Evaluation →</span>
         </button>
-
-        <div class="popup-footer-note">
-          🔒 Strict NDA Protection • Direct Senior Response Within 4 Hours
-        </div>
       </form>
 
       <div class="popup-success-banner" id="popupSuccessBanner">
-        <div style="font-size: 2rem; margin-bottom: 0.5rem; color: #123C32;">✓</div>
-        <h3 style="font-size: 1.3rem; font-weight: 800; color: #142820; margin-bottom: 0.35rem;">Request Received!</h3>
-        <p style="font-size: 0.88rem; color: #3E443C; margin-bottom: 1rem;">
-          Shipra Chauhan will personally review your website and connect within 4 hours.
-        </p>
-        <button type="button" class="btn-service-submit" id="popupSuccessCloseBtn" style="max-width: 180px; margin: 0 auto;">Close</button>
+        <div class="success-icon">✓</div>
+        <h3>Request Received!</h3>
+        <p>Shipra Chauhan will personally review your search challenges within 24 hours.</p>
+        <button class="btn btn-secondary" id="popupSuccessCloseBtn" style="margin-top: 1rem; width: 100%;">Close</button>
+      </div>
+
+      <div class="popup-footer-trust">
+        <span>🔒 100% Confidential</span>
+        <span>•</span>
+        <span>Strict NDA Protection</span>
+        <span>•</span>
+        <span>Zero Spam Guarantee</span>
       </div>
     </div>
   </div>

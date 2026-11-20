@@ -37,20 +37,11 @@ Share details regarding your website and business goals to schedule an initial s
 
  Full Name * 
 
- Business Email * 
+ Email Address * 
 
- Website URL * 
+ Contact No. * 
 
- Primary Area of Interest 
-
- Select Primary Focus 
- Generative Engine Optimization (GEO) & AI Search 
- Technical SEO Audit & Core Web Vitals 
- Enterprise E-Commerce SEO 
- Local SEO & Multi-Location Strategy 
- Comprehensive Organic Search Retainer 
-
- Current Search Challenges & Goals 
+ Current Search Challenges & Goals (Optional) 
 
  Request Consultation Review →
 
@@ -108,30 +99,24 @@ Connect directly with Shipra Chauhan — Senior SEO Consultant Delhi. Receive a 
 
  Full Name * 
 
- Phone / WhatsApp * 
+ Email Address * 
 
- Business Email * 
+ Contact No. * 
 
- Service Required * 
+ Current Search Challenges & Goals (Optional) 
 
- Select an SEO Service 
- Ecommerce SEO 
- Generative Engine Optimization (GEO) 
- Local SEO & Google Business Profile 
- Off-Page SEO & Authority Links 
- On-Page SEO & Content Architecture 
- Technical SEO & Site Speed 
-
- Website URL / Project Scope (Optional) 
-
- Request Strategic Consultation → 
-
- 🔒 Strict NDA Protection • Direct Senior Response Within 4 Hours
+ Request Free SEO Evaluation → 
 
  ✓ 
 
 ### Request Received!
 
-Shipra Chauhan will personally review your website and connect within 4 hours.
+Shipra Chauhan will personally review your search challenges within 24 hours.
 
- Close
+ Close 
+
+ 🔒 100% Confidential 
+ • 
+ Strict NDA Protection 
+ • 
+ Zero Spam Guarantee

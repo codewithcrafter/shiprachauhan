@@ -18,11 +18,55 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/style.css?v=20261119">
+  <link rel="stylesheet" href="/css/style.css?v=20261120">
   <script>
     if (sessionStorage.getItem('curtain_reveal')) {
       document.documentElement.classList.add('curtain-incoming');
     }
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://shiprachauhan.in/blogs/internal-linking-strategy-seo#article",
+  "headline": "Internal Linking Strategy SEO: How Many Links Is Too Many on One Page | Shipra Chauhan",
+  "description": "A solid internal linking strategy has no magic number, but the rule is simple: add contextual links within topic silos to route equity directly to commercial pillar pages.",
+  "url": "https://shiprachauhan.in/blogs/internal-linking-strategy-seo",
+  "mainEntityOfPage": "https://shiprachauhan.in/blogs/internal-linking-strategy-seo",
+  "datePublished": "2026-10-09T08:00:00+05:30",
+  "dateModified": "2026-11-20T10:00:00+05:30",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Krishna Pal",
+      "jobTitle": "Technical SEO Analyst"
+    },
+    {
+      "@type": "Person",
+      "name": "Shipra Chauhan",
+      "jobTitle": "Senior SEO Consultant & Strategist",
+      "url": "https://shiprachauhan.in/about"
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shipra Chauhan SEO Advisory",
+    "url": "https://shiprachauhan.in/"
+  },
+  "keywords": [
+    "InternalLinking",
+    "TopicClusters",
+    "CrawlDepth",
+    "PageRankDistribution",
+    "SiteArchitecture",
+    "InternalLinking",
+    "TopicClusters",
+    "CrawlDepth",
+    "PageRankDistribution",
+    "SiteArchitecture"
+  ]
+}
   </script>
 </head>
 <body>
@@ -191,6 +235,18 @@
                 <span>Verified by Shipra Chauhan</span>
               </div>
 
+                            <!-- Article Tags Horizontally Above Title -->
+              <div class="article-tags-horizontal-strip">
+                <span class="tags-pill-label">🏷️ Article Tags</span>
+                <div class="tags-pill-list">
+                  <a href="/blogs" class="article-tag">#InternalLinking</a>
+                <a href="/blogs" class="article-tag">#TopicClusters</a>
+                <a href="/blogs" class="article-tag">#CrawlDepth</a>
+                <a href="/blogs" class="article-tag">#PageRankDistribution</a>
+                <a href="/blogs" class="article-tag">#SiteArchitecture</a>
+                </div>
+              </div>
+
               <h1 class="article-main-title">
                 Internal Linking Strategy SEO: How Many Links Is Too Many on One Page
               </h1>
@@ -288,15 +344,18 @@
                 Connect directly with Shipra Chauhan — Senior SEO Consultant Delhi.
               </p>
               
-              <form class="blog-sidebar-form">
+              <form class="blog-sidebar-form" data-validate="true">
                 <div class="form-group" style="margin-bottom: 0.65rem;">
-                  <input type="text" class="form-input" style="padding: 0.6rem 0.8rem; font-size: 0.825rem; width: 100%; box-sizing: border-box;" placeholder="Your Name *" required>
+                  <input type="text" name="name" class="form-input" style="padding: 0.6rem 0.8rem; font-size: 0.825rem; width: 100%; box-sizing: border-box;" placeholder="Full Name *" required>
                 </div>
                 <div class="form-group" style="margin-bottom: 0.65rem;">
-                  <input type="tel" class="form-input" style="padding: 0.6rem 0.8rem; font-size: 0.825rem; width: 100%; box-sizing: border-box;" placeholder="Phone / WhatsApp *" required>
+                  <input type="email" name="email" class="form-input" style="padding: 0.6rem 0.8rem; font-size: 0.825rem; width: 100%; box-sizing: border-box;" placeholder="Email Address *" required>
                 </div>
                 <div class="form-group" style="margin-bottom: 0.65rem;">
-                  <input type="email" class="form-input" style="padding: 0.6rem 0.8rem; font-size: 0.825rem; width: 100%; box-sizing: border-box;" placeholder="Email Address *" required>
+                  <input type="tel" name="phone" class="form-input" style="padding: 0.6rem 0.8rem; font-size: 0.825rem; width: 100%; box-sizing: border-box;" placeholder="Contact No. *" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 0.65rem;">
+                  <textarea name="challenges" class="form-textarea" style="padding: 0.6rem 0.8rem; font-size: 0.825rem; width: 100%; box-sizing: border-box; min-height: 55px;" placeholder="Current Search Challenges &amp; Goals (optional)" rows="2"></textarea>
                 </div>
                 <button type="submit" class="btn-service-submit" style="padding: 0.65rem; font-size: 0.82rem; width: 100%;">
                   <span>Claim Advisory Call →</span>
@@ -410,6 +469,7 @@
   </footer>
 
   <!-- 3-Second Timed Animated Lead Pop-up Modal -->
+    <!-- 4-Second Timed Animated Lead Pop-up Modal (Every Page Load & Refresh) -->
   <div class="auto-popup-overlay" id="autoPopupOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
     <div class="auto-popup-card">
       <button class="popup-close-btn" id="closeAutoPopupBtn" aria-label="Close Pop-up">×</button>
@@ -427,53 +487,42 @@
       <form class="popup-form" id="autoPopupForm">
         <div class="form-group">
           <label for="popupName">Full Name *</label>
-          <input type="text" id="popupName" class="form-input" placeholder="Your full name" required>
+          <input type="text" id="popupName" name="name" class="form-input" placeholder="Your Full Name *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupContact">Phone / WhatsApp *</label>
-          <input type="tel" id="popupContact" class="form-input" placeholder="+91 98765 43210" required>
+          <label for="popupEmail">Email Address *</label>
+          <input type="email" id="popupEmail" name="email" class="form-input" placeholder="Your Email Address *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupEmail">Business Email *</label>
-          <input type="email" id="popupEmail" class="form-input" placeholder="name@company.com" required>
+          <label for="popupContact">Contact No. *</label>
+          <input type="tel" id="popupContact" name="phone" class="form-input" placeholder="Phone / WhatsApp Number *" required>
         </div>
 
         <div class="form-group">
-          <label for="popupService">Service Required *</label>
-          <select id="popupService" class="form-select" required>
-            <option value="" disabled selected>Select an SEO Service</option>
-            <option value="Ecommerce SEO">Ecommerce SEO</option>
-            <option value="Generative Engine Optimization (GEO)">Generative Engine Optimization (GEO)</option>
-            <option value="Local SEO">Local SEO &amp; Google Business Profile</option>
-            <option value="Off-Page SEO">Off-Page SEO &amp; Authority Links</option>
-            <option value="On-Page SEO">On-Page SEO &amp; Content Architecture</option>
-            <option value="Technical SEO">Technical SEO &amp; Site Speed</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="popupMessage">Website URL / Project Scope (Optional)</label>
-          <textarea id="popupMessage" class="form-textarea" placeholder="Enter your website URL or current search challenges..."></textarea>
+          <label for="popupMessage">Current Search Challenges &amp; Goals (Optional)</label>
+          <textarea id="popupMessage" name="challenges" class="form-textarea" placeholder="Current Search Challenges &amp; Goals (optional)" rows="3"></textarea>
         </div>
 
         <button type="submit" class="btn-popup-submit" id="popupSubmitBtn">
-          <span>Request Strategic Consultation →</span>
+          <span>Request Free SEO Evaluation →</span>
         </button>
-
-        <div class="popup-footer-note">
-          🔒 Strict NDA Protection • Direct Senior Response Within 4 Hours
-        </div>
       </form>
 
       <div class="popup-success-banner" id="popupSuccessBanner">
-        <div style="font-size: 2rem; margin-bottom: 0.5rem; color: #123C32;">✓</div>
-        <h3 style="font-size: 1.3rem; font-weight: 800; color: #142820; margin-bottom: 0.35rem;">Request Received!</h3>
-        <p style="font-size: 0.88rem; color: #3E443C; margin-bottom: 1rem;">
-          Shipra Chauhan will personally review your website and connect within 4 hours.
-        </p>
-        <button type="button" class="btn-service-submit" id="popupSuccessCloseBtn" style="max-width: 180px; margin: 0 auto;">Close</button>
+        <div class="success-icon">✓</div>
+        <h3>Request Received!</h3>
+        <p>Shipra Chauhan will personally review your search challenges within 24 hours.</p>
+        <button class="btn btn-secondary" id="popupSuccessCloseBtn" style="margin-top: 1rem; width: 100%;">Close</button>
+      </div>
+
+      <div class="popup-footer-trust">
+        <span>🔒 100% Confidential</span>
+        <span>•</span>
+        <span>Strict NDA Protection</span>
+        <span>•</span>
+        <span>Zero Spam Guarantee</span>
       </div>
     </div>
   </div>
@@ -517,6 +566,6 @@
     </svg>
   </button>
 
-  <script src="/js/main.js?v=20261119"></script>
+  <script src="/js/main.js?v=20261120"></script>
 </body>
 </html>
