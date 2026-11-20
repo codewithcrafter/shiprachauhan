@@ -72,16 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFormValidation();
   highlightActiveNav();
 
-  // Mobile dropdown toggle for services
-  document.querySelectorAll('.site-header-full .nav-dropdown > a').forEach(toggleLink => {
-    toggleLink.addEventListener('click', (e) => {
-      if (window.innerWidth <= 960) {
-        e.preventDefault();
-        const parent = toggleLink.parentElement;
-        parent.classList.toggle('open');
-      }
-    });
-  });
+
 
   initUrlParamPrefill();
   initLiveDelhiTime();
@@ -555,45 +546,73 @@ function initTwoWayScrollAnimations() {
 function initMobileNav() {
   const toggle = document.querySelector('.mobile-nav-toggle, .mobile-toggle');
   const navMenu = document.querySelector('.site-header-full .nav-menu, .nav-menu');
-  const dropdownParents = document.querySelectorAll('.nav-dropdown, .nav-item-dropdown');
+  const dropdownParents = document.querySelectorAll('.site-header-full .nav-dropdown, .nav-dropdown');
 
   if (!toggle || !navMenu) return;
+
+  // Ensure backdrop exists
+  let backdrop = document.querySelector('.mobile-nav-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'mobile-nav-backdrop';
+    document.body.appendChild(backdrop);
+  }
+
+  const closeMenu = () => {
+    toggle.classList.remove('active');
+    navMenu.classList.remove('active', 'open');
+    toggle.setAttribute('aria-expanded', 'false');
+    backdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  const openMenu = () => {
+    toggle.classList.add('active');
+    navMenu.classList.add('active', 'open');
+    toggle.setAttribute('aria-expanded', 'true');
+    backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
 
   toggle.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const isOpen = navMenu.classList.toggle('open');
-    navMenu.classList.toggle('active', isOpen);
-    toggle.classList.toggle('active', isOpen);
-    toggle.setAttribute('aria-expanded', String(isOpen));
+    const isOpen = navMenu.classList.contains('open') || navMenu.classList.contains('active');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
 
+  backdrop.addEventListener('click', closeMenu);
+
+  // Accordion for dropdown in mobile view (Single robust handler)
   dropdownParents.forEach(item => {
-    const link = item.querySelector('.nav-link, a');
+    const link = item.querySelector(':scope > a');
     if (!link) return;
 
     link.addEventListener('click', (e) => {
       if (window.innerWidth <= 960) {
         e.preventDefault();
         e.stopPropagation();
-        item.classList.toggle('open');
-        item.classList.toggle('mobile-open');
+        const isOpen = item.classList.toggle('open');
+        item.classList.toggle('mobile-open', isOpen);
       }
     });
   });
 
-  // Close when clicking nav links
-  navMenu.querySelectorAll('a:not(.nav-dropdown > a)').forEach(link => {
+  // Close when clicking nav links (except the dropdown trigger itself)
+  navMenu.querySelectorAll('a').forEach(link => {
+    if (link.matches('.nav-dropdown > a, .nav-item-dropdown > a')) return;
     link.addEventListener('click', () => {
-      toggle.classList.remove('active');
-      navMenu.classList.remove('active', 'open');
+      closeMenu();
     });
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && (navMenu.classList.contains('active') || navMenu.classList.contains('open'))) {
-      toggle.classList.remove('active');
-      navMenu.classList.remove('active', 'open');
+      closeMenu();
       toggle.focus();
     }
   });
@@ -601,8 +620,13 @@ function initMobileNav() {
   document.addEventListener('click', (e) => {
     if ((navMenu.classList.contains('active') || navMenu.classList.contains('open')) &&
         !navMenu.contains(e.target) && !toggle.contains(e.target)) {
-      toggle.classList.remove('active');
-      navMenu.classList.remove('active', 'open');
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 960 && (navMenu.classList.contains('active') || navMenu.classList.contains('open'))) {
+      closeMenu();
     }
   });
 }
