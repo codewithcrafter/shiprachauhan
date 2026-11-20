@@ -94,12 +94,38 @@ $leadsCount = count($leads);
   <main class="admin-container">
 
     <?php if (!$pdo): ?>
-      <div style="background: #FEF3C7; border: 1.5px solid #F59E0B; color: #92400E; padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+      <?php 
+        $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+        $isLive = !in_array(explode(':', $host)[0], ['localhost', '127.0.0.1', '::1']);
+        $rawError = function_exists('getDbConnectionError') ? getDbConnectionError() : null;
+      ?>
+      <div style="background: #FEF3C7; border: 1.5px solid #F59E0B; color: #92400E; padding: 1.15rem 1.35rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;">
         <div>
-          <strong>⚠️ MySQL Connection Notice (XAMPP):</strong>
-          <span>Could not connect to MySQL on localhost:3306. Please ensure <strong>Apache &amp; MySQL</strong> are started in your XAMPP Control Panel. Showing pre-seeded articles in offline preview mode.</span>
+          <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>⚠️ Database Connection Notice</span>
+            <span style="font-size: 0.75rem; background: #FDE68A; color: #78350F; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 600;">Offline Preview Mode Active</span>
+          </div>
+          <?php if ($isLive): ?>
+            <p style="margin: 0.25rem 0; font-size: 0.88rem; line-height: 1.45;">
+              Currently running in offline preview mode because the live MySQL database is not yet connected. To enable live database storage on your hosting (Hostinger/cPanel):
+            </p>
+            <ol style="margin: 0.4rem 0 0.4rem 1.25rem; font-size: 0.84rem; line-height: 1.4;">
+              <li>Open <code>config/db.php</code> on your hosting server (File Manager).</li>
+              <li>Enter your Hostinger MySQL Database Name, Username, and Password in lines 8–12.</li>
+              <li>Import <code>database.sql</code> into Hostinger phpMyAdmin.</li>
+            </ol>
+          <?php else: ?>
+            <p style="margin: 0.25rem 0; font-size: 0.88rem; line-height: 1.45;">
+              Could not connect to local MySQL on <code>127.0.0.1:3306</code>. Please ensure <strong>Apache &amp; MySQL</strong> are started in your XAMPP Control Panel. Showing pre-seeded articles in offline preview mode.
+            </p>
+          <?php endif; ?>
+          <?php if (!empty($rawError)): ?>
+            <div style="margin-top: 0.4rem; font-size: 0.78rem; font-family: monospace; background: rgba(0,0,0,0.06); padding: 0.25rem 0.5rem; border-radius: 4px;">
+              Technical details: <?= htmlspecialchars($rawError) ?>
+            </div>
+          <?php endif; ?>
         </div>
-        <a href="<?= $adminBase ?>/index.php" class="btn-admin btn-admin-secondary" style="white-space: nowrap; font-size: 0.8rem;">Retry Connection</a>
+        <a href="<?= $adminBase ?>/index.php" class="btn-admin btn-admin-secondary" style="white-space: nowrap; font-size: 0.8rem; margin-top: 0.2rem;">Retry Connection</a>
       </div>
     <?php endif; ?>
 

@@ -32,12 +32,15 @@ function getAdminBaseUrl() {
     return getAppBaseUrl() . '/admin';
 }
 
+$g_dbConnectionError = null;
+
 /**
  * Returns a PDO database connection instance.
  * Automatically initializes database and tables if not already present.
  */
 function getDbConnection() {
     static $pdo = null;
+    global $g_dbConnectionError;
     if ($pdo !== null) {
         return $pdo;
     }
@@ -72,9 +75,18 @@ function getDbConnection() {
         return $pdo;
     } catch (PDOException $e) {
         // If MySQL server is down, log or return null gracefully
+        $g_dbConnectionError = $e->getMessage();
         error_log("Database connection error: " . $e->getMessage());
         return null;
     }
+}
+
+/**
+ * Returns the last database connection error message if any
+ */
+function getDbConnectionError() {
+    global $g_dbConnectionError;
+    return $g_dbConnectionError;
 }
 
 /**
