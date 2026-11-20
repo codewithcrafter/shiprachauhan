@@ -1570,6 +1570,27 @@ textarea.form-control {
   color: #A3B5AC;
 }
 
+.footer-designed-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #A3B5AC;
+  font-size: 0.85rem;
+}
+
+.designed-by-link {
+  color: #C9B283;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.designed-by-link:hover {
+  color: #FAF8F3;
+  text-decoration-color: #B79A62;
+}
+
 /* Scroll to Top Button */
 .scroll-top-btn {
   position: fixed;
@@ -3861,11 +3882,11 @@ html.no-js .tableau-card,
 
 .auto-popup-card {
   width: 100%;
-  max-width: 520px;
+  max-width: 430px;
   background: #FFFFFF;
-  border-radius: 1.75rem;
-  padding: 2.25rem 2rem 2rem;
-  box-shadow: 0 35px 80px -15px rgba(18, 60, 50, 0.4), 0 0 0 1px rgba(183, 154, 98, 0.25) inset;
+  border-radius: 1.25rem;
+  padding: 1.5rem 1.6rem 1.35rem;
+  box-shadow: 0 25px 65px -15px rgba(18, 60, 50, 0.38), 0 0 0 1px rgba(183, 154, 98, 0.25) inset;
   position: relative;
   overflow: hidden;
   transform: scale(0.65) translateY(40px) rotate(-2deg);
@@ -3925,14 +3946,15 @@ html.no-js .tableau-card,
 
 .popup-close-btn {
   position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  width: 36px;
-  height: 36px;
+  top: 1rem;
+  right: 1rem;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: #F4EFE6;
   border: none;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
+  line-height: 1;
   color: #3E443C;
   cursor: pointer;
   display: flex;
@@ -3951,49 +3973,49 @@ html.no-js .tableau-card,
 .popup-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.3rem 0.8rem;
+  gap: 0.35rem;
+  padding: 0.22rem 0.65rem;
   background: #F0F4EF;
   border: 1px solid rgba(29, 91, 73, 0.2);
   border-radius: 9999px;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: #123C32;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.45rem;
 }
 
 .popup-title {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: #142820;
   line-height: 1.25;
   letter-spacing: -0.02em;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .popup-desc {
-  font-size: 0.88rem;
+  font-size: 0.79rem;
   color: #3E443C;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
 }
 
 .popup-form {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.55rem;
 }
 
 .popup-form .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.18rem;
   text-align: left;
 }
 
 .popup-form label {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: #252923;
 }
@@ -4003,9 +4025,9 @@ html.no-js .tableau-card,
 .popup-form .form-textarea {
   background: #FAF8F3;
   border: 1.5px solid rgba(37, 41, 35, 0.15);
-  border-radius: 10px;
-  padding: 0.65rem 0.9rem;
-  font-size: 0.9rem;
+  border-radius: 8px;
+  padding: 0.48rem 0.75rem;
+  font-size: 0.84rem;
   color: #142820;
   font-family: var(--font-sans);
   width: 100%;
@@ -4024,27 +4046,38 @@ html.no-js .tableau-card,
 
 .popup-form .form-textarea {
   resize: vertical;
-  min-height: 60px;
+  min-height: 48px;
+  height: 48px;
 }
 
 .btn-popup-submit {
   width: 100%;
-  padding: 0.85rem 1.5rem;
+  padding: 0.65rem 1.25rem;
   background: linear-gradient(135deg, #123C32 0%, #1D5B49 100%);
   color: #FAF8F3;
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-family: var(--font-sans);
   border: 1px solid #B79A62;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(18, 60, 50, 0.35);
+  box-shadow: 0 6px 16px rgba(18, 60, 50, 0.35);
   transition: all 0.25s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.popup-footer-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  margin-top: 0.25rem;
+  margin-top: 0.55rem;
+  font-size: 0.72rem;
+  color: #77766F;
 }
 
 .btn-popup-submit:hover {
@@ -6156,12 +6189,12 @@ pre, code {
 
   .auto-popup-card {
     width: 100% !important;
-    max-width: 480px !important;
-    max-height: 88vh !important;
+    max-width: 380px !important;
+    max-height: 90vh !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
-    padding: 1.5rem 1.25rem !important;
-    border-radius: 1.25rem !important;
+    padding: 1.25rem 1.15rem 1rem !important;
+    border-radius: 1rem !important;
   }
 
   /* Form Controls No iOS Zoom */

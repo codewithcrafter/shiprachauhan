@@ -597,6 +597,7 @@ if (($article['schema_type'] ?? 'automatic') === 'custom' && !empty($article['cu
 
       <div class="footer-bottom">
         <span>© 2026 Shipra Chauhan. All rights reserved.</span>
+        <span class="footer-designed-by">Designed by <a href="https://www.buzzspiremedia.com" target="_blank" rel="noopener noreferrer" class="designed-by-link">Buzzspire Media Pvt. Ltd.</a></span>
         <span>SEO Consultant &amp; Strategist Delhi</span>
       </div>
     </div>
