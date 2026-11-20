@@ -237,6 +237,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     .login-footer a:hover {
       text-decoration: underline;
     }
+    @media (max-width: 480px) {
+      body.login-body {
+        padding: 1rem 0.75rem;
+      }
+      .login-box {
+        padding: 1.85rem 1.25rem !important;
+        border-radius: 12px !important;
+      }
+      .login-title {
+        font-size: 1.2rem !important;
+      }
+      .login-header {
+        margin-bottom: 1.5rem !important;
+      }
+    }
   </style>
 </head>
 <body class="login-body">

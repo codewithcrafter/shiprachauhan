@@ -108,7 +108,7 @@ $leadsCount = count($leads);
         $isLive = !in_array(explode(':', $host)[0], ['localhost', '127.0.0.1', '::1']);
         $rawError = function_exists('getDbConnectionError') ? getDbConnectionError() : null;
       ?>
-      <div style="background: #FEF3C7; border: 1.5px solid #F59E0B; color: #92400E; padding: 1.15rem 1.35rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;">
+      <div class="admin-notice-box" style="background: #FEF3C7; border: 1.5px solid #F59E0B; color: #92400E; padding: 1.15rem 1.35rem; border-radius: 8px; margin-bottom: 1.5rem;">
         <div>
           <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.5rem;">
             <span>⚠️ Database Connection Notice</span>
@@ -177,14 +177,14 @@ $leadsCount = count($leads);
     <?php endif; ?>
 
     <!-- View Switcher Tabs (Articles vs Leads) -->
-    <div class="admin-tabs" style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.75rem;">
-      <button type="button" class="admin-tab-btn" id="tabBtnArticles" onclick="switchAdminTab('articles')" style="padding: 0.75rem 1.35rem; font-size: 0.95rem; font-weight: 700; border: none; background: #0F3C2A; color: #FFFFFF; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(15, 60, 42, 0.2);">
+    <div class="admin-tabs">
+      <button type="button" class="admin-tab-btn active-tab-btn" id="tabBtnArticles" onclick="switchAdminTab('articles')">
         <span>📝 Blog Articles</span>
-        <span style="background: rgba(255,255,255,0.25); padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.75rem;"><?= $totalCount ?></span>
+        <span class="tab-badge"><?= $totalCount ?></span>
       </button>
-      <button type="button" class="admin-tab-btn" id="tabBtnLeads" onclick="switchAdminTab('leads')" style="padding: 0.75rem 1.35rem; font-size: 0.95rem; font-weight: 700; border: 1.5px solid #CBD5E1; background: #FFFFFF; color: #334155; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+      <button type="button" class="admin-tab-btn" id="tabBtnLeads" onclick="switchAdminTab('leads')">
         <span>🎯 Client Leads &amp; Inquiries Tracker</span>
-        <span style="background: #2563EB; color: #FFFFFF; padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.75rem; font-weight: 800;"><?= $leadsCount ?></span>
+        <span class="tab-badge tab-badge-blue"><?= $leadsCount ?></span>
       </button>
     </div>
 
@@ -207,6 +207,10 @@ $leadsCount = count($leads);
       </div>
 
       <div class="admin-card-body" style="padding: 0;">
+        <div class="mobile-table-hint">
+          <span>👈 Swipe table horizontally to see all columns</span>
+          <span class="swipe-icon">👉</span>
+        </div>
         <div class="admin-table-wrap">
           <table class="admin-table">
             <thead>
@@ -315,6 +319,10 @@ $leadsCount = count($leads);
         </div>
 
         <div class="admin-card-body" style="padding: 0;">
+          <div class="mobile-table-hint">
+            <span>👈 Swipe table horizontally to see all columns</span>
+            <span class="swipe-icon">👉</span>
+          </div>
           <div class="table-responsive">
             <table class="admin-table">
               <thead>
@@ -451,11 +459,13 @@ $leadsCount = count($leads);
           secArticles.style.display = 'none';
           secLeads.style.display = 'block';
 
+          btnArticles.classList.remove('active-tab-btn');
           btnArticles.style.background = '#FFFFFF';
           btnArticles.style.color = '#334155';
           btnArticles.style.border = '1.5px solid #CBD5E1';
           btnArticles.style.boxShadow = 'none';
 
+          btnLeads.classList.add('active-tab-btn');
           btnLeads.style.background = '#0F3C2A';
           btnLeads.style.color = '#FFFFFF';
           btnLeads.style.border = 'none';
@@ -470,11 +480,13 @@ $leadsCount = count($leads);
           secLeads.style.display = 'none';
           secArticles.style.display = 'block';
 
+          btnLeads.classList.remove('active-tab-btn');
           btnLeads.style.background = '#FFFFFF';
           btnLeads.style.color = '#334155';
           btnLeads.style.border = '1.5px solid #CBD5E1';
           btnLeads.style.boxShadow = 'none';
 
+          btnArticles.classList.add('active-tab-btn');
           btnArticles.style.background = '#0F3C2A';
           btnArticles.style.color = '#FFFFFF';
           btnArticles.style.border = 'none';

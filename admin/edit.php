@@ -292,7 +292,7 @@ $valCustomSchema = $_POST['custom_schema'] ?? ($article['custom_schema'] ?? '');
               <div class="field-help">Permalinks are extensionless. Leave auto-locked or unlock to specify custom URL path.</div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+            <div class="form-row-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
               <div>
                 <label class="field-label" for="articleCategory">Category <span class="req">*</span></label>
                 <select id="articleCategory" name="category" class="admin-select" required>
