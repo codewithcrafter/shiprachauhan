@@ -18,3 +18,4 @@ if ($id > 0) {
 
 header("Location: $adminBase/index.php?lead_deleted=1");
 exit;
+

@@ -76,3 +76,4 @@ function adminLogout() {
     }
     session_destroy();
 }
+

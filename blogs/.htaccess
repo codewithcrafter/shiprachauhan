@@ -3,8 +3,10 @@ DirectoryIndex index.php index.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Route article slugs (e.g. /blogs/ai-overviews-local-search) to root blog.php
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+  # Pass existing real files through (css, js, images)
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Route all blog article requests dynamically to blog.php
   RewriteRule ^([^/]+)/?$ ../blog.php?slug=$1 [NC,L,QSA]
 </IfModule>

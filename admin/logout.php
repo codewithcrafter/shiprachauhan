@@ -9,3 +9,4 @@ adminLogout();
 
 header("Location: $adminBase/login.php?logged_out=1");
 exit;
+

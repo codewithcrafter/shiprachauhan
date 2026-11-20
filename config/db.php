@@ -44,13 +44,22 @@ if (!$isLocalhost) {
  * E.g. "" on root domain, or "/shiprachauhan" when in a XAMPP subdirectory
  */
 function getAppBaseUrl() {
-    $script = $_SERVER['SCRIPT_NAME'] ?? '';
-    if (strpos($script, '/admin') !== false) {
-        $parts = explode('/admin', $script);
-        return rtrim($parts[0], '/\\');
+    $script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
+    
+    // Check if running from known subdirectories
+    foreach (['/admin', '/blogs', '/services', '/api', '/config'] as $sub) {
+        $pos = strpos($script, $sub . '/');
+        if ($pos !== false) {
+            return rtrim(substr($script, 0, $pos), '/');
+        }
+        if (substr($script, -strlen($sub)) === $sub) {
+            return rtrim(substr($script, 0, -strlen($sub)), '/');
+        }
     }
+    
     $dir = dirname($script);
-    return ($dir === '/' || $dir === '\\') ? '' : rtrim($dir, '/\\');
+    $dir = str_replace('\\', '/', $dir);
+    return ($dir === '/' || $dir === '.' || $dir === '\\') ? '' : rtrim($dir, '/');
 }
 
 /**
