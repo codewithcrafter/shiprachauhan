@@ -4,12 +4,40 @@
  * Designed for XAMPP / WAMP / MySQL on Localhost and Production
  */
 
-// Database Credentials (Default for XAMPP Localhost)
-define('DB_HOST', getenv('DB_HOST') ?: '127.0.0.1');
-define('DB_PORT', getenv('DB_PORT') ?: '3306');
-define('DB_NAME', getenv('DB_NAME') ?: 'shipra_chauhan_db');
-define('DB_USER', getenv('DB_USER') ?: 'root');
-define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : '');
+// Environment Detection (Live Hosting vs Localhost)
+$httpHost = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$serverIp = explode(':', $httpHost)[0];
+$isLocalhost = in_array($serverIp, ['localhost', '127.0.0.1', '::1']) || (php_sapi_name() === 'cli' && empty($_SERVER['HTTP_HOST']));
+
+// Production / Hostinger Credentials (Active on demo.shiprachauhan.in / Live Hosting)
+define('HOSTINGER_DB_HOST', 'localhost');
+define('HOSTINGER_DB_FALLBACK_HOST', 'srv1328.hstgr.io');
+define('HOSTINGER_DB_PORT', '3306');
+define('HOSTINGER_DB_NAME', 'u555726154_shipra');
+define('HOSTINGER_DB_USER', 'u555726154_shiprachahuhan');
+define('HOSTINGER_DB_PASS', 'Shipra@2026#');
+
+// Local XAMPP Credentials (Active on Local PC)
+define('LOCAL_DB_HOST', '127.0.0.1');
+define('LOCAL_DB_PORT', '3306');
+define('LOCAL_DB_NAME', 'shipra_chauhan_db');
+define('LOCAL_DB_USER', 'root');
+define('LOCAL_DB_PASS', '');
+
+// Set Active Database Configuration
+if (!$isLocalhost) {
+    define('DB_HOST', getenv('DB_HOST') ?: HOSTINGER_DB_HOST);
+    define('DB_PORT', getenv('DB_PORT') ?: HOSTINGER_DB_PORT);
+    define('DB_NAME', getenv('DB_NAME') ?: HOSTINGER_DB_NAME);
+    define('DB_USER', getenv('DB_USER') ?: HOSTINGER_DB_USER);
+    define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : HOSTINGER_DB_PASS);
+} else {
+    define('DB_HOST', getenv('DB_HOST') ?: LOCAL_DB_HOST);
+    define('DB_PORT', getenv('DB_PORT') ?: LOCAL_DB_PORT);
+    define('DB_NAME', getenv('DB_NAME') ?: LOCAL_DB_NAME);
+    define('DB_USER', getenv('DB_USER') ?: LOCAL_DB_USER);
+    define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : LOCAL_DB_PASS);
+}
 
 /**
  * Computes the root application base URL dynamically for both root domains and localhost subfolders
@@ -52,20 +80,35 @@ function getDbConnection() {
             PDO::ATTR_EMULATE_PREPARES => false,
         ];
 
-        // Connect directly to the database
-        $dsnWithDb = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
-        
-        try {
-            $pdo = new PDO($dsnWithDb, DB_USER, DB_PASS, $options);
-        } catch (PDOException $e) {
+        // Connect directly to the database with fallback host support
+        $hostsToTry = [DB_HOST];
+        if (defined('HOSTINGER_DB_FALLBACK_HOST') && !in_array(HOSTINGER_DB_FALLBACK_HOST, $hostsToTry)) {
+            $hostsToTry[] = HOSTINGER_DB_FALLBACK_HOST;
+        }
+
+        $pdo = null;
+        $lastException = null;
+
+        foreach ($hostsToTry as $h) {
+            try {
+                $dsnWithDb = "mysql:host=" . $h . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
+                $pdo = new PDO($dsnWithDb, DB_USER, DB_PASS, $options);
+                break;
+            } catch (PDOException $e) {
+                $lastException = $e;
+            }
+        }
+
+        if (!$pdo) {
             // Local fallback: attempt auto-create database if on localhost root
             if (DB_USER === 'root' && in_array(DB_HOST, ['127.0.0.1', 'localhost'])) {
                 $dsnWithoutDb = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";charset=utf8mb4";
                 $serverPdo = new PDO($dsnWithoutDb, DB_USER, DB_PASS, $options);
                 $serverPdo->exec("CREATE DATABASE IF NOT EXISTS `" . DB_NAME . "` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+                $dsnWithDb = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
                 $pdo = new PDO($dsnWithDb, DB_USER, DB_PASS, $options);
             } else {
-                throw $e;
+                throw ($lastException ?: new PDOException("Could not connect to database"));
             }
         }
 
