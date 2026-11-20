@@ -419,7 +419,7 @@ foreach ($blogs as $b) {
     </svg>
   </button>
 
-  <script src="/js/main.js?v=20261120"></script>
+  <script src="<?= $appBase ?>/js/main.js?v=20261120"></script>
 
   <!-- 4-Second Timed Animated Lead Pop-up Modal (Every Page Load & Refresh) -->
   <div class="auto-popup-overlay" id="autoPopupOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
