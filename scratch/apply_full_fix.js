@@ -255,3 +255,4 @@ if (mainJs.includes(oldBlogSidebarSubmit)) {
 
 fs.writeFileSync('js/main.js', mainJs, 'utf8');
 console.log('Successfully updated js/main.js with universal routing and MySQL lead integration.');
+

@@ -88,3 +88,4 @@ fs.writeFileSync('blogs/.htaccess', blogsHtaccess, 'utf8');
 console.log('Created blogs/.htaccess');
 
 console.log('Done fixing HTML files and directory routing.');
+
