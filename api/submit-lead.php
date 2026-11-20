@@ -1,7 +1,7 @@
 <?php
 /**
  * SHIPRA CHAUHAN SEO — UNIVERSAL LEAD CAPTURE API
- * Accepts JSON or POST form submissions, saves to MySQL `leads` table
+ * Accepts JSON or POST form submissions, saves to MySQL leads table
  */
 header('Content-Type: application/json; charset=UTF-8');
 header('X-Content-Type-Options: nosniff');
@@ -20,21 +20,54 @@ if (!is_array($input)) {
     $input = $_POST;
 }
 
-$name = trim($input['name'] ?? $input['full_name'] ?? '');
-$email = trim($input['email'] ?? '');
-$phone = trim($input['phone'] ?? $input['phone_number'] ?? $input['contact'] ?? '');
+$name = trim($input['name'] ?? $input['full_name'] ?? $input['client_name'] ?? '');
+$email = trim($input['email'] ?? $input['email_address'] ?? '');
+$phone = trim($input['phone'] ?? $input['contact'] ?? $input['contact_no'] ?? $input['phone_number'] ?? $input['mobile'] ?? '');
+$website = trim($input['website'] ?? $input['url'] ?? $input['site_url'] ?? '');
 $challenges = trim($input['challenges_goals'] ?? $input['challenges'] ?? $input['message'] ?? $input['goals'] ?? '');
-$pageSource = trim($input['page_source'] ?? $input['page'] ?? $_SERVER['HTTP_REFERER'] ?? '');
-$formType = trim($input['form_type'] ?? 'website_lead');
 
-// Basic Validation
-if (empty($name) || empty($email) || empty($phone)) {
+if (!empty($website)) {
+    $challenges = "Target Website: " . $website . (!empty($challenges) ? "\nGoals: " . $challenges : "");
+}
+
+// Extract and normalize page source
+$pageSource = trim($input['page_source'] ?? $input['page'] ?? '');
+if (empty($pageSource) && !empty($_SERVER['HTTP_REFERER'])) {
+    $refPath = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH);
+    if ($refPath) $pageSource = $refPath;
+}
+$pageSource = str_ireplace(['/shiprachauhan', '/shipra-chauhan'], '', $pageSource);
+$pageSource = preg_replace('/(\/index\.(html|php)|\.html)$/i', '', $pageSource);
+if (empty($pageSource) || $pageSource === '') {
+    $pageSource = '/';
+}
+
+$formType = trim($input['form_type'] ?? 'Website Inquiry');
+
+// Validation: Require Name and at least Email or Phone
+if (empty($name)) {
     http_response_code(400);
     echo json_encode([
         'success' => false,
-        'error' => 'Please provide Name, Email, and Contact Number.'
+        'error' => 'Please provide your Full Name.'
     ]);
     exit;
+}
+
+if (empty($email) && empty($phone)) {
+    http_response_code(400);
+    echo json_encode([
+        'success' => false,
+        'error' => 'Please provide an Email Address or Phone Number.'
+    ]);
+    exit;
+}
+
+if (empty($phone)) {
+    $phone = 'Not Provided';
+}
+if (empty($email)) {
+    $email = 'Not Provided';
 }
 
 try {
@@ -43,8 +76,11 @@ try {
         throw new Exception('Database connection unavailable.');
     }
 
+    // Ensure leads table exists
+    ensureTablesExist($pdo);
+
     $stmt = $pdo->prepare("
-        INSERT INTO `leads` (`name`, `email`, `phone`, `challenges_goals`, `page_source`, `form_type`, `created_at`)
+        INSERT INTO leads (`name`, `email`, `phone`, `challenges_goals`, `page_source`, `form_type`, `created_at`)
         VALUES (:name, :email, :phone, :challenges, :page_source, :form_type, NOW())
     ");
 
@@ -68,7 +104,6 @@ try {
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'error' => 'Unable to save your request right now. Please call or WhatsApp +91 97181 59724 directly.'
+        'error' => 'Unable to save request: ' . $e->getMessage()
     ]);
 }
-

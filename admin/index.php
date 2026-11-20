@@ -81,6 +81,10 @@ $leadsCount = count($leads);
       <span style="font-size: 0.8rem; color: #CBD5E1; background: rgba(255,255,255,0.08); padding: 0.45rem 0.8rem; border-radius: 8px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem;">
         <span>👤</span> <span><?= htmlspecialchars($_SESSION['sc_admin_user'] ?? 'admin') ?></span>
       </span>
+      <button type="button" onclick="switchAdminTab('leads')" class="btn-admin" style="background: #1E3A8A; color: #FFFFFF; border: 1px solid #3B82F6; font-weight: 700; padding: 0.45rem 0.85rem; font-size: 0.825rem; display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer;" title="View all captured client leads">
+        <span>🎯 Inquiries</span>
+        <span style="background: #3B82F6; color: #FFFFFF; padding: 0.1rem 0.5rem; border-radius: 999px; font-size: 0.72rem; font-weight: 800;"><?= $leadsCount ?></span>
+      </button>
       <a href="<?= $appBase ?>/" target="_blank" class="btn-admin btn-admin-outline">
         <span>View Site ↗</span>
       </a>

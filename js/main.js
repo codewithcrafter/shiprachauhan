@@ -689,15 +689,26 @@ function initScrollToTop() {
  * 10. Form Validation & Tangible Feedback
  */
 function initFormValidation() {
-  const forms = document.querySelectorAll('form[data-validate="true"]');
+  const forms = document.querySelectorAll('form[data-validate="true"], form.contact-form');
 
   forms.forEach(form => {
+    // Skip forms handled by specialized handlers
+    if (form.classList.contains('service-form') || 
+        form.classList.contains('blog-sidebar-form') || 
+        form.id === 'autoPopupForm' ||
+        form.closest('.service-hero-form-card')) {
+      return;
+    }
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const nameInput = form.querySelector('input[name="name"], #sc-name, #full-name');
-      const emailInput = form.querySelector('input[name="email"], #sc-email, #email');
-      
+      const nameInput = form.querySelector('input[name="name"], #sc-name, #full-name, #tech-name');
+      const emailInput = form.querySelector('input[name="email"], #sc-email, #email, #tech-email');
+      const phoneInput = form.querySelector('input[name="phone"], input[type="tel"], #sc-phone, #contact-phone, #tech-phone');
+      const websiteInput = form.querySelector('input[name="website"], input[name="url"], #sc-website');
+      const challengesInput = form.querySelector('textarea, input[name="challenges"], input[name="challenges_goals"], input[name="message"], #sc-message, #project-notes, #tech-message');
+
       let isValid = true;
 
       if (nameInput && !nameInput.value.trim()) {
@@ -719,21 +730,32 @@ function initFormValidation() {
       if (!isValid) return;
 
       const submitBtn = form.querySelector('button[type="submit"]');
+      const origBtnText = submitBtn ? submitBtn.innerHTML : 'Submit';
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Reviewing website parameters...';
+        submitBtn.innerHTML = 'Submitting Request...';
       }
 
-      const phoneInput = form.querySelector('input[name="phone"], input[type="tel"]');
-      const challengesInput = form.querySelector('textarea, input[name="challenges_goals"], input[name="goals"]');
       const isContactPage = window.location.pathname.includes('contact') || form.id === 'mainContactForm';
-      const formTypeLabel = isContactPage ? 'Contact Page Form' : (form.id === 'auditForm' ? 'Hero Free Audit Form' : 'Website Consultation Form');
+      let formTypeLabel = 'Website Consultation Form';
+      if (isContactPage) {
+        formTypeLabel = 'Contact Page Form';
+      } else if (form.classList.contains('contact-form')) {
+        formTypeLabel = 'Service Page Quick Message Form';
+      } else if (form.closest('.form-box') || form.id === 'auditForm') {
+        formTypeLabel = 'Hero Free Audit Form';
+      }
+
+      let challengesText = challengesInput ? challengesInput.value.trim() : '';
+      if (websiteInput && websiteInput.value.trim()) {
+        challengesText = 'Website: ' + websiteInput.value.trim() + (challengesText ? '\n' + challengesText : '');
+      }
 
       submitLeadData({
         name: nameInput ? nameInput.value.trim() : '',
         email: emailInput ? emailInput.value.trim() : '',
         phone: phoneInput ? phoneInput.value.trim() : '',
-        challenges_goals: challengesInput ? challengesInput.value.trim() : '',
+        challenges_goals: challengesText,
         page_source: window.location.pathname || '/',
         form_type: formTypeLabel
       }).then(res => {
@@ -746,10 +768,9 @@ function initFormValidation() {
 
         const name = nameInput ? nameInput.value.trim() : 'Guest';
         feedback.innerHTML = `
-          <div class="feedback-inner">
-            <span class="feedback-badge">Inquiry Stored ✓</span>
-            <h4>Thank you, ${escapeHtml(name)}.</h4>
-            <p>Your request has been received and saved into our database. Shipra Chauhan will contact you within 24 hours at <strong>${escapeHtml(emailInput ? emailInput.value.trim() : '')}</strong>.</p>
+          <div class="feedback-inner" style="background: #E8F5E9; border: 1.5px solid #2E7D32; color: #1B5E20; padding: 1.25rem; border-radius: 12px; margin-top: 1rem;">
+            <div style="font-weight: 800; font-size: 1rem; margin-bottom: 0.35rem;">✓ Inquiry Received, ${escapeHtml(name)}!</div>
+            <p style="font-size: 0.88rem; margin: 0; line-height: 1.45;">Your SEO evaluation request has been securely recorded. Senior Consultant Shipra Chauhan will contact you within 24 hours.</p>
           </div>
         `;
         feedback.style.display = 'block';
@@ -762,9 +783,9 @@ function initFormValidation() {
       }).catch(err => {
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = 'Claim your free SEO audit';
+          submitBtn.innerHTML = origBtnText;
         }
-        alert('Thank you! Your inquiry has been noted.');
+        alert('Thank you! Your request has been noted.');
       });
     });
   });
@@ -922,10 +943,10 @@ function init4SecondAutoPopup() {
         submitBtn.disabled = true;
       }
 
-      const nameVal = form.querySelector('#popupName')?.value?.trim() || '';
-      const emailVal = form.querySelector('#popupEmail')?.value?.trim() || '';
-      const phoneVal = form.querySelector('#popupPhone')?.value?.trim() || '';
-      const challengesVal = form.querySelector('#popupChallenges')?.value?.trim() || '';
+      const nameVal = form.querySelector('#popupName, input[name="name"]')?.value?.trim() || '';
+      const emailVal = form.querySelector('#popupEmail, input[name="email"]')?.value?.trim() || '';
+      const phoneVal = form.querySelector('#popupContact, #popupPhone, input[name="phone"], input[type="tel"]')?.value?.trim() || '';
+      const challengesVal = form.querySelector('#popupMessage, #popupChallenges, textarea[name="challenges"], textarea')?.value?.trim() || '';
 
       submitLeadData({
         name: nameVal,
@@ -952,12 +973,13 @@ function init4SecondAutoPopup() {
  * 16. Service Hero Consultation Forms Handler
  */
 function initServiceHeroForms() {
-  const serviceForms = document.querySelectorAll('.service-hero-form-card form');
+  const serviceForms = document.querySelectorAll('.service-hero-form-card form, form.service-form');
   serviceForms.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const submitBtn = form.querySelector('.btn-service-submit');
-      const successDiv = form.parentElement.querySelector('.service-form-success');
+      const submitBtn = form.querySelector('.btn-service-submit, button[type="submit"]');
+      const card = form.closest('.service-hero-form-card') || form.parentElement;
+      const successDiv = card ? card.querySelector('.service-form-success') : null;
       
       if (submitBtn) {
         submitBtn.textContent = 'Submitting Request...';
@@ -966,8 +988,8 @@ function initServiceHeroForms() {
 
       const nameVal = form.querySelector('input[name="name"]')?.value?.trim() || '';
       const emailVal = form.querySelector('input[name="email"]')?.value?.trim() || '';
-      const phoneVal = form.querySelector('input[name="phone"]')?.value?.trim() || '';
-      const challengesVal = form.querySelector('textarea, input[name="challenges_goals"]')?.value?.trim() || '';
+      const phoneVal = form.querySelector('input[name="phone"], input[type="tel"]')?.value?.trim() || '';
+      const challengesVal = form.querySelector('textarea, input[name="challenges"], input[name="challenges_goals"]')?.value?.trim() || '';
 
       submitLeadData({
         name: nameVal,
@@ -992,8 +1014,9 @@ function initBlogSidebarForm() {
   blogForms.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const successDiv = form.parentElement.querySelector('.service-form-success');
+      const submitBtn = form.querySelector('button[type="submit"], .btn-service-submit');
+      const parent = form.parentElement;
+      const successDiv = parent ? parent.querySelector('.service-form-success') : null;
       
       if (submitBtn) {
         submitBtn.textContent = 'Transmitting...';
@@ -1002,8 +1025,8 @@ function initBlogSidebarForm() {
 
       const nameVal = form.querySelector('input[name="name"]')?.value?.trim() || '';
       const emailVal = form.querySelector('input[name="email"]')?.value?.trim() || '';
-      const phoneVal = form.querySelector('input[name="phone"]')?.value?.trim() || '';
-      const challengesVal = form.querySelector('textarea, input[name="challenges_goals"]')?.value?.trim() || '';
+      const phoneVal = form.querySelector('input[name="phone"], input[type="tel"]')?.value?.trim() || '';
+      const challengesVal = form.querySelector('textarea, input[name="challenges"], input[name="challenges_goals"]')?.value?.trim() || '';
 
       submitLeadData({
         name: nameVal,
