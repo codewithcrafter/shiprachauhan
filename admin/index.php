@@ -42,6 +42,16 @@ foreach ($blogs as $b) {
     }
 }
 $categoriesCount = count($categories);
+
+// Fetch Leads from MySQL database
+$leads = [];
+if ($pdo) {
+    try {
+        $stmtLeads = $pdo->query("SELECT * FROM `leads` ORDER BY `created_at` DESC LIMIT 50");
+        $leads = $stmtLeads->fetchAll();
+    } catch (Exception $e) {}
+}
+$leadsCount = count($leads);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,6 +120,10 @@ $categoriesCount = count($categories);
       <div class="stat-card">
         <div class="stat-card-label">Active Categories</div>
         <div class="stat-card-value" style="color: var(--admin-gold);"><?= $categoriesCount ?></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">Client Inquiries</div>
+        <div class="stat-card-value" style="color: #2563EB;"><?= $leadsCount ?></div>
       </div>
     </section>
 
@@ -204,6 +218,69 @@ $categoriesCount = count($categories);
                       <a href="<?= $adminBase ?>/delete.php?id=<?= $id ?>" class="btn-admin btn-admin-danger" style="padding: 0.35rem 0.65rem; font-size: 0.78rem;" onclick="return confirm('Are you sure you want to delete this article?');" title="Delete Article">
                         Delete
                       </a>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inquiries & Leads Card (Stored in MySQL) -->
+    <div class="admin-card" style="margin-top: 2rem;">
+      <div class="admin-card-header">
+        <div>
+          <h2 class="admin-card-title">Client Leads &amp; SEO Audit Inquiries</h2>
+          <p class="admin-card-subtitle">Real-time submissions from contact forms and 4-second timed popup modal (Stored in MySQL)</p>
+        </div>
+        <span class="badge-status badge-published" style="font-weight: 700;"><?= $leadsCount ?> Total Leads</span>
+      </div>
+      <div class="admin-card-body" style="padding: 0;">
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Date / Time</th>
+                <th>Client Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Search Challenges &amp; Goals</th>
+                <th>Source Page</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php if (empty($leads)): ?>
+                <tr>
+                  <td colspan="6" style="text-align: center; padding: 2.5rem; color: var(--admin-text-muted);">
+                    No inquiries recorded in MySQL yet. Test any form on the site to see submissions populate live!
+                  </td>
+                </tr>
+              <?php else: ?>
+                <?php foreach ($leads as $l): ?>
+                  <tr>
+                    <td style="font-size: 0.8rem; color: var(--admin-text-muted); white-space: nowrap;">
+                      <?= date('M d, Y · H:i', strtotime($l['created_at'])) ?>
+                    </td>
+                    <td style="font-weight: 600; color: #1E293B;">
+                      <?= htmlspecialchars($l['name']) ?>
+                    </td>
+                    <td>
+                      <a href="mailto:<?= htmlspecialchars($l['email']) ?>" style="color: var(--admin-primary); text-decoration: none; font-weight: 500;">
+                        <?= htmlspecialchars($l['email']) ?>
+                      </a>
+                    </td>
+                    <td>
+                      <a href="tel:<?= htmlspecialchars($l['phone']) ?>" style="color: #059669; font-weight: 600; text-decoration: none;">
+                        <?= htmlspecialchars($l['phone']) ?>
+                      </a>
+                    </td>
+                    <td style="font-size: 0.85rem; color: #475569; max-width: 250px;">
+                      <?= htmlspecialchars($l['challenges_goals'] ?: 'None provided') ?>
+                    </td>
+                    <td style="font-size: 0.75rem; color: var(--admin-text-muted);">
+                      <span class="badge-category"><?= htmlspecialchars($l['form_type'] ?? 'website') ?></span>
                     </td>
                   </tr>
                 <?php endforeach; ?>

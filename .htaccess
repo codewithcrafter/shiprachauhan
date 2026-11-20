@@ -1,45 +1,35 @@
 # ==============================================================================
-# SHIPRA CHAUHAN - UNIVERSAL CLEAN URL & CACHE CONFIGURATION
-# WORKS SEAMLESSLY ON ROOT DOMAINS (HOSTINGER/CPANEL) & LOCALHOST SUBFOLDERS (XAMPP)
+# SHIPRA CHAUHAN - UNIVERSAL ROUTING (.htaccess)
 # ==============================================================================
-
 DirectoryIndex index.php index.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # 1. Redirect /index.html directly to clean root/directory
-  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+([^/]+/)*index\.html[\s?] [NC]
-  RewriteRule ^(.*)index\.html$ $1 [R=301,L]
+  # 1. Route admin
+  RewriteRule ^admin/?$ admin/index.php [NC,L]
 
-  # 2. Redirect *.html to Clean URL without .html
-  # E.g. technical-seo.html -> technical-seo
-  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+(.*?)/?([^/]+)\.html[\s?] [NC]
-  RewriteRule ^(.*)\.html$ $1 [R=301,L]
+  # 2. Dynamic Blogs hub -> blogs.php
+  RewriteRule ^blogs/?$ blogs.php [NC,L]
 
-  # 3. If requesting an existing directory or file, serve directly
-  RewriteCond %{REQUEST_FILENAME} -d [OR]
+  # 3. Dynamic single blog post -> blog.php?slug=$1
+  RewriteRule ^blogs/([^/]+)/?$ blog.php?slug=$1 [NC,L,QSA]
+
+  # 4. If actual file exists, serve it (css, js, assets, images)
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
 
-  # 4. Route /admin or /admin/ to admin/index.php
-  RewriteRule ^admin/?$ admin/index.php [NC,L]
-
-  # 5. Route /blogs to blogs.php if exists, else blogs.html
-  RewriteCond %{REQUEST_FILENAME}.php -f [OR]
-  RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_URI}.php -f
-  RewriteRule ^blogs/?$ blogs.php [NC,L]
-
-  # 6. Route dynamic article /blogs/{slug} to blog.php?slug=$1
-  RewriteRule ^blogs/([^/]+)/?$ blog.php?slug=$1 [NC,L,QSA]
-
-  # 7. Internally route clean URLs to corresponding .php file
+  # 5. Route clean URLs to .php if exists
   RewriteCond %{REQUEST_FILENAME}.php -f
   RewriteRule ^(.*)$ $1.php [NC,L]
 
-  # 8. Internally route clean URLs to corresponding .html file
+  # 6. Route clean URLs to .html if exists (e.g. /ecommerce-seo -> ecommerce-seo.html)
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [NC,L]
+
+  # 7. Fallback to existing directory
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
 </IfModule>
 
 # Browser Caching & Performance
@@ -51,21 +41,13 @@ DirectoryIndex index.php index.html
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
 </IfModule>
 
-# Cache-Control & Security Headers
+# Security Headers
 <IfModule mod_headers.c>
-  <FilesMatch "\.(html|htm|php)$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
-    Header set Expires 0
-  </FilesMatch>
-
-  <FilesMatch "\.(css|js|webp|svg|png|jpg|jpeg|woff2)$">
-    Header set Cache-Control "public, max-age=31536000, immutable"
-  </FilesMatch>
-
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
