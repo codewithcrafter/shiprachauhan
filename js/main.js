@@ -268,6 +268,11 @@ function initPageCurtainTransitions() {
     // Do not intercept mailto, tel, javascript
     if (href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
 
+    // Do not intercept if user clicked on a dropdown chevron in mobile view
+    if (window.innerWidth <= 960 && (e.target.closest('.dropdown-chevron-btn') || (link.matches('.nav-dropdown > a, .nav-item-dropdown > a') && (e.target.closest('svg') || e.target.tagName.toLowerCase() === 'svg' || e.target.tagName.toLowerCase() === 'polyline')))) {
+      return;
+    }
+
     // Dynamic Subfolder App Base Detection
     const appBase = getAppBase();
     let resolvedHref = href;
@@ -594,18 +599,34 @@ function initMobileNav() {
 
     link.addEventListener('click', (e) => {
       if (window.innerWidth <= 960) {
-        e.preventDefault();
-        e.stopPropagation();
-        const isOpen = item.classList.toggle('open');
-        item.classList.toggle('mobile-open', isOpen);
+        // If the user clicked on the chevron SVG or a dedicated toggle button, toggle the dropdown
+        const isChevron = e.target.closest('svg') || 
+                          e.target.tagName.toLowerCase() === 'svg' || 
+                          e.target.tagName.toLowerCase() === 'polyline' ||
+                          e.target.closest('.dropdown-chevron-btn');
+
+        if (isChevron) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = item.classList.toggle('open');
+          item.classList.toggle('mobile-open', isOpen);
+        } else {
+          // If the user clicked the text itself (e.g. "Services"), allow normal navigation to /services!
+          closeMenu();
+        }
       }
     });
   });
 
-  // Close when clicking nav links (except the dropdown trigger itself)
+  // Close when clicking nav links (except when clicking the chevron inside dropdown trigger)
   navMenu.querySelectorAll('a').forEach(link => {
-    if (link.matches('.nav-dropdown > a, .nav-item-dropdown > a')) return;
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      if (link.matches('.nav-dropdown > a, .nav-item-dropdown > a')) {
+        const isChevron = e.target.closest('svg') || 
+                          e.target.tagName.toLowerCase() === 'svg' || 
+                          e.target.tagName.toLowerCase() === 'polyline';
+        if (isChevron) return;
+      }
       closeMenu();
     });
   });
@@ -801,18 +822,21 @@ function escapeHtml(text) {
  * 11. Active Nav Highlighting
  */
 function highlightActiveNav() {
-  const path = window.location.pathname;
+  const path = window.location.pathname.replace(/\/$/, '') || '/';
+  const cleanPath = path.replace(/\.html$/, '');
   const filename = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+  const cleanFilename = filename.replace(/\.html$/, '') || 'index';
 
   const navLinks = document.querySelectorAll('.nav-link, .dropdown-link');
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
     if (!href) return;
-    const linkFile = href.substring(href.lastIndexOf('/') + 1);
+    const cleanHref = href.replace(/\/$/, '').replace(/\.html$/, '') || '/';
+    const linkFile = cleanHref.substring(cleanHref.lastIndexOf('/') + 1) || 'index';
 
-    if (linkFile === filename || (filename === '' && linkFile === 'index.html')) {
+    if (cleanHref === cleanPath || linkFile === cleanFilename || (cleanFilename === 'index' && (cleanHref === '/' || cleanHref === ''))) {
       link.classList.add('active');
-      const dropdownParent = link.closest('.nav-item-dropdown');
+      const dropdownParent = link.closest('.nav-item-dropdown, .nav-dropdown');
       if (dropdownParent) {
         const parentLink = dropdownParent.querySelector('.nav-link');
         if (parentLink) parentLink.classList.add('active');
