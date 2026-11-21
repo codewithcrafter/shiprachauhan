@@ -5629,19 +5629,22 @@ html.no-js .tableau-card,
 
 /* Service Hero Showcase Illustration Card */
 .service-hero-showcase {
-  margin: 2.5rem 0 1rem;
+  margin: 2.5rem 0 1.5rem;
   background: #FFFFFF;
   border: 1.5px solid rgba(183, 154, 98, 0.28);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 12px 32px -4px rgba(18, 60, 50, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .service-hero-showcase img {
   width: 100%;
-  height: auto;
-  max-height: 440px;
-  object-fit: cover;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
   display: block;
 }
 
@@ -6221,6 +6224,11 @@ pre, code {
 
   .service-hero-showcase {
     margin-top: 1.5rem !important;
+    border-radius: 14px !important;
+  }
+
+  .service-hero-showcase img {
+    border-radius: 12px !important;
   }
 
   /* Service Metrics Strip on Mobile */
@@ -6359,19 +6367,21 @@ pre, code {
 /* Service Hero Showcase Fallback & Presentation */
 .service-hero-showcase {
   position: relative;
-  min-height: 220px;
-  background: linear-gradient(135deg, rgba(18, 60, 50, 0.04) 0%, rgba(183, 154, 98, 0.08) 100%);
+  background: #FFFFFF;
   border: 1.5px solid rgba(183, 154, 98, 0.28);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 12px 32px -4px rgba(18, 60, 50, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .service-hero-showcase img {
   width: 100%;
-  height: auto;
-  max-height: 480px;
-  object-fit: cover;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
   display: block;
   border-radius: 18px;
 }
@@ -6450,7 +6460,148 @@ pre, code {
 }
 
 /* ==============================================================================
-   SERVICES HUB DIRECTORY (ALL SERVICES ON ONE RESPONSIVE PAGE)
+   GEO SERVICES REDESIGN (Bento Cards, AI Engines & Citations)
+   ============================================================================== */
+.geo-bento-card {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(18, 60, 50, 0.12);
+  border-radius: 18px;
+  padding: clamp(1.6rem, 3.5vw, 2.4rem);
+  box-shadow: 0 8px 24px -4px rgba(18, 60, 50, 0.05);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.geo-bento-card:hover {
+  border-color: #B79A62;
+  box-shadow: 0 16px 36px -6px rgba(18, 60, 50, 0.1);
+  transform: translateY(-2px);
+}
+
+.geo-bento-card.dark-theme {
+  background: #11251E;
+  color: #FAF8F3;
+  border-color: rgba(183, 154, 98, 0.25);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.geo-bento-card.dark-theme h3,
+.geo-bento-card.dark-theme h4 {
+  color: #FAF8F3 !important;
+}
+
+.geo-bento-card.dark-theme p {
+  color: rgba(250, 248, 243, 0.82) !important;
+}
+
+.geo-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.geo-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(18, 60, 50, 0.07);
+  color: #123C32;
+  border: 1px solid rgba(18, 60, 50, 0.12);
+}
+
+.geo-card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.geo-bento-card.dark-theme .geo-card-icon {
+  background: rgba(183, 154, 98, 0.16);
+  color: #D4AF37;
+  border-color: rgba(183, 154, 98, 0.35);
+}
+
+.geo-engine-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(183, 154, 98, 0.12);
+  color: #0F3C2A;
+  border: 1px solid rgba(183, 154, 98, 0.3);
+}
+
+.geo-bento-card.dark-theme .geo-engine-tag {
+  background: rgba(183, 154, 98, 0.2);
+  color: #FAF8F3;
+  border-color: rgba(183, 154, 98, 0.4);
+}
+
+.geo-check-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.geo-check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #2D3E35;
+}
+
+.geo-bento-card.dark-theme .geo-check-list li {
+  color: rgba(250, 248, 243, 0.85);
+}
+
+.geo-check-bullet {
+  color: #10B981;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.geo-code-snippet {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  background: rgba(10, 26, 20, 0.95);
+  color: #86EFAC;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(183, 154, 98, 0.25);
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .geo-bento-card {
+    padding: 1.35rem 1.15rem;
+    border-radius: 14px;
+  }
+}
+
    ============================================================================== */
 .services-hero {
   position: relative;
@@ -6483,7 +6634,8 @@ pre, code {
   text-align: center;
 }
 
-.services-hero h1 {
+.services-hero h1,
+.services-hero-title {
   font-family: var(--font-display, 'Cormorant Garamond', serif);
   font-size: clamp(2.35rem, 5vw, 4rem);
   font-weight: 700;
@@ -6491,6 +6643,12 @@ pre, code {
   letter-spacing: -0.02em;
   margin: 1.25rem 0;
   color: #FAF8F3;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FAF8F3 10%, #D4AF37 55%, #B79A62 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .services-hero-lead {

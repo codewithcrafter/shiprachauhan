@@ -381,7 +381,7 @@ function initCardSpotlight() {
  * 5. Hero Page-Load Entrance Orchestration (Masked Slide-Up & Curtain Wipe)
  */
 function initHeroEntrance() {
-  const hero = document.querySelector('.hero-home, .page-hero');
+  const hero = document.querySelector('.hero-home, .page-hero, .services-hero');
   if (!hero) return;
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
