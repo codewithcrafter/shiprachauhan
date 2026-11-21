@@ -2987,7 +2987,7 @@ html.no-js .tableau-card,
 
 /* Monospace Technical Tags */
 .mono-tag {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -3664,7 +3664,7 @@ html.no-js .tableau-card,
 }
 
 .brand-role {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.68rem;
   color: rgba(250, 248, 243, 0.7);
   letter-spacing: 0.05em;
@@ -3961,25 +3961,12 @@ html.no-js .tableau-card,
 
 @keyframes popupDramaticEntrance {
   0% {
-    transform: scale(0.6) translateY(60px) rotate(-3deg);
+    transform: scale(0.94) translateY(12px);
     opacity: 0;
-    filter: blur(10px);
   }
-
-  65% {
-    transform: scale(1.03) translateY(-8px) rotate(0.8deg);
-    opacity: 1;
-    filter: blur(0px);
-  }
-
-  85% {
-    transform: scale(0.985) translateY(2px) rotate(-0.3deg);
-  }
-
   100% {
-    transform: scale(1) translateY(0) rotate(0);
+    transform: scale(1) translateY(0);
     opacity: 1;
-    filter: blur(0px);
   }
 }
 
@@ -6310,6 +6297,8 @@ pre, code {
 
 /* ==============================================================================
    ARTICLE TAGS HORIZONTAL STRIP (ABOVE BLOG TITLE)
+/* ==============================================================================
+   SERVICES DIRECTORY & PAGE HERO ENHANCEMENTS
    ============================================================================== */
 .article-tags-horizontal-strip {
   display: flex;
@@ -6415,6 +6404,8 @@ pre, code {
 
 /* ==============================================================================
    Article Tables (Luxury Editorial Styling for Single Blog Posts)
+/* ==============================================================================
+   SERVICES DIRECTORY & PAGE HERO ENHANCEMENTS
    ============================================================================== */
 .table-responsive {
   width: 100%;
@@ -6461,6 +6452,8 @@ pre, code {
 
 /* ==============================================================================
    GEO SERVICES REDESIGN (Bento Cards, AI Engines & Citations)
+/* ==============================================================================
+   SERVICES DIRECTORY & PAGE HERO ENHANCEMENTS
    ============================================================================== */
 .geo-bento-card {
   background: #FFFFFF;
@@ -6602,6 +6595,8 @@ pre, code {
   }
 }
 
+/* ==============================================================================
+   SERVICES DIRECTORY & PAGE HERO ENHANCEMENTS
    ============================================================================== */
 .services-hero {
   position: relative;
@@ -6757,7 +6752,7 @@ pre, code {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -6824,7 +6819,7 @@ pre, code {
 }
 
 .deliverables-heading {
-  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -6985,3 +6980,546 @@ pre, code {
     padding: 0.4rem 0.8rem;
   }
 }
+
+/* Prevent background scroll when popup modal is open */
+body.popup-modal-open {
+  overflow: hidden !important;
+  touch-action: none !important;
+}
+
+
+/* ==========================================================================
+   MASTER UI/UX REFINEMENT SUITE (Shipra Chauhan Enterprise System)
+   - Bulletproof FAQ Accordion (No Clipping, Perfect Wrapping on All Devices)
+   - Luxury Mobile Drawer Navigation & Touch-Optimized Toggle (44px min area)
+   - Smooth Non-Jerky Centered Popup (Fits Viewport, Fixed Close Button)
+   - Interactive Blog Filter Pills & 16:9 Thumbnail Consistency
+   - Related Articles Cards
+   ========================================================================== */
+
+/* 1. Bulletproof FAQ Accordion */
+.faq-list,
+.faq-accordion,
+.faq-accordion-group {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+.faq-item {
+  width: 100% !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.faq-item.active,
+.faq-item.open {
+  border-color: #B79A62 !important;
+  box-shadow: 0 10px 28px -4px rgba(18, 60, 50, 0.08) !important;
+}
+
+.faq-question-btn,
+.faq-trigger {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  padding: 1.25rem 1.6rem !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  font-family: var(--font-display) !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: #142820 !important;
+  line-height: 1.4 !important;
+  transition: color 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.faq-question-btn span,
+.faq-trigger span {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+.faq-question-btn:hover,
+.faq-item.active .faq-question-btn,
+.faq-item.open .faq-question-btn {
+  color: #123C32 !important;
+}
+
+.faq-chevron,
+.faq-icon-toggle {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+  border-radius: 50% !important;
+  background: #F4EFE6 !important;
+  border: 1px solid rgba(183, 154, 98, 0.4) !important;
+  color: #123C32 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.faq-item.active .faq-chevron,
+.faq-item.open .faq-chevron,
+.faq-item.active .faq-icon-toggle,
+.faq-item.open .faq-icon-toggle {
+  background: #123C32 !important;
+  border-color: #123C32 !important;
+  color: #FAF8F3 !important;
+  transform: rotate(180deg) !important;
+}
+
+/* FAQ Answer (Graceful auto-expand without grid clip bugs) */
+.faq-answer,
+.faq-content {
+  display: block !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  padding: 0 1.6rem !important;
+  margin: 0 !important;
+  transition: max-height 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease, padding 0.28s ease !important;
+  color: #4A5248 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.98rem !important;
+  line-height: 1.75 !important;
+  box-sizing: border-box !important;
+}
+
+.faq-item.active .faq-answer,
+.faq-item.open .faq-answer,
+.faq-item.active .faq-content,
+.faq-item.open .faq-content {
+  max-height: 1400px !important;
+  opacity: 1 !important;
+  padding: 0.25rem 1.6rem 1.6rem 1.6rem !important;
+  overflow: visible !important;
+}
+
+.faq-answer p,
+.faq-content p,
+.faq-content-inner p {
+  margin: 0 0 0.85rem 0 !important;
+  color: #4A5248 !important;
+  line-height: 1.75 !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+}
+
+.faq-answer p:last-child,
+.faq-content p:last-child,
+.faq-content-inner p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* 2. Mobile Menu Toggle Button (44px min touch target, crisp 3 bars) */
+.mobile-toggle {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  width: 44px !important;
+  height: 44px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1.5px solid rgba(183, 154, 98, 0.45) !important;
+  border-radius: 10px !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: none;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  position: relative !important;
+  z-index: 1025 !important;
+  transition: all 0.25s ease !important;
+}
+
+.mobile-toggle span {
+  display: block !important;
+  width: 22px !important;
+  height: 2px !important;
+  background-color: #FAF8F3 !important;
+  border-radius: 2px !important;
+  margin: 0 !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform-origin: center !important;
+}
+
+.mobile-toggle span:nth-child(2) {
+  width: 16px !important;
+  background-color: #D4AF37 !important;
+}
+
+.mobile-toggle:hover {
+  background: rgba(183, 154, 98, 0.18) !important;
+  border-color: #B79A62 !important;
+}
+
+.mobile-toggle.active {
+  background: rgba(183, 154, 98, 0.22) !important;
+  border-color: #B79A62 !important;
+}
+
+.mobile-toggle.active span:nth-child(1) {
+  width: 22px !important;
+  transform: translateY(7px) rotate(45deg) !important;
+}
+
+.mobile-toggle.active span:nth-child(2) {
+  opacity: 0 !important;
+  transform: scaleX(0) !important;
+}
+
+.mobile-toggle.active span:nth-child(3) {
+  width: 22px !important;
+  transform: translateY(-7px) rotate(-45deg) !important;
+}
+
+/* 3. Luxury Mobile Drawer Navigation (< 960px) */
+@media (max-width: 960px) {
+  .mobile-toggle {
+    display: flex !important;
+  }
+
+  .site-header-full .nav-menu {
+    position: fixed !important;
+    top: 60px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: calc(100vh - 60px) !important;
+    max-height: calc(100vh - 60px) !important;
+    background: linear-gradient(180deg, #0A201A 0%, #071713 100%) !important;
+    border-top: 1px solid rgba(183, 154, 98, 0.25) !important;
+    border-bottom: none !important;
+    border-radius: 0 !important;
+    padding: 1.5rem 1.75rem 6.5rem !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+    transform: translateY(-120%) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    z-index: 1015 !important;
+  }
+
+  .site-header-full .nav-menu.open,
+  .site-header-full .nav-menu.active {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  .site-header-full .nav-menu li {
+    width: 100% !important;
+    border-bottom: 1px solid rgba(183, 154, 98, 0.12) !important;
+    list-style: none !important;
+  }
+
+  .site-header-full .nav-link {
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    width: 100% !important;
+    padding: 1rem 0.25rem !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    color: #FAF8F3 !important;
+    text-decoration: none !important;
+  }
+
+  .site-header-full .nav-link:hover,
+  .site-header-full .nav-link.active {
+    color: #D4AF37 !important;
+  }
+
+  /* Services Accordion inside Mobile Menu */
+  .services-mega-menu {
+    position: static !important;
+    width: 100% !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    padding: 0.5rem 0.75rem 1rem !important;
+    display: none;
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .nav-dropdown.active .services-mega-menu,
+  .nav-dropdown.open .services-mega-menu {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .services-mega-menu .mega-item {
+    padding: 0.65rem 0.75rem !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(183, 154, 98, 0.15) !important;
+  }
+
+  .services-mega-menu .mega-title {
+    font-size: 0.92rem !important;
+    color: #FAF8F3 !important;
+    font-weight: 700 !important;
+  }
+
+  .services-mega-menu .mega-desc {
+    font-size: 0.75rem !important;
+    color: #A2AAA0 !important;
+  }
+
+  /* Mobile FAQ Spacing */
+  .faq-question-btn {
+    padding: 1.05rem 1.15rem !important;
+    font-size: 0.96rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .faq-answer,
+  .faq-content {
+    padding: 0 1.15rem !important;
+  }
+
+  .faq-item.active .faq-answer,
+  .faq-item.open .faq-answer,
+  .faq-item.active .faq-content,
+  .faq-item.open .faq-content {
+    padding: 0.25rem 1.15rem 1.25rem 1.15rem !important;
+  }
+
+  .faq-answer p,
+  .faq-content p {
+    font-size: 0.92rem !important;
+    line-height: 1.65 !important;
+  }
+}
+
+/* 4. Refined Pop-up Modal (Centered, Smooth Entrance, Fit Viewport) */
+.auto-popup-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 10000 !important;
+  background: rgba(10, 28, 23, 0.78) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.28s ease, visibility 0.28s ease !important;
+}
+
+.auto-popup-overlay.open {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.auto-popup-card {
+  width: 100% !important;
+  max-width: 440px !important;
+  max-height: calc(100vh - 2.5rem) !important;
+  background: #FFFFFF !important;
+  border-radius: 1.15rem !important;
+  padding: 1.5rem 1.6rem 1.35rem !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(183, 154, 98, 0.25) !important;
+  position: relative !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  transform: scale(0.95) translateY(12px) !important;
+  opacity: 0 !important;
+  filter: none !important;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease !important;
+}
+
+.auto-popup-overlay.open .auto-popup-card {
+  transform: scale(1) translateY(0) !important;
+  opacity: 1 !important;
+}
+
+.popup-close-btn {
+  position: absolute !important;
+  top: 0.85rem !important;
+  right: 0.85rem !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  border-radius: 50% !important;
+  background: #F4EFE6 !important;
+  border: 1px solid rgba(183, 154, 98, 0.3) !important;
+  font-size: 1.35rem !important;
+  line-height: 1 !important;
+  color: #123C32 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  z-index: 20 !important;
+}
+
+.popup-close-btn:hover {
+  background: #123C32 !important;
+  color: #FAF8F3 !important;
+  transform: scale(1.06) !important;
+}
+
+/* 5. Blog Category Filter Bar & 16:9 Thumbnail Consistency */
+.blog-category-filter-bar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.65rem !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 2.25rem !important;
+  padding-bottom: 1.25rem !important;
+  border-bottom: 1px solid rgba(183, 154, 98, 0.2) !important;
+}
+
+.blog-filter-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0.5rem 1.15rem !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(183, 154, 98, 0.35) !important;
+  border-radius: 9999px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  color: #123C32 !important;
+  cursor: pointer !important;
+  transition: all 0.22s ease !important;
+  white-space: nowrap !important;
+}
+
+.blog-filter-pill:hover {
+  background: #F4EFE6 !important;
+  border-color: #B79A62 !important;
+  transform: translateY(-1px) !important;
+}
+
+.blog-filter-pill.active {
+  background: #123C32 !important;
+  border-color: #123C32 !important;
+  color: #FAF8F3 !important;
+  box-shadow: 0 4px 14px rgba(18, 60, 50, 0.22) !important;
+}
+
+.category-filter-link.active {
+  color: #B79A62 !important;
+  font-weight: 800 !important;
+}
+
+.blog-image-box,
+.article-featured-image-box {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  height: auto !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  background: #E8ECE9 !important;
+  position: relative !important;
+}
+
+.blog-image-box img,
+.article-featured-image-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  transition: transform 0.4s ease !important;
+}
+
+.blog-card:hover .blog-image-box img {
+  transform: scale(1.03) !important;
+}
+
+/* 6. Related Articles Section & Cards */
+.section-related-articles {
+  background: #FAF8F3 !important;
+  padding: 4.5rem 0 5rem !important;
+  border-top: 1px solid rgba(183, 154, 98, 0.25) !important;
+}
+
+.related-articles-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)) !important;
+  gap: 2rem !important;
+}
+
+.related-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(183, 154, 98, 0.25) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: transform 0.28s ease, box-shadow 0.28s ease !important;
+}
+
+.related-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 36px rgba(18, 60, 50, 0.1) !important;
+  border-color: #B79A62 !important;
+}
+
+.related-card-content {
+  padding: 1.35rem 1.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+}
+
+.related-card-title {
+  font-family: var(--font-display) !important;
+  font-size: 1.12rem !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  margin: 0.5rem 0 0.85rem !important;
+}
+
+.related-card-title a {
+  color: #142820 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.related-card-title a:hover {
+  color: #B79A62 !important;
+}
+

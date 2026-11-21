@@ -5,6 +5,44 @@
  */
 require_once __DIR__ . '/config/db.php';
 
+if (!function_exists('resolveBlogThematicImage')) {
+    function resolveBlogThematicImage($slug, $category = '', $existingImg = '') {
+        if (!empty($existingImg) && $existingImg !== '/assets/images/local-hero.webp') {
+            return $existingImg;
+        }
+        $str = strtolower($slug . ' ' . $category);
+        if (strpos($str, 'geo') !== false || strpos($str, 'generative') !== false || strpos($str, 'ai') !== false) {
+            return '/assets/images/geo-hero.webp';
+        }
+        if (strpos($str, 'tech') !== false || strpos($str, 'core-web') !== false || strpos($str, 'speed') !== false || strpos($str, 'architecture') !== false) {
+            return '/assets/images/technical-hero.webp';
+        }
+        if (strpos($str, 'on-page') !== false || strpos($str, 'intent') !== false || strpos($str, 'cannibalization') !== false) {
+            return '/assets/images/onpage-hero.webp';
+        }
+        if (strpos($str, 'ecom') !== false || strpos($str, 'shopify') !== false) {
+            return '/assets/images/ecommerce-hero.webp';
+        }
+        if (strpos($str, 'pr') !== false || strpos($str, 'link') !== false || strpos($str, 'off-page') !== false || strpos($str, 'authority') !== false) {
+            return '/assets/images/offpage-hero.webp';
+        }
+        if (strpos($str, 'schema') !== false || strpos($str, 'entity') !== false || strpos($str, 'knowledge') !== false) {
+            return '/assets/images/onpage-audit.webp';
+        }
+        if (strpos($str, 'programmatic') !== false || strpos($str, 'multi-location') !== false || strpos($str, 'marketplace') !== false) {
+            return '/assets/images/local-multi.webp';
+        }
+        if (strpos($str, 'saas') !== false || strpos($str, 'demand') !== false || strpos($str, 'pipeline') !== false) {
+            return '/assets/images/full-funnel.webp';
+        }
+        if (strpos($str, 'algorithm') !== false || strpos($str, 'navboost') !== false || strpos($str, 'click') !== false) {
+            return '/assets/images/hyperlocal.webp';
+        }
+        return '/assets/images/local-hero.webp';
+    }
+}
+
+
 $pdo = getDbConnection();
 $appBase = getAppBaseUrl();
 $adminBase = getAdminBaseUrl();
@@ -235,6 +273,16 @@ foreach ($blogs as $b) {
     <div class="container blog-layout">
       <!-- Main Articles Column -->
       <main class="blog-main-column">
+                <!-- Interactive Category Filter Navigation Bar -->
+        <div class="blog-category-filter-bar">
+          <button type="button" class="blog-filter-pill active" data-filter="all">All Publications</button>
+          <button type="button" class="blog-filter-pill" data-filter="technical & architecture">Technical &amp; Architecture</button>
+          <button type="button" class="blog-filter-pill" data-filter="local & voice">Local &amp; Voice Search</button>
+          <button type="button" class="blog-filter-pill" data-filter="generative engine (geo)">Generative Engine (GEO)</button>
+          <button type="button" class="blog-filter-pill" data-filter="off-page & authority">Off-Page &amp; Authority</button>
+          <button type="button" class="blog-filter-pill" data-filter="on-page seo">On-Page SEO</button>
+        </div>
+
         <div class="blog-grid">
 
           <?php if (empty($blogs)): ?>
@@ -252,14 +300,14 @@ foreach ($blogs as $b) {
                 $pubDate = !empty($blog['publication_date']) ? date('F j, Y', strtotime($blog['publication_date'])) : 'October 2026';
                 $readTime = intval($blog['read_time'] ?? 5);
                 $excerpt = htmlspecialchars($blog['short_excerpt'] ?? '');
-                $rawImg = !empty($blog['featured_image']) ? $blog['featured_image'] : '/assets/images/local-hero.webp';
+                $rawImg = resolveBlogThematicImage($slug, $category, $blog['featured_image'] ?? '');
                 $image = (strpos($rawImg, 'http') === 0 || strpos($rawImg, $appBase) === 0) ? htmlspecialchars($rawImg) : htmlspecialchars($appBase . $rawImg);
                 $imageAlt = !empty($blog['featured_image_alt']) ? htmlspecialchars($blog['featured_image_alt']) : $title;
               ?>
-              <article class="blog-card reveal-init">
+              <article class="blog-card reveal-init" data-category="<?= strtolower(htmlspecialchars($category . ' ' . $slug)) ?>">
                 <div class="blog-image-box">
                   <a href="<?= $appBase ?>/blogs/<?= $slug ?>" tabindex="-1" aria-hidden="true">
-                    <img src="<?= $image ?>" alt="<?= $imageAlt ?>" class="blog-image" loading="lazy">
+                    <img src="<?= $image ?>" alt="<?= $imageAlt ?>" class="blog-image" loading="lazy" onerror="this.onerror=null; this.src='<?= $appBase ?>/assets/images/hero-home.webp';">
                   </a>
                 </div>
                 <div class="blog-content">
@@ -336,7 +384,7 @@ foreach ($blogs as $b) {
             <?php else: ?>
               <?php foreach ($categories as $catName => $count): ?>
                 <li>
-                  <a href="<?= $appBase ?>/blogs?cat=<?= urlencode($catName) ?>">
+                  <a href="#filter" class="category-filter-link" data-filter="<?= strtolower(htmlspecialchars($catName)) ?>">
                     <?= htmlspecialchars($catName) ?> (<?= $count ?>)
                   </a>
                 </li>

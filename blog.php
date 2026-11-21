@@ -5,6 +5,44 @@
  */
 require_once __DIR__ . '/config/db.php';
 
+if (!function_exists('resolveBlogThematicImage')) {
+    function resolveBlogThematicImage($slug, $category = '', $existingImg = '') {
+        if (!empty($existingImg) && $existingImg !== '/assets/images/local-hero.webp') {
+            return $existingImg;
+        }
+        $str = strtolower($slug . ' ' . $category);
+        if (strpos($str, 'geo') !== false || strpos($str, 'generative') !== false || strpos($str, 'ai') !== false) {
+            return '/assets/images/geo-hero.webp';
+        }
+        if (strpos($str, 'tech') !== false || strpos($str, 'core-web') !== false || strpos($str, 'speed') !== false || strpos($str, 'architecture') !== false) {
+            return '/assets/images/technical-hero.webp';
+        }
+        if (strpos($str, 'on-page') !== false || strpos($str, 'intent') !== false || strpos($str, 'cannibalization') !== false) {
+            return '/assets/images/onpage-hero.webp';
+        }
+        if (strpos($str, 'ecom') !== false || strpos($str, 'shopify') !== false) {
+            return '/assets/images/ecommerce-hero.webp';
+        }
+        if (strpos($str, 'pr') !== false || strpos($str, 'link') !== false || strpos($str, 'off-page') !== false || strpos($str, 'authority') !== false) {
+            return '/assets/images/offpage-hero.webp';
+        }
+        if (strpos($str, 'schema') !== false || strpos($str, 'entity') !== false || strpos($str, 'knowledge') !== false) {
+            return '/assets/images/onpage-audit.webp';
+        }
+        if (strpos($str, 'programmatic') !== false || strpos($str, 'multi-location') !== false || strpos($str, 'marketplace') !== false) {
+            return '/assets/images/local-multi.webp';
+        }
+        if (strpos($str, 'saas') !== false || strpos($str, 'demand') !== false || strpos($str, 'pipeline') !== false) {
+            return '/assets/images/full-funnel.webp';
+        }
+        if (strpos($str, 'algorithm') !== false || strpos($str, 'navboost') !== false || strpos($str, 'click') !== false) {
+            return '/assets/images/hyperlocal.webp';
+        }
+        return '/assets/images/local-hero.webp';
+    }
+}
+
+
 $appBase = getAppBaseUrl();
 $adminBase = getAdminBaseUrl();
 $slug = trim($_GET['slug'] ?? '');
@@ -64,7 +102,7 @@ $readTime = intval($article['read_time'] ?? 5);
 $excerpt = htmlspecialchars($article['short_excerpt'] ?? '');
 $metaDesc = htmlspecialchars($article['meta_description'] ?: $article['short_excerpt']);
 $keywords = htmlspecialchars($article['meta_keywords'] ?? ($article['tags'] ?? 'SEO'));
-$featuredImage = !empty($article['featured_image']) ? htmlspecialchars($article['featured_image']) : '/assets/images/local-hero.webp';
+$featuredImage = resolveBlogThematicImage($slug, $category, $article['featured_image'] ?? '');
 $featuredImageAlt = !empty($article['featured_image_alt']) ? htmlspecialchars($article['featured_image_alt']) : $title;
 $bodyContent = $article['body_content'] ?? '';
 
@@ -542,6 +580,89 @@ if (($article['schema_type'] ?? 'automatic') === 'custom' && !empty($article['cu
                   </div>
                 </details>
               <?php endif; ?>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </section>
+    <?php endif; ?>
+
+
+    <!-- Related Strategic Articles Section -->
+    <?php
+      $allArticles = [];
+      if (!empty($pdo)) {
+          try {
+              $allArticles = getPublishedBlogs(50);
+          } catch (Exception $e) {
+              $allArticles = [];
+          }
+      }
+      if (empty($allArticles)) {
+          $seedFile = __DIR__ . '/scratch/initial_articles_seed.json';
+          if (file_exists($seedFile)) {
+              $allArticles = json_decode(file_get_contents($seedFile), true) ?: [];
+          }
+      }
+      $relatedArticles = [];
+      if (!empty($allArticles)) {
+          foreach ($allArticles as $item) {
+              if (($item['slug'] ?? '') !== $slug) {
+                  $relatedArticles[] = $item;
+              }
+          }
+          // Sort by matching category first
+          usort($relatedArticles, function($a, $b) use ($category) {
+              $matchA = (($a['category'] ?? '') === $category) ? 1 : 0;
+              $matchB = (($b['category'] ?? '') === $category) ? 1 : 0;
+              return $matchB - $matchA;
+          });
+          $relatedArticles = array_slice($relatedArticles, 0, 3);
+      }
+    ?>
+    <?php if (!empty($relatedArticles)): ?>
+      <section class="section section-related-articles">
+        <div class="container">
+          <div class="section-header text-center" style="max-width: 720px; margin: 0 auto 3rem;">
+            <div class="eyebrow" style="margin-bottom: 0.5rem;">Strategic Perspectives</div>
+            <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: #123C32;">Explore Related Technical Articles</h2>
+            <p style="color: #4A5248; font-size: 1.05rem; margin-top: 0.5rem;">
+              Direct architectural analysis and algorithm frameworks by Senior Consultant Shipra Chauhan.
+            </p>
+          </div>
+          
+          <div class="related-articles-grid">
+            <?php foreach ($relatedArticles as $rel): ?>
+              <?php
+                $relSlug = htmlspecialchars($rel['slug'] ?? '');
+                $relTitle = htmlspecialchars($rel['title'] ?? '');
+                $relCategory = htmlspecialchars($rel['category'] ?? 'SEO Strategy');
+                $relPubDate = !empty($rel['publication_date']) ? date('M j, Y', strtotime($rel['publication_date'])) : 'Oct 2026';
+                $relReadTime = intval($rel['read_time'] ?? 5);
+                $relRawImg = resolveBlogThematicImage($relSlug, $relCategory, $rel['featured_image'] ?? '');
+                $relImg = (strpos($relRawImg, 'http') === 0 || strpos($relRawImg, $appBase) === 0) ? htmlspecialchars($relRawImg) : htmlspecialchars($appBase . $relRawImg);
+              ?>
+              <div class="related-card reveal-init">
+                <div class="blog-image-box">
+                  <a href="<?= $appBase ?>/blogs/<?= $relSlug ?>" tabindex="-1" aria-hidden="true">
+                    <img src="<?= $relImg ?>" alt="<?= $relTitle ?>" loading="lazy" onerror="this.onerror=null; this.src='<?= $appBase ?>/assets/images/hero-home.webp';">
+                  </a>
+                </div>
+                <div class="related-card-content">
+                  <div class="blog-meta-strip" style="margin-bottom: 0.5rem;">
+                    <span class="blog-category-tag"><?= $relCategory ?></span>
+                    <span>·</span>
+                    <span><?= $relReadTime ?> min read</span>
+                  </div>
+                  <h3 class="related-card-title">
+                    <a href="<?= $appBase ?>/blogs/<?= $relSlug ?>"><?= $relTitle ?></a>
+                  </h3>
+                  <div style="margin-top: auto; padding-top: 0.75rem;">
+                    <a href="<?= $appBase ?>/blogs/<?= $relSlug ?>" class="blog-read-btn" style="font-size: 0.9rem;">
+                      Read Article <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
             <?php endforeach; ?>
           </div>
         </div>

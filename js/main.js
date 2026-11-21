@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initServiceHeroForms();
   initBlogSidebarForm();
   initTocScrollSpy();
+  initBlogCategoryFilter();
 });
 
 /**
@@ -230,6 +231,7 @@ function initPageCurtainTransitions() {
           mobileToggle.classList.remove('active');
           navMenu.classList.remove('active');
           document.body.style.overflow = '';
+    document.body.classList.remove('mobile-menu-active');
         }
 
         // Phase 2: Reveal the page smoothly (700ms)
@@ -577,6 +579,7 @@ function initMobileNav() {
     toggle.setAttribute('aria-expanded', 'true');
     backdrop.classList.add('active');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('mobile-menu-active');
   };
 
   toggle.addEventListener('click', (e) => {
@@ -1100,3 +1103,134 @@ function initTocScrollSpy() {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 }
+
+
+/**
+ * 13. Interactive DOM Blog Category Filtering (No Reload, Smooth Active States)
+ */
+function initBlogCategoryFilter() {
+  const filterPills = document.querySelectorAll('.blog-filter-pill');
+  const sidebarLinks = document.querySelectorAll('.category-filter-link, .blog-sidebar-box .blog-sidebar-links a');
+  const blogCards = document.querySelectorAll('.blog-card');
+  const categoryTags = document.querySelectorAll('.blog-category-tag');
+
+  if (blogCards.length === 0) return;
+
+  function applyFilter(filterVal) {
+    const normFilter = (filterVal || 'all').trim().toLowerCase();
+
+    // 1. Update filter pills active state
+    filterPills.forEach(pill => {
+      const pillFilter = (pill.getAttribute('data-filter') || 'all').trim().toLowerCase();
+      if (pillFilter === normFilter || (normFilter === 'all' && pillFilter === 'all')) {
+        pill.classList.add('active');
+      } else {
+        pill.classList.remove('active');
+      }
+    });
+
+    // 2. Update sidebar links active state
+    sidebarLinks.forEach(link => {
+      const linkText = (link.getAttribute('data-filter') || link.textContent || '').trim().toLowerCase();
+      if (normFilter !== 'all' && linkText.includes(normFilter)) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    // 3. Filter cards in DOM
+    let visibleCount = 0;
+    blogCards.forEach(card => {
+      const cardCat = (card.getAttribute('data-category') || card.querySelector('.blog-category-tag')?.textContent || '').toLowerCase();
+      
+      let matches = false;
+      if (normFilter === 'all') {
+        matches = true;
+      } else if (normFilter === 'technical & architecture' || normFilter === 'architecture' || normFilter === 'technical') {
+        matches = cardCat.includes('architecture') || cardCat.includes('tech') || cardCat.includes('vitals') || cardCat.includes('speed');
+      } else if (normFilter === 'local & voice' || normFilter === 'local' || normFilter === 'reputation') {
+        matches = cardCat.includes('local') || cardCat.includes('reputation') || cardCat.includes('voice');
+      } else if (normFilter === 'generative engine (geo)' || normFilter === 'geo' || normFilter === 'ai') {
+        matches = cardCat.includes('generative') || cardCat.includes('geo') || cardCat.includes('ai');
+      } else if (normFilter === 'off-page & authority' || normFilter === 'off-page' || normFilter === 'digital pr') {
+        matches = cardCat.includes('off-page') || cardCat.includes('pr') || cardCat.includes('link') || cardCat.includes('authority') || cardCat.includes('penalty') || cardCat.includes('entity');
+      } else if (normFilter === 'on-page seo' || normFilter === 'on-page') {
+        matches = cardCat.includes('on-page') || cardCat.includes('intent');
+      } else {
+        matches = cardCat.includes(normFilter) || normFilter.includes(cardCat);
+      }
+
+      if (matches) {
+        card.style.display = '';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    let emptyNotice = document.getElementById('blogEmptyFilterNotice');
+    const blogGrid = document.querySelector('.blog-grid');
+    if (visibleCount === 0 && blogGrid) {
+      if (!emptyNotice) {
+        emptyNotice = document.createElement('div');
+        emptyNotice.id = 'blogEmptyFilterNotice';
+        emptyNotice.style.cssText = 'grid-column: 1 / -1; padding: 3rem; text-align: center; background: #FAF8F3; border-radius: 12px; border: 1.5px dashed rgba(183, 154, 98, 0.4);';
+        emptyNotice.innerHTML = '<h3 style="color: #123C32; margin-bottom: 0.5rem;">No publications in this category yet</h3><p style="color: #64748B;">Showing all publications instead...</p>';
+        blogGrid.appendChild(emptyNotice);
+      }
+      emptyNotice.style.display = 'block';
+    } else if (emptyNotice) {
+      emptyNotice.style.display = 'none';
+    }
+  }
+
+  // Bind click on filter pills
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', (e) => {
+      e.preventDefault();
+      const filterVal = pill.getAttribute('data-filter') || 'all';
+      applyFilter(filterVal);
+    });
+  });
+
+  // Bind click on sidebar category links
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (window.location.pathname.includes('blogs') || document.querySelector('.blog-grid')) {
+        e.preventDefault();
+        const filterVal = link.getAttribute('data-filter') || link.textContent.replace(/\(\d+\)/, '').trim();
+        applyFilter(filterVal);
+        const blogLayout = document.querySelector('.blog-layout');
+        if (blogLayout) {
+          blogLayout.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // Bind click on individual card category tags
+  categoryTags.forEach(tag => {
+    tag.style.cursor = 'pointer';
+    tag.title = 'Filter by this category';
+    tag.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      applyFilter(tag.textContent.trim());
+      const blogLayout = document.querySelector('.blog-layout');
+      if (blogLayout) {
+        blogLayout.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Check URL query param
+  const urlParams = new URLSearchParams(window.location.search);
+  const catQuery = urlParams.get('cat');
+  if (catQuery) {
+    applyFilter(catQuery);
+  }
+}
+

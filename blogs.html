@@ -196,13 +196,23 @@
     <div class="container blog-layout">
       <!-- Main Articles Column -->
       <main class="blog-main-column">
+                <!-- Interactive Category Filter Navigation Bar -->
+        <div class="blog-category-filter-bar">
+          <button type="button" class="blog-filter-pill active" data-filter="all">All Publications</button>
+          <button type="button" class="blog-filter-pill" data-filter="technical & architecture">Technical &amp; Architecture</button>
+          <button type="button" class="blog-filter-pill" data-filter="local & voice">Local &amp; Voice Search</button>
+          <button type="button" class="blog-filter-pill" data-filter="generative engine (geo)">Generative Engine (GEO)</button>
+          <button type="button" class="blog-filter-pill" data-filter="off-page & authority">Off-Page &amp; Authority</button>
+          <button type="button" class="blog-filter-pill" data-filter="on-page seo">On-Page SEO</button>
+        </div>
+
         <div class="blog-grid">
 
           <!-- Article 1 -->
-          <article class="blog-card reveal-init">
+          <article class="blog-card reveal-init" data-category="local search & voice">
             <div class="blog-image-box">
               <a href="/blogs/voice-search-local-seo" tabindex="-1" aria-hidden="true">
-                <img src="assets/images/local-hero.webp" alt="Voice Search and Local SEO: What &quot;Near Me&quot; Queries Actually Need" class="blog-image" loading="lazy">
+                <img src="/assets/images/local-hero.webp" alt="Voice Search and Local SEO: What &quot;Near Me&quot; Queries Actually Need" class="blog-image" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/hero-home.webp';">
               </a>
             </div>
             <div class="blog-content">
@@ -233,10 +243,10 @@
           </article>
 
           <!-- Article 2 -->
-          <article class="blog-card reveal-init">
+          <article class="blog-card reveal-init" data-category="architecture & scalability">
             <div class="blog-image-box">
               <a href="/blogs/multi-location-seo-cannibalization" tabindex="-1" aria-hidden="true">
-                <img src="assets/images/local-multi.webp" alt="Multi-Location SEO: How to Avoid Cannibalization Across City Pages" class="blog-image" loading="lazy">
+                <img src="/assets/images/local-multi.webp" alt="Multi-Location SEO: How to Avoid Cannibalization Across City Pages" class="blog-image" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/hero-home.webp';">
               </a>
             </div>
             <div class="blog-content">
@@ -267,10 +277,10 @@
           </article>
 
           <!-- Article 3 -->
-          <article class="blog-card reveal-init">
+          <article class="blog-card reveal-init" data-category="reputation & signals">
             <div class="blog-image-box">
               <a href="/blogs/review-response-local-seo" tabindex="-1" aria-hidden="true">
-                <img src="assets/images/hyperlocal.webp" alt="Review Response Strategy: How Responding to Reviews Affects Local Rankings" class="blog-image" loading="lazy">
+                <img src="/assets/images/hyperlocal.webp" alt="Review Response Strategy: How Responding to Reviews Affects Local Rankings" class="blog-image" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/hero-home.webp';">
               </a>
             </div>
             <div class="blog-content">
@@ -301,10 +311,10 @@
           </article>
 
           <!-- Article 4 -->
-          <article class="blog-card reveal-init">
+          <article class="blog-card reveal-init" data-category="generative engine search">
             <div class="blog-image-box">
               <a href="/blogs/ai-overviews-local-search" tabindex="-1" aria-hidden="true">
-                <img src="assets/images/geo-hero.webp" alt="How AI Overviews Are Changing Local Search Results in 2026" class="blog-image" loading="lazy">
+                <img src="/assets/images/geo-hero.webp" alt="How AI Overviews Are Changing Local Search Results in 2026" class="blog-image" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/hero-home.webp';">
               </a>
             </div>
             <div class="blog-content">
@@ -335,10 +345,10 @@
           </article>
 
           <!-- Article 5 -->
-          <article class="blog-card reveal-init">
+          <article class="blog-card reveal-init" data-category="off-page & authority">
             <div class="blog-image-box">
               <a href="/blogs/link-building-ai-search-citations" tabindex="-1" aria-hidden="true">
-                <img src="assets/images/offpage-hero.webp" alt="Why Link Building for AI Search Citations Is Different From Traditional SEO" class="blog-image" loading="lazy">
+                <img src="/assets/images/offpage-hero.webp" alt="Why Link Building for AI Search Citations Is Different From Traditional SEO" class="blog-image" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/hero-home.webp';">
               </a>
             </div>
             <div class="blog-content">
@@ -369,10 +379,10 @@
           </article>
 
           <!-- Article 6 -->
-          <article class="blog-card reveal-init">
+          <article class="blog-card reveal-init" data-category="technical off-page">
             <div class="blog-image-box">
               <a href="/blogs/toxic-backlinks-disavow" tabindex="-1" aria-hidden="true">
-                <img src="assets/images/offpage-backlink.webp" alt="Toxic Backlinks Disavow Guide: How to Identify and Disavow Them Safely" class="blog-image" loading="lazy">
+                <img src="/assets/images/offpage-backlink.webp" alt="Toxic Backlinks Disavow Guide: How to Identify and Disavow Them Safely" class="blog-image" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/hero-home.webp';">
               </a>
             </div>
             <div class="blog-content">
@@ -403,10 +413,10 @@
           </article>
 
           <!-- Article 7 -->
-          <article class="blog-card reveal-init">
+          <article class="blog-card reveal-init" data-category="entity & knowledge graph">
             <div class="blog-image-box">
               <a href="/blogs/unlinked-brand-mentions-seo" tabindex="-1" aria-hidden="true">
-                <img src="assets/images/ecommerce-hero.webp" alt="Unlinked Brand Mentions SEO: How Brand Mentions Without Links Still Help" class="blog-image" loading="lazy">
+                <img src="/assets/images/ecommerce-hero.webp" alt="Unlinked Brand Mentions SEO: How Brand Mentions Without Links Still Help" class="blog-image" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/hero-home.webp';">
               </a>
             </div>
             <div class="blog-content">
@@ -437,10 +447,10 @@
           </article>
 
           <!-- Article 8 -->
-          <article class="blog-card reveal-init">
+          <article class="blog-card reveal-init" data-category="digital pr & trust">
             <div class="blog-image-box">
               <a href="/blogs/digital-pr-vs-link-building" tabindex="-1" aria-hidden="true">
-                <img src="assets/images/ecommerce-platform.webp" alt="Digital PR vs Traditional Link Building: What Works Better in 2026" class="blog-image" loading="lazy">
+                <img src="/assets/images/ecommerce-platform.webp" alt="Digital PR vs Traditional Link Building: What Works Better in 2026" class="blog-image" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/hero-home.webp';">
               </a>
             </div>
             <div class="blog-content">
@@ -471,10 +481,10 @@
           </article>
 
           <!-- Article 9 -->
-          <article class="blog-card reveal-init">
+          <article class="blog-card reveal-init" data-category="on-page optimization">
             <div class="blog-image-box">
               <a href="/blogs/title-tag-optimization-best-practices" tabindex="-1" aria-hidden="true">
-                <img src="assets/images/onpage-hero.webp" alt="Title Tag and Meta Description Best Practices for 2026 Search Results" class="blog-image" loading="lazy">
+                <img src="/assets/images/onpage-hero.webp" alt="Title Tag and Meta Description Best Practices for 2026 Search Results" class="blog-image" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/hero-home.webp';">
               </a>
             </div>
             <div class="blog-content">
@@ -505,10 +515,10 @@
           </article>
 
           <!-- Article 10 -->
-          <article class="blog-card reveal-init">
+          <article class="blog-card reveal-init" data-category="site architecture">
             <div class="blog-image-box">
               <a href="/blogs/internal-linking-strategy-seo" tabindex="-1" aria-hidden="true">
-                <img src="assets/images/technical-hero.webp" alt="Internal Linking Strategy SEO: How Many Links Is Too Many on One Page" class="blog-image" loading="lazy">
+                <img src="/assets/images/technical-hero.webp" alt="Internal Linking Strategy SEO: How Many Links Is Too Many on One Page" class="blog-image" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/hero-home.webp';">
               </a>
             </div>
             <div class="blog-content">
@@ -580,11 +590,16 @@
           </ul>
         </div>
 
-        <!-- Topics & Categories Box -->
+                <!-- Topics & Categories Box -->
         <div class="blog-sidebar-box reveal-init stagger-3">
           <h3 class="blog-sidebar-title">Categories</h3>
           <ul class="blog-sidebar-links">
-            <li><a href="/blogs">Uncategorized</a></li>
+            <li><a href="#filter" class="category-filter-link" data-filter="all">All Perspectives (10)</a></li>
+            <li><a href="#filter" class="category-filter-link" data-filter="technical & architecture">Technical Architecture (3)</a></li>
+            <li><a href="#filter" class="category-filter-link" data-filter="local & voice">Local &amp; Voice Search (2)</a></li>
+            <li><a href="#filter" class="category-filter-link" data-filter="generative engine (geo)">Generative Engine Optimization (2)</a></li>
+            <li><a href="#filter" class="category-filter-link" data-filter="off-page & authority">Off-Page &amp; Authority (2)</a></li>
+            <li><a href="#filter" class="category-filter-link" data-filter="on-page seo">On-Page SEO (1)</a></li>
           </ul>
         </div>
       </aside>
