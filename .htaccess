@@ -15,6 +15,9 @@ DirectoryIndex index.php index.html
   # 3. Dynamic single blog post -> blog.php?slug=$1
   RewriteRule ^blogs/([^/]+)/?$ blog.php?slug=$1 [NC,L,QSA]
 
+  # 4. Route /services and /services/ directly to services.html
+  RewriteRule ^services/?$ services.html [NC,L]
+
   # 4. If actual file exists, serve it (css, js, assets, images)
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
