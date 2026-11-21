@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/style.css?v=20261121_1">
+  <link rel="stylesheet" href="/css/style.css?v=20261121_geo_v5">
   <script>
     if (sessionStorage.getItem('curtain_reveal')) {
       document.documentElement.classList.add('curtain-incoming');
@@ -121,6 +121,176 @@
   ]
 }
   </script>
+
+  <!-- Dedicated Bulletproof Styles for GEO Services Bento Cards & Icons -->
+  <style>
+  .geo-card-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1.15rem !important;
+    width: 100% !important;
+  }
+  .geo-card-icon {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    max-width: 42px !important;
+    max-height: 42px !important;
+    flex: 0 0 42px !important;
+    flex-shrink: 0 !important;
+    border-radius: 10px !important;
+    background: rgba(18, 60, 50, 0.06) !important;
+    color: #123C32 !important;
+    border: 1px solid rgba(18, 60, 50, 0.12) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+  .geo-card-icon svg {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    min-height: 22px !important;
+    max-width: 22px !important;
+    max-height: 22px !important;
+    flex: 0 0 22px !important;
+    flex-shrink: 0 !important;
+    display: block !important;
+    margin: auto !important;
+  }
+  .geo-bento-card.dark-theme .geo-card-icon {
+    background: rgba(183, 154, 98, 0.16) !important;
+    color: #D4AF37 !important;
+    border-color: rgba(183, 154, 98, 0.35) !important;
+  }
+  .geo-engine-tag {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0.3rem 0.75rem !important;
+    border-radius: 999px !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    background: rgba(18, 60, 50, 0.05) !important;
+    color: #123C32 !important;
+    border: 1px solid rgba(18, 60, 50, 0.1) !important;
+    font-family: var(--font-body, system-ui, sans-serif) !important;
+    white-space: nowrap !important;
+  }
+  .geo-bento-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(18, 60, 50, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 1.75rem 1.6rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    box-shadow: 0 4px 20px rgba(18, 60, 50, 0.04) !important;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  .geo-bento-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 14px 32px rgba(18, 60, 50, 0.09) !important;
+    border-color: rgba(183, 154, 98, 0.45) !important;
+  }
+  .geo-bento-card h3 {
+    font-size: 1.18rem !important;
+    font-weight: 700 !important;
+    color: #123C32 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.65rem !important;
+    line-height: 1.35 !important;
+    letter-spacing: -0.01em !important;
+  }
+  .geo-bento-card p {
+    font-size: 0.925rem !important;
+    line-height: 1.65 !important;
+    color: #4A5852 !important;
+    margin-bottom: 1.25rem !important;
+  }
+  .geo-check-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: auto 0 0 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.55rem !important;
+    border-top: 1px solid rgba(18, 60, 50, 0.08) !important;
+    padding-top: 1rem !important;
+  }
+  .geo-check-list li {
+    font-size: 0.86rem !important;
+    color: #2F3E37 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 0.55rem !important;
+    line-height: 1.45 !important;
+  }
+  .geo-check-bullet {
+    color: #10B981 !important;
+    font-weight: 800 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.2 !important;
+    flex-shrink: 0 !important;
+  }
+  .geo-bento-card.dark-theme {
+    background: #0F2920 !important;
+    border-color: rgba(183, 154, 98, 0.25) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2) !important;
+  }
+  .geo-bento-card.dark-theme h3 {
+    color: #FAF8F3 !important;
+  }
+  .geo-bento-card.dark-theme p {
+    color: rgba(250, 248, 243, 0.8) !important;
+  }
+  .geo-bento-card.dark-theme .geo-check-list {
+    border-top-color: rgba(183, 154, 98, 0.2) !important;
+  }
+  .geo-bento-card.dark-theme .geo-check-list li {
+    color: rgba(250, 248, 243, 0.88) !important;
+  }
+  .geo-bento-card.dark-theme .geo-engine-tag {
+    background: rgba(183, 154, 98, 0.15) !important;
+    color: #D4AF37 !important;
+    border-color: rgba(183, 154, 98, 0.3) !important;
+  }
+  @media (max-width: 768px) {
+    .geo-bento-card {
+      padding: 1.35rem 1.2rem !important;
+      border-radius: 14px !important;
+    }
+    .geo-card-icon {
+      width: 38px !important;
+      height: 38px !important;
+      min-width: 38px !important;
+      max-width: 38px !important;
+      min-height: 38px !important;
+      max-height: 38px !important;
+      flex: 0 0 38px !important;
+    }
+    .geo-card-icon svg {
+      width: 19px !important;
+      height: 19px !important;
+      min-width: 19px !important;
+      max-width: 19px !important;
+    }
+    .geo-bento-card h3 {
+      font-size: 1.1rem !important;
+    }
+    .geo-bento-card p {
+      font-size: 0.88rem !important;
+    }
+  }
+  </style>
+
 </head>
 <body>
   <!-- Full-Page Curtain Wipe Overlay (Deep Emerald with Champagne-Gold Leading Edge) -->
@@ -385,8 +555,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-1">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
             </div>
             <span class="geo-engine-tag">Synthesis Target</span>
           </div>
@@ -404,8 +574,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-2">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
             </div>
             <span class="geo-engine-tag">Citation Anchor</span>
           </div>
@@ -423,8 +593,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-3">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <span class="geo-engine-tag">Trust Verification</span>
           </div>
@@ -458,8 +628,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-1">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
             <span class="geo-engine-tag">Rule 01</span>
           </div>
@@ -476,8 +646,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-2">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
             </div>
             <span class="geo-engine-tag">Rule 02</span>
           </div>
@@ -495,8 +665,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-3">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
             </div>
             <span class="geo-engine-tag">Rule 03</span>
           </div>
@@ -530,8 +700,8 @@
         <div class="col-12 col-lg-6">
           <div class="geo-bento-card h-100 reveal-init stagger-1">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
             </div>
             <span class="geo-engine-tag">Semantic Hierarchy</span>
           </div>
@@ -549,8 +719,8 @@
         <div class="col-12 col-lg-6">
           <div class="geo-bento-card h-100 reveal-init stagger-2">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m9 8 6 4-6 4Z"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m9 8 6 4-6 4Z"/></svg>
             </div>
             <span class="geo-engine-tag">Crawler Governance</span>
           </div>
@@ -587,8 +757,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-1">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <span class="geo-engine-tag">Local Authority</span>
           </div>
@@ -601,8 +771,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-2">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
             </div>
             <span class="geo-engine-tag">Verified Identity</span>
           </div>
@@ -615,8 +785,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-3">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <span class="geo-engine-tag">Recency Verification</span>
           </div>
@@ -645,8 +815,8 @@
         <div class="col-12 col-lg-6">
           <div class="geo-bento-card h-100 reveal-init stagger-1">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
             </div>
             <span class="geo-engine-tag" style="background: rgba(16, 185, 129, 0.15); color: #065F46; border-color: rgba(16, 185, 129, 0.3);">OpenAI Retrieval Engine</span>
           </div>
@@ -665,8 +835,8 @@
         <div class="col-12 col-lg-6">
           <div class="geo-bento-card h-100 reveal-init stagger-2">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
             <span class="geo-engine-tag" style="background: rgba(183, 154, 98, 0.18); color: #8A6D3B; border-color: rgba(183, 154, 98, 0.4);">Perplexity Citation Pro</span>
           </div>
@@ -701,8 +871,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-1">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
             </div>
             <span class="geo-engine-tag">Token Weight</span>
           </div>
@@ -715,8 +885,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-2">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
             </div>
             <span class="geo-engine-tag">Knowledge Graph</span>
           </div>
@@ -729,8 +899,8 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="geo-bento-card h-100 reveal-init stagger-3">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
             </div>
             <span class="geo-engine-tag">Digital PR</span>
           </div>
@@ -759,8 +929,8 @@
         <div class="col-12 col-lg-6">
           <div class="geo-bento-card h-100 reveal-init stagger-1">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
             <span class="geo-engine-tag">High-Growth Startups</span>
           </div>
@@ -778,8 +948,8 @@
         <div class="col-12 col-lg-6">
           <div class="geo-bento-card h-100 reveal-init stagger-2">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
             </div>
             <span class="geo-engine-tag">Enterprise Brands</span>
           </div>
@@ -863,8 +1033,8 @@
         <div class="col-12 col-lg-6">
           <div class="geo-bento-card h-100 dark-theme reveal-init stagger-1">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             </div>
             <span class="geo-engine-tag">Senior Expertise</span>
           </div>
@@ -882,8 +1052,8 @@
         <div class="col-12 col-lg-6">
           <div class="geo-bento-card h-100 dark-theme reveal-init stagger-2">
           <div class="geo-card-header">
-            <div class="geo-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div class="geo-card-icon" style="width:42px!important; height:42px!important; min-width:42px!important; max-width:42px!important; min-height:42px!important; max-height:42px!important; flex:0 0 42px!important; flex-shrink:0!important; border-radius:10px!important; display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important;">
+              <svg width="22" height="22" style="width:22px!important; height:22px!important; min-width:22px!important; max-width:22px!important; min-height:22px!important; max-height:22px!important; flex:0 0 22px!important; flex-shrink:0!important; display:block!important; margin:auto!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <span class="geo-engine-tag">1-on-1 Access</span>
           </div>
@@ -1059,15 +1229,15 @@
           <h4 class="footer-heading">Get In Touch</h4>
           <div class="footer-contact-list">
             <a href="mailto:info@shiprachauhan.in" class="footer-contact-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              <svg width="18" height="18" style="width:18px!important; height:18px!important; min-width:18px!important; max-width:18px!important; flex-shrink:0!important; display:inline-block!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
               <span>info@shiprachauhan.in</span>
             </a>
             <a href="tel:+919718159724" class="footer-contact-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <svg width="18" height="18" style="width:18px!important; height:18px!important; min-width:18px!important; max-width:18px!important; flex-shrink:0!important; display:inline-block!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <span>+91 97181 59724</span>
             </a>
             <div class="footer-contact-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg width="18" height="18" style="width:18px!important; height:18px!important; min-width:18px!important; max-width:18px!important; flex-shrink:0!important; display:inline-block!important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <span>Delhi, India</span>
             </div>
           </div>
