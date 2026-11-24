@@ -1,6 +1,7 @@
 # ==============================================================================
 # SHIPRA CHAUHAN - UNIVERSAL ROUTING (.htaccess)
 # ==============================================================================
+Options -Indexes +FollowSymLinks
 DirectoryIndex index.php index.html
 
 <IfModule mod_rewrite.c>

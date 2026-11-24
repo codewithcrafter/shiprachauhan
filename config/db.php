@@ -188,13 +188,54 @@ function ensureTablesExist($pdo) {
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
     $pdo->exec($leadsSql);
 
-    // Check if table is empty; if so, seed from database.sql or scratch seed
+    // Check if table is empty; if so, seed from JSON seed or database.sql
     $count = $pdo->query("SELECT COUNT(*) FROM `blogs`")->fetchColumn();
     if ($count == 0) {
-        $sqlFile = dirname(__DIR__) . '/database.sql';
-        if (file_exists($sqlFile)) {
-            $queries = file_get_contents($sqlFile);
-            $pdo->exec($queries);
+        $seedFile = dirname(__DIR__) . '/config/articles_seed.json';
+        if (!file_exists($seedFile)) {
+            $seedFile = dirname(__DIR__) . '/scratch/initial_articles_seed.json';
+        }
+        if (file_exists($seedFile)) {
+            $articles = json_decode(file_get_contents($seedFile), true) ?: [];
+            if (!empty($articles)) {
+                $insertStmt = $pdo->prepare("INSERT INTO `blogs` (
+                    `title`, `slug`, `category`, `tags`, `featured_image`, `featured_image_alt`,
+                    `publish_stage`, `publication_date`, `read_time`, `author`, `verified_by`,
+                    `seo_title`, `short_excerpt`, `meta_description`, `meta_keywords`,
+                    `schema_type`, `custom_schema`, `body_markdown`, `body_content`, `faqs_json`
+                ) VALUES (
+                    :title, :slug, :category, :tags, :featured_image, :featured_image_alt,
+                    :publish_stage, :publication_date, :read_time, :author, :verified_by,
+                    :seo_title, :short_excerpt, :meta_description, :meta_keywords,
+                    :schema_type, :custom_schema, :body_markdown, :body_content, :faqs_json
+                )");
+                foreach ($articles as $a) {
+                    try {
+                        $insertStmt->execute([
+                            ':title' => $a['title'] ?? '',
+                            ':slug' => $a['slug'] ?? '',
+                            ':category' => $a['category'] ?? 'SEO Strategy',
+                            ':tags' => $a['tags'] ?? '',
+                            ':featured_image' => $a['featured_image'] ?? '',
+                            ':featured_image_alt' => $a['featured_image_alt'] ?? '',
+                            ':publish_stage' => $a['publish_stage'] ?? 'published',
+                            ':publication_date' => $a['publication_date'] ?? date('Y-m-d'),
+                            ':read_time' => intval($a['read_time'] ?? 5),
+                            ':author' => $a['author'] ?? 'Shipra Chauhan',
+                            ':verified_by' => $a['verified_by'] ?? 'Shipra Chauhan',
+                            ':seo_title' => $a['seo_title'] ?? '',
+                            ':short_excerpt' => $a['short_excerpt'] ?? '',
+                            ':meta_description' => $a['meta_description'] ?? '',
+                            ':meta_keywords' => $a['meta_keywords'] ?? '',
+                            ':schema_type' => $a['schema_type'] ?? 'automatic',
+                            ':custom_schema' => $a['custom_schema'] ?? '',
+                            ':body_markdown' => $a['body_markdown'] ?? '',
+                            ':body_content' => $a['body_content'] ?? '',
+                            ':faqs_json' => $a['faqs_json'] ?? '[]'
+                        ]);
+                    } catch (Exception $e) {}
+                }
+            }
         }
     }
 }

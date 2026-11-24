@@ -16,9 +16,14 @@ if ($pdo) {
     } catch (Exception $e) {
         $errorMsg = $e->getMessage();
     }
-} else {
+}
+
+if (empty($blogs)) {
     // Fallback preview mode using JSON seed so admin UI is never blank
-    $seedFile = dirname(__DIR__) . '/scratch/initial_articles_seed.json';
+    $seedFile = dirname(__DIR__) . '/config/articles_seed.json';
+    if (!file_exists($seedFile)) {
+        $seedFile = dirname(__DIR__) . '/scratch/initial_articles_seed.json';
+    }
     if (file_exists($seedFile)) {
         $blogs = json_decode(file_get_contents($seedFile), true) ?: [];
     }

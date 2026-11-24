@@ -8085,3 +8085,39 @@ details.faq-item div p:last-child {
   }
 }
 
+
+
+/* ==============================================================================
+   CONTENT VISIBILITY & IMMEDIATE RENDER GUARANTEE
+   ============================================================================== */
+.reveal-init {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.service-hero-showcase,
+.service-hero-showcase img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* FAQ Container Centering & Legibility Standardization */
+.section-warm#faqs .container,
+#faqs.section .container,
+section.faq-section .container {
+  max-width: 900px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.faq-question,
+.faq-header {
+  text-align: left !important;
+}
+
+.faq-answer,
+.faq-body {
+  text-align: left !important;
+  line-height: 1.7 !important;
+}

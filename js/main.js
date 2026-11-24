@@ -303,16 +303,42 @@ function initPageCurtainTransitions() {
 
     const isSamePath = normCurrent === normTarget;
 
-    // Check if this is an internal link (navbar, dropdown, cta, footer, or page link)
-    e.preventDefault();
-
     if (isSamePath) {
-      // Same-page navigation (e.g. #services, #audit, or clicking Home/active page to scroll top)
-      triggerCurtainTransition(link.href, true, targetUrl.hash);
-    } else {
-      // Cross-page navigation (e.g. about.html, contact.html, blogs.html, etc.)
-      triggerCurtainTransition(targetUrl.href, false, targetUrl.hash);
+      // Same-page navigation (e.g. #tech-seo, #all-disciplines, #consultation-form, or clicking active page)
+      e.preventDefault();
+
+      // Close mobile drawer if open
+      const mobileToggle = document.querySelector('.mobile-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      if (mobileToggle && navMenu && navMenu.classList.contains('active')) {
+        mobileToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.classList.remove('mobile-menu-active');
+      }
+
+      if (targetUrl.hash && targetUrl.hash !== '#') {
+        try {
+          const el = document.querySelector(targetUrl.hash);
+          if (el) {
+            const navHeight = document.querySelector('.site-header')?.offsetHeight || 75;
+            const elementPosition = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
+            window.scrollTo({ top: Math.max(0, elementPosition), behavior: 'smooth' });
+            // Keep URL clean without hashtag clutter
+            if (window.history && window.history.replaceState) {
+              window.history.replaceState(null, '', window.location.pathname);
+            }
+          }
+        } catch (err) {}
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
     }
+
+    // Cross-page navigation (e.g. about.html, contact.html, blogs.html, etc.)
+    e.preventDefault();
+    triggerCurtainTransition(targetUrl.href, false, targetUrl.hash);
   });
 }
 
@@ -521,17 +547,8 @@ function initTwoWayScrollAnimations() {
         }
         el.classList.add('is-revealed', 'revealed');
       } else {
-        // Element left viewport
-        if (!isOnce) {
-          const rect = entry.boundingClientRect;
-          const isAbove = rect.bottom < -40;
-          const isBelow = rect.top > window.innerHeight + 40;
-
-          if (isAbove || isBelow) {
-            el.style.transitionDelay = '0ms';
-            el.classList.remove('is-revealed', 'revealed');
-          }
-        }
+        // Keep content visible once revealed to eliminate blank/flickering layout bugs
+        // Content remains permanently visible and accessible
       }
     });
   }, {
