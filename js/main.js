@@ -307,14 +307,16 @@ function initPageCurtainTransitions() {
       // Same-page navigation (e.g. #tech-seo, #all-disciplines, #consultation-form, or clicking active page)
       e.preventDefault();
 
-      // Close mobile drawer if open
-      const mobileToggle = document.querySelector('.mobile-toggle');
-      const navMenu = document.querySelector('.nav-menu');
-      if (mobileToggle && navMenu && navMenu.classList.contains('active')) {
+      // Close mobile drawer if open without jumping
+      const mobileToggle = document.querySelector('.mobile-toggle, .mobile-nav-toggle');
+      const navMenu = document.querySelector('.site-header-full .nav-menu, .nav-menu');
+      if (mobileToggle && navMenu && (navMenu.classList.contains('active') || navMenu.classList.contains('open'))) {
         mobileToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        document.body.style.overflow = '';
+        navMenu.classList.remove('active', 'open');
+        const backdrop = document.querySelector('.mobile-nav-backdrop');
+        if (backdrop) backdrop.classList.remove('active');
         document.body.classList.remove('mobile-menu-active');
+        document.documentElement.classList.remove('mobile-menu-active');
       }
 
       if (targetUrl.hash && targetUrl.hash !== '#') {
@@ -330,9 +332,8 @@ function initPageCurtainTransitions() {
             }
           }
         } catch (err) {}
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+      // If clicking same path without a hash, just close menu cleanly. Do NOT jump/scroll to top!
       return;
     }
 
@@ -589,7 +590,8 @@ function initMobileNav() {
     navMenu.classList.remove('active', 'open');
     toggle.setAttribute('aria-expanded', 'false');
     backdrop.classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('mobile-menu-active');
+    document.documentElement.classList.remove('mobile-menu-active');
   };
 
   const openMenu = () => {
@@ -597,8 +599,8 @@ function initMobileNav() {
     navMenu.classList.add('active', 'open');
     toggle.setAttribute('aria-expanded', 'true');
     backdrop.classList.add('active');
-    document.body.style.overflow = 'hidden';
     document.body.classList.add('mobile-menu-active');
+    document.documentElement.classList.add('mobile-menu-active');
   };
 
   toggle.addEventListener('click', (e) => {
@@ -612,7 +614,10 @@ function initMobileNav() {
     }
   });
 
-  backdrop.addEventListener('click', closeMenu);
+  backdrop.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeMenu();
+  });
 
   // Accordion for dropdown in mobile view (Single robust handler)
   dropdownParents.forEach(item => {
@@ -621,35 +626,27 @@ function initMobileNav() {
 
     link.addEventListener('click', (e) => {
       if (window.innerWidth <= 960) {
-        // If the user clicked on the chevron SVG or a dedicated toggle button, toggle the dropdown
-        const isChevron = e.target.closest('svg') || 
-                          e.target.tagName.toLowerCase() === 'svg' || 
-                          e.target.tagName.toLowerCase() === 'polyline' ||
-                          e.target.closest('.dropdown-chevron-btn');
-
-        if (isChevron) {
-          e.preventDefault();
-          e.stopPropagation();
-          const isOpen = item.classList.toggle('open');
-          item.classList.toggle('mobile-open', isOpen);
-        } else {
-          // If the user clicked the text itself (e.g. "Services"), allow normal navigation to /services!
-          closeMenu();
+        // Tapping Services row in mobile menu toggles the accordion smoothly
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = item.classList.toggle('open');
+        item.classList.toggle('mobile-open', isOpen);
+        const chevron = link.querySelector('svg');
+        if (chevron) {
+          chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+          chevron.style.transition = 'transform 0.25s ease';
         }
       }
     });
   });
 
-  // Close when clicking nav links (except when clicking the chevron inside dropdown trigger)
-  navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', (e) => {
-      if (link.matches('.nav-dropdown > a, .nav-item-dropdown > a')) {
-        const isChevron = e.target.closest('svg') || 
-                          e.target.tagName.toLowerCase() === 'svg' || 
-                          e.target.tagName.toLowerCase() === 'polyline';
-        if (isChevron) return;
+  // Close when clicking actual nav links (exclude the dropdown accordion parent itself)
+  const menuLinks = navMenu.querySelectorAll('a:not(.nav-dropdown > a)');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 960) {
+        closeMenu();
       }
-      closeMenu();
     });
   });
 
