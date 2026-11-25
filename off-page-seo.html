@@ -129,8 +129,350 @@
   ]
 }
   </script>
+
+  <!-- Dedicated Scoped Styles for Off-Page SEO Page to Eliminate Excessive Whitespace & Polish UI -->
+  <style id="offpage-scoped-styles">
+    /* Base Section Spacing - tight & balanced */
+    .page-off-page-seo .section {
+      padding: 4.5rem 0 !important;
+    }
+    .page-off-page-seo .section-compact {
+      padding: 3.5rem 0 !important;
+    }
+
+    /* Section Header Typography & Margins */
+    .page-off-page-seo .section-header {
+      margin-bottom: 2.25rem !important;
+      max-width: 860px;
+    }
+    .page-off-page-seo .section-header.text-center {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      text-align: center !important;
+    }
+    .page-off-page-seo .section-header h2 {
+      font-size: clamp(1.85rem, 3.4vw, 2.5rem) !important;
+      line-height: 1.25 !important;
+      margin-top: 0.5rem !important;
+      margin-bottom: 0.85rem !important;
+      color: #123C32 !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.01em !important;
+    }
+    .page-off-page-seo .section-header .lead-text {
+      font-size: 1.05rem !important;
+      line-height: 1.7 !important;
+      color: #4A5852 !important;
+      margin-bottom: 0.75rem !important;
+    }
+    .page-off-page-seo .section-header p:last-child {
+      margin-bottom: 0 !important;
+      line-height: 1.65 !important;
+      color: #4A5852 !important;
+    }
+
+    /* Balanced 2-Column Grid System */
+    .page-off-page-seo .offpage-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
+
+    /* Luxury Architectural Feature Cards */
+    .page-off-page-seo .feature-card {
+      background: #FFFFFF;
+      border: 1.5px solid rgba(18, 60, 50, 0.12);
+      border-radius: 16px;
+      padding: 2rem 1.85rem;
+      box-shadow: 0 4px 20px rgba(18, 60, 50, 0.04);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+    .page-off-page-seo .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(18, 60, 50, 0.08);
+      border-color: rgba(183, 154, 98, 0.5);
+    }
+    .page-off-page-seo .feature-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.15rem;
+    }
+    .page-off-page-seo .card-icon {
+      width: 46px !important;
+      height: 46px !important;
+      min-width: 46px !important;
+      max-width: 46px !important;
+      border-radius: 12px !important;
+      background: rgba(18, 60, 50, 0.06) !important;
+      color: #123C32 !important;
+      border: 1px solid rgba(18, 60, 50, 0.12) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+      transition: all 0.25s ease;
+    }
+    .page-off-page-seo .card-icon svg {
+      width: 22px !important;
+      height: 22px !important;
+      stroke: currentColor;
+    }
+    .page-off-page-seo .feature-card:hover .card-icon {
+      background: #123C32 !important;
+      color: #FAF8F3 !important;
+      border-color: #123C32 !important;
+    }
+    .page-off-page-seo .feature-card h3 {
+      font-size: 1.22rem !important;
+      font-weight: 700 !important;
+      color: #123C32 !important;
+      line-height: 1.35 !important;
+      margin: 0 !important;
+    }
+    .page-off-page-seo .feature-card p {
+      font-size: 0.95rem !important;
+      line-height: 1.65 !important;
+      color: #4A5852 !important;
+      margin-bottom: 0.85rem !important;
+    }
+    .page-off-page-seo .feature-card p:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    /* Backlink Profile Split Layout */
+    .page-off-page-seo .split-layout-backlink {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.75rem;
+      align-items: center;
+    }
+    .page-off-page-seo .backlink-image-frame {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1.5px solid rgba(183, 154, 98, 0.35);
+      box-shadow: 0 12px 32px rgba(18, 60, 50, 0.08);
+      background: #FFFFFF;
+    }
+    .page-off-page-seo .backlink-image-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .page-off-page-seo .disavow-card {
+      background: #FFFFFF;
+      border: 1.5px solid rgba(18, 60, 50, 0.12);
+      border-left: 4px solid #B79A62;
+      border-radius: 14px;
+      padding: 1.85rem;
+      box-shadow: 0 4px 18px rgba(18, 60, 50, 0.04);
+      margin-top: 1.5rem;
+    }
+    .page-off-page-seo .disavow-card h3 {
+      font-size: 1.2rem !important;
+      color: #123C32 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0.75rem !important;
+      font-weight: 700 !important;
+      line-height: 1.35 !important;
+    }
+    .page-off-page-seo .disavow-card p {
+      font-size: 0.95rem !important;
+      line-height: 1.65 !important;
+      color: #4A5852 !important;
+      margin-bottom: 0.75rem !important;
+    }
+    .page-off-page-seo .disavow-card p:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    /* On-Page vs Off-Page Cohesive Section */
+    .page-off-page-seo .comparison-hero-box {
+      background: #123C32;
+      border: 1.5px solid #B79A62;
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      color: #FAF8F3;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-top: 1.25rem;
+      margin-bottom: 1.75rem;
+      gap: 1.5rem;
+      box-shadow: 0 8px 28px rgba(18, 60, 50, 0.12);
+    }
+    .page-off-page-seo .comparison-side {
+      text-align: center;
+    }
+    .page-off-page-seo .comparison-badge-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #D4AF37;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .page-off-page-seo .comparison-side strong {
+      font-size: 1.25rem;
+      color: #FAF8F3;
+      display: block;
+    }
+    .page-off-page-seo .comparison-divider-pill {
+      color: #D4AF37;
+      font-size: 0.88rem;
+      font-weight: 700;
+      background: rgba(183, 154, 98, 0.15);
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(183, 154, 98, 0.3);
+      white-space: nowrap;
+    }
+    .page-off-page-seo .comparison-narrative-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+    .page-off-page-seo .comparison-narrative-card {
+      background: #FFFFFF;
+      border: 1.5px solid rgba(18, 60, 50, 0.12);
+      border-radius: 14px;
+      padding: 1.85rem;
+      box-shadow: 0 4px 16px rgba(18, 60, 50, 0.04);
+      display: flex;
+      align-items: center;
+    }
+    .page-off-page-seo .comparison-narrative-card p {
+      margin: 0 !important;
+      font-size: 0.98rem !important;
+      line-height: 1.7 !important;
+      color: #33413B !important;
+    }
+
+    /* Best Link Building Expert Sanctuary */
+    .page-off-page-seo .section-expert-sanctuary {
+      background: #123C32 !important;
+      color: #FAF8F3 !important;
+      padding: 4.5rem 0 !important;
+      border-top: 1.5px solid #B79A62;
+      border-bottom: 1.5px solid #B79A62;
+    }
+    .page-off-page-seo .expert-content-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .page-off-page-seo .expert-content-wrap .eyebrow {
+      color: #D4AF37 !important;
+      margin-bottom: 0.5rem !important;
+    }
+    .page-off-page-seo .expert-content-wrap h2 {
+      color: #FAF8F3 !important;
+      font-size: clamp(1.85rem, 3.4vw, 2.5rem) !important;
+      margin-bottom: 0.85rem !important;
+      line-height: 1.25 !important;
+    }
+    .page-off-page-seo .expert-lead {
+      color: rgba(250, 248, 243, 0.9) !important;
+      font-size: 1.12rem !important;
+      line-height: 1.65 !important;
+      margin-bottom: 1.75rem !important;
+    }
+    .page-off-page-seo .expert-callout-quote {
+      background: rgba(255, 255, 255, 0.06);
+      border-left: 4px solid #B79A62;
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem 1.85rem;
+      border-top: 1px solid rgba(183, 154, 98, 0.2);
+      border-right: 1px solid rgba(183, 154, 98, 0.2);
+      border-bottom: 1px solid rgba(183, 154, 98, 0.2);
+    }
+    .page-off-page-seo .expert-callout-quote p {
+      color: #FAF8F3 !important;
+      font-size: 1.02rem !important;
+      line-height: 1.7 !important;
+      margin: 0 !important;
+    }
+
+    /* Final Get Started CTA Section */
+    .page-off-page-seo .section-final-cta {
+      background: #FAF8F3 !important;
+      padding: 4.5rem 0 !important;
+      border-bottom: 1px solid rgba(183, 154, 98, 0.2);
+    }
+    .page-off-page-seo .cta-inner-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .page-off-page-seo .cta-inner-wrap .eyebrow {
+      margin-bottom: 0.5rem;
+    }
+    .page-off-page-seo .cta-inner-wrap h2 {
+      font-size: clamp(1.85rem, 3.4vw, 2.5rem) !important;
+      color: #123C32 !important;
+      margin-top: 0.5rem !important;
+      margin-bottom: 0.85rem !important;
+      line-height: 1.25 !important;
+    }
+    .page-off-page-seo .cta-inner-wrap .lead-text {
+      font-size: 1.05rem !important;
+      color: #4A5852 !important;
+      line-height: 1.7 !important;
+      margin-bottom: 2rem !important;
+    }
+
+    /* Pricing & Reporting Strategy Cards */
+    .page-off-page-seo .pricing-callout-box {
+      background: rgba(18, 60, 50, 0.04);
+      border-left: 3px solid #123C32;
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.25rem 0;
+    }
+    .page-off-page-seo .pricing-callout-box p {
+      margin: 0 !important;
+      font-size: 0.92rem !important;
+      line-height: 1.6 !important;
+      color: #2D3E35 !important;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 991px) {
+      .page-off-page-seo .split-layout-backlink {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-off-page-seo .section {
+        padding: 3.25rem 0 !important;
+      }
+      .page-off-page-seo .offpage-card-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem !important;
+      }
+      .page-off-page-seo .comparison-hero-box {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        padding: 1.5rem !important;
+      }
+      .page-off-page-seo .comparison-narrative-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+      .page-off-page-seo .feature-card {
+        padding: 1.5rem 1.35rem !important;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="page-off-page-seo">
   <!-- Full-Page Curtain Wipe Overlay (Deep Emerald with Champagne-Gold Leading Edge) -->
   <div class="page-curtain is-hidden" aria-hidden="true">
     <div class="curtain-gold-edge"></div>
@@ -141,7 +483,7 @@
   </div>
 
   <!-- Site Navigation Header -->
-    <!-- Dual-Tier Modern Sticky Header -->
+  <!-- Dual-Tier Modern Sticky Header -->
   <header class="site-header-full" id="siteHeader">
     <!-- Tier 1: Micro-Bar -->
     <div class="header-top-bar">
@@ -289,46 +631,44 @@
         </div>
       </div>
 
-      
-
-        <!-- Service Hero Consultation Form Card -->
-        <div class="service-hero-form-card reveal-init stagger-2">
-          <div class="service-form-badge">
-            <span class="status-pulse-dot"></span>
-            <span>Direct Senior Consultation</span>
-          </div>
-          <h3 class="service-form-title">Request Authority Link Audit</h3>
-          <p class="service-form-desc">Editorial backlink review, toxic link disavow inspection, and high-impact digital PR blueprint.</p>
-          <form class="service-form" data-validate="true">
-            <div class="form-group">
-              <label>Full Name *</label>
-              <input type="text" name="name" class="form-input" placeholder="Your Full Name *" required>
-            </div>
-            <div class="form-group">
-              <label>Email Address *</label>
-              <input type="email" name="email" class="form-input" placeholder="Your Email Address *" required>
-            </div>
-            <div class="form-group">
-              <label>Contact No. *</label>
-              <input type="tel" name="phone" class="form-input" placeholder="Phone / WhatsApp Number *" required>
-            </div>
-            <div class="form-group">
-              <label>Current Search Challenges &amp; Goals (Optional)</label>
-              <textarea name="challenges" class="form-textarea" placeholder="Current Search Challenges &amp; Goals (optional)" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn-service-submit">
-              <span>Claim Free Strategy Session →</span>
-            </button>
-            <div class="service-form-trust">
-              <span>🔒 Strict NDA Protected</span>
-              <span>•</span>
-              <span>Direct Founder Review</span>
-            </div>
-          </form>
-          <div class="service-form-success">
-            <strong>✓ Consultation Requested!</strong> Shipra Chauhan will review your website and connect within 4 hours.
-          </div>
+      <!-- Service Hero Consultation Form Card -->
+      <div class="service-hero-form-card reveal-init stagger-2">
+        <div class="service-form-badge">
+          <span class="status-pulse-dot"></span>
+          <span>Direct Senior Consultation</span>
         </div>
+        <h3 class="service-form-title">Request Authority Link Audit</h3>
+        <p class="service-form-desc">Editorial backlink review, toxic link disavow inspection, and high-impact digital PR blueprint.</p>
+        <form class="service-form" data-validate="true">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" name="name" class="form-input" placeholder="Your Full Name *" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" name="email" class="form-input" placeholder="Your Email Address *" required>
+          </div>
+          <div class="form-group">
+            <label>Contact No. *</label>
+            <input type="tel" name="phone" class="form-input" placeholder="Phone / WhatsApp Number *" required>
+          </div>
+          <div class="form-group">
+            <label>Current Search Challenges &amp; Goals (Optional)</label>
+            <textarea name="challenges" class="form-textarea" placeholder="Current Search Challenges &amp; Goals (optional)" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn-service-submit">
+            <span>Claim Free Strategy Session →</span>
+          </button>
+          <div class="service-form-trust">
+            <span>🔒 Strict NDA Protected</span>
+            <span>•</span>
+            <span>Direct Founder Review</span>
+          </div>
+        </form>
+        <div class="service-form-success">
+          <strong>✓ Consultation Requested!</strong> Shipra Chauhan will review your website and connect within 4 hours.
+        </div>
+      </div>
     </div>
   </section>
 
@@ -361,19 +701,16 @@
   </section>
 
   <!-- Featured Service Architecture Showcase -->
-    <!-- Featured Service Architecture Showcase -->
   <div class="container">
     <div class="service-hero-showcase reveal-init">
-      <img src="/assets/images/offpage-backlink.webp" alt="Authority Off-Page SEO Services & Editorial Link Building Delhi — Shipra Chauhan" width="1462" height="1076" fetchpriority="high" loading="eager">
+      <img src="/assets/images/offpage-hero.webp" alt="Authority Off-Page SEO Services & Editorial Link Building Delhi — Shipra Chauhan" width="1462" height="1076" fetchpriority="high" loading="eager">
     </div>
   </div>
 
-
-
-  <!-- Core Methods Section -->
+  <!-- 1. Core Services Section -->
   <section class="section section-white">
     <div class="container">
-      <div class="section-header reveal-init">
+      <div class="section-header reveal-init text-center">
         <div class="eyebrow">Core Services</div>
         <h2>Strategic Authority Link Building & High Impact Link Acquisition</h2>
         <p class="lead-text">
@@ -384,39 +721,48 @@
         </p>
       </div>
 
-      <div class="grid-2">
+      <div class="offpage-card-grid">
+        <!-- Card 1 -->
         <div class="feature-card reveal-init stagger-1">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M4 7l8 6 8-6"/></svg>
+          <div class="feature-card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M4 7l8 6 8-6"/></svg>
+            </div>
+            <h3>White Hat Link Building Services Delhi</h3>
           </div>
-          <h3>White Hat Link Building Services Delhi</h3>
           <p>All prospects will be manually researched and pitched to. Ensuring your backlinks are placed with real editors. We will not use link farms, PBNs or spam.</p>
-          <!-- <p>White hat link building services Delhi clients can trust follow Google's Webmaster Guidelines strictly: no link schemes, no automated placements, no paid links that pass PageRank without disclosure. White hat link building is slower than the shortcuts, but it's the only version that doesn't carry a manual action risk hanging over the site six months later.</p> -->
         </div>
 
+        <!-- Card 2 -->
         <div class="feature-card reveal-init stagger-2">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h10l4 4v12H5z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+          <div class="feature-card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h10l4 4v12H5z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+            </div>
+            <h3>Quality Guest Post</h3>
           </div>
-          <h3>Quality Guest Post</h3>
           <p>If you are looking for quality guest post services for your website we will place helpful articles on relevant sites. We will carry out some research on your topic then create an original article with a clear opinion and place it somewhere your buyers will see.</p>
-          <!-- <p>Guest posting services for website Delhi businesses need should prioritize publications with real readership in the client's actual industry — a Delhi-based real estate site benefits far more from a placement on a property or finance blog than from a generic "write for us" page that accepts anything.</p> -->
         </div>
 
+        <!-- Card 3 -->
         <div class="feature-card reveal-init stagger-3">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><line x1="8.5" y1="7.5" x2="10" y2="15.5"/><line x1="15.5" y1="7.5" x2="14" y2="15.5"/></svg>
+          <div class="feature-card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><line x1="8.5" y1="7.5" x2="10" y2="15.5"/><line x1="15.5" y1="7.5" x2="14" y2="15.5"/></svg>
+            </div>
+            <h3>Diverse Backlinks</h3>
           </div>
-          <h3>Diverse Backlinks</h3>
           <p>We will place a mix of different backlinks. A balance of branded, partial match and natural anchor texts. We will favour sites within your niche.</p>
-          <!-- <p>Anchor text needs deliberate variation: branded anchors, naked URLs, partial-match phrases, and generic anchors ("click here," "read more") should all appear in a natural mix. A profile where every anchor is an exact-match keyword is one of the clearest over-optimization signals Google's algorithms flag. Link relevance — whether the linking page's topic actually connects to yours — carries more weight than the linking domain's overall authority score.</p> -->
         </div>
 
+        <!-- Card 4 -->
         <div class="feature-card reveal-init stagger-4">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l6-6 4 4 6-6"/><path d="M14 4h6v6"/><path d="M4 14v6h6"/><path d="M4 20l8-8"/></svg>
+          <div class="feature-card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l6-6 4 4 6-6"/><path d="M14 4h6v6"/><path d="M4 14v6h6"/><path d="M4 20l8-8"/></svg>
+            </div>
+            <h3>Digital PR & No Follow Brand Mentions</h3>
           </div>
-          <h3>Digital PR & No Follow Brand Mentions</h3>
           <p>We will create digital PR (link acquisition) to help turn your stories, data and expert opinions into coverage on news and industry sites. We will identify pages that mention your brand but do not link. In most cases we can quickly gain a win by politely asking for the link.</p>
           <p>Digital PR link acquisition takes this further — building genuinely newsworthy angles (data, commentary, original research) that journalists and industry sites want to cite on their own, rather than link building through direct requests alone.</p>
         </div>
@@ -424,145 +770,163 @@
     </div>
   </section>
 
-  <!-- Backlink Audits & Disavow Management Section -->
-  <section class="section section-cream">
+  <!-- 2. Backlink Audits & Disavow Management Section -->
+  <section class="section" style="background: #FAF8F3; border-top: 1px solid rgba(183, 154, 98, 0.2); border-bottom: 1px solid rgba(183, 154, 98, 0.2);">
     <div class="container">
-      <div class="section-header reveal-init">
-        <div class="eyebrow">Backlink Profile</div>
-        <h2>Full Backlink Profile Analysis</h2>
-        <p class="lead-text">
-          We will begin by carrying out a full backlink profile analysis. Looking at your referring domains, anchor texts, link velocity, lost links and risky links. We will compare this to your closest competitors to show you where your link equity is going, any loss and where to focus.
-          Any harmful links will be identified by looking at patterns in your backlinks. For example irrelevant international directories, paid links and spammy comment links. We will manage all links depending on the actual risk.
-        </p>
-      </div>
-
-      <div class="grid-2 align-center">
+      <div class="split-layout-backlink">
+        <!-- Visual Column -->
         <div class="reveal-init stagger-1">
-          <img src="/assets/images/offpage-backlink.webp" alt="Comprehensive Backlink Profile Audits, Link Equity and Toxic Backlinks Removal" style="width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-md);">
+          <div class="backlink-image-frame">
+            <img src="/assets/images/offpage-backlink.webp" alt="Comprehensive Backlink Profile Audits, Link Equity and Toxic Backlinks Removal" loading="lazy">
+          </div>
         </div>
 
+        <!-- Content Column -->
         <div class="reveal-init stagger-2">
-          <h3>Link Disavowal Management, Authority & Penalty Protection</h3>
-          <p>If you have a harmful link that we cannot remove by contacting the site owner we will create and manage a careful disavowal file. We will not do this by guessing. We will assign a score to each domain based on their authority and relevance. This will show you why we are keeping, removing or ignoring the link.</p>
-          <p>We will monitor the backlinks to ensure we can identify any sudden spike of poor links.</p>
+          <div class="section-header" style="margin-bottom: 1.25rem;">
+            <div class="eyebrow">Backlink Profile</div>
+            <h2>Full Backlink Profile Analysis</h2>
+            <p class="lead-text">
+              We will begin by carrying out a full backlink profile analysis. Looking at your referring domains, anchor texts, link velocity, lost links and risky links. We will compare this to your closest competitors to show you where your link equity is going, any loss and where to focus.
+              Any harmful links will be identified by looking at patterns in your backlinks. For example irrelevant international directories, paid links and spammy comment links. We will manage all links depending on the actual risk.
+            </p>
+          </div>
+
+          <div class="disavow-card">
+            <h3>Link Disavowal Management, Authority & Penalty Protection</h3>
+            <p>If you have a harmful link that we cannot remove by contacting the site owner we will create and manage a careful disavowal file. We will not do this by guessing. We will assign a score to each domain based on their authority and relevance. This will show you why we are keeping, removing or ignoring the link.</p>
+            <p>We will monitor the backlinks to ensure we can identify any sudden spike of poor links.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Trust Signals: E-E-A-T and Referral Traffic Section -->
+  <!-- 3. Trust Signals Section -->
   <section class="section section-white">
     <div class="container">
-      <div class="section-header reveal-init">
+      <div class="section-header reveal-init text-center">
         <div class="eyebrow">Trust Signals</div>
         <h2>Build E-E-A-T signals & Generate Quality Referral Traffic</h2>
       </div>
 
-      <div class="grid-2">
+      <div class="offpage-card-grid">
         <div class="feature-card reveal-init stagger-1">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3.4 8.4-7 9-3.6-.6-7-4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          <div class="feature-card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3.4 8.4-7 9-3.6-.6-7-4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3>E-E-A-T Off Page Alignment</h3>
           </div>
-          <h3>E-E-A-T Off Page Alignment</h3>
           <p>Expertise, experience, authority and trust will be determined in part by what the wider web thinks of you. Our quality off page SEO services Delhi will ensure your off page presence is aligned with your E-E-A-T signals. We do this by using expert content, having consistency across your business profiles and mentioning authors. Plus citing in reputable publications.</p>
         </div>
 
         <div class="feature-card reveal-init stagger-2">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+          <div class="feature-card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+            </div>
+            <h3>Quality Referral Traffic</h3>
           </div>
-          <h3>Quality Referral Traffic</h3>
           <p>A quality link should also bring traffic. We will target all links to bring traffic from the right audience. We will ensure you are gaining enquiries and signups from the link. We will monitor referral traffic and conversions.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Bespoke Campaign Design Section -->
-  <section class="section section-cream">
+  <!-- 4. Campaign Creation Section -->
+  <section class="section" style="background: #FAF8F3; border-top: 1px solid rgba(183, 154, 98, 0.2); border-bottom: 1px solid rgba(183, 154, 98, 0.2);">
     <div class="container">
-      <div class="section-header reveal-init">
+      <div class="section-header reveal-init text-center">
         <div class="eyebrow">Campaign Creation</div>
         <h2>Personalised Campaigns & Backlink Agency Delhi</h2>
         <p class="lead-text">
           Every business is different. We don’t provide one size fits all packages. As a link building company Delhi we will create personalised campaigns to help improve your off page SEO services Delhi. Whether you are targeting a local service area, national e-commerce or competitive B2B niche we will create a campaign to suit your goals. Most people looking for an off page SEO company Delhi will want a clear plan. We will provide a clear plan outlining your goals, timeframes, methods and expected outcomes.
         </p>
-        <!-- <p>
-          As a backlink agency Delhi clients can audit line by line, every placement should be traceable: which domain, what anchor text, what page it points to, and why. Backlink services Delhi businesses invest in should come with this level of transparency as standard, not as an add-on.
-        </p> -->
       </div>
 
-      <div class="grid-2">
+      <div class="offpage-card-grid">
         <div class="feature-card reveal-init stagger-1">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-7h6v7"/></svg>
+          <div class="feature-card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-7h6v7"/></svg>
+            </div>
+            <h3>Affordable Off Page SEO Services for Small Business Delhi</h3>
           </div>
-          <h3>Affordable Off Page SEO Services for Small Business Delhi</h3>
           <p>As you may not have a large team we will provide affordable off page SEO services for small business Delhi. We will begin with a few quality links. As your revenue increases so will your links. This is an affordable option for link building services Delhi that follow white hat guidelines.</p>
-          <!-- <p>A backlink building agency working with smaller businesses should design campaigns in phases, so budget scales alongside measurable ranking and traffic movement rather than being committed upfront in full.</p> -->
         </div>
 
         <div class="feature-card reveal-init stagger-2">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="14" width="3" height="6"/></svg>
+          <div class="feature-card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="14" width="3" height="6"/></svg>
+            </div>
+            <h3>Quality Backlinks by Identifying Gaps</h3>
           </div>
-          <h3>Quality Backlinks by Identifying Gaps</h3>
           <p>We will identify which domains are linking to your competitors but not you. We will rank them based on relevance and ease of access. This will show you where you can quickly gain quality backlinks as they have already proved they will link to similar businesses.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Off-Page vs On-Page SEO Section -->
+  <!-- 5. On Page vs Off Page Section -->
   <section class="section section-white">
     <div class="container">
-      <div class="section-header reveal-init">
+      <div class="section-header reveal-init text-center">
         <div class="eyebrow">On Page vs Off Page</div>
         <h2>On Page vs Off Page SEO – Why Backlinks are Important</h2>
       </div>
 
-      <div class="comparison-bar reveal-init stagger-1" style="display: flex; align-items: center; justify-content: center; gap: 2rem; background: var(--navy-900); color: white; padding: 2rem; border-radius: 12px; margin-bottom: 2.5rem; flex-wrap: wrap;">
-        <div style="text-align: center;">
-          <span style="font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; color: var(--accent-gold); display: block; margin-bottom: 0.25rem;">Off-Page</span>
-          <strong style="font-size: 1.25rem;">Trust Earned Externally</strong>
+      <!-- Unified Architectural Comparison Bar -->
+      <div class="comparison-hero-box reveal-init stagger-1">
+        <div class="comparison-side">
+          <span class="comparison-badge-tag">Off-Page Focus</span>
+          <strong>Trust Earned Externally</strong>
         </div>
-        <div style="color: var(--accent-gold); font-family: var(--font-mono); font-size: 0.9rem;">separates rankings →</div>
-        <div style="text-align: center;">
-          <span style="font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; color: var(--accent-gold); display: block; margin-bottom: 0.25rem;">On-Page</span>
-          <strong style="font-size: 1.25rem;">Understood &amp; Indexed</strong>
+        <div class="comparison-divider-pill">
+          separates rankings →
+        </div>
+        <div class="comparison-side">
+          <span class="comparison-badge-tag">On-Page Foundation</span>
+          <strong>Understood &amp; Indexed</strong>
         </div>
       </div>
 
-      <div class="max-text-measure reveal-init stagger-2">
-        <p class="lead-text">
-          On page SEO is all about optimising your site. This includes optimising your content, titles, structure, speed and internal links. Off page SEO is all about gaining trust from external sources. The best part of off page SEO is backlinks. Often a well optimised page will lose out to a lower quality page with backlinks from other sites.
-        </p>
-        <p>
-          Both work together. If you have quality on page SEO there will be a reason why people will link to your site. If you have quality backlinks your pages will have the authority to rank. This means we see off page SEO services Delhi companies as part of a larger growth strategy.
-        </p>
+      <!-- Natural Side-by-Side Narrative Cards -->
+      <div class="comparison-narrative-grid reveal-init stagger-2">
+        <div class="comparison-narrative-card">
+          <p class="lead-text">
+            On page SEO is all about optimising your site. This includes optimising your content, titles, structure, speed and internal links. Off page SEO is all about gaining trust from external sources. The best part of off page SEO is backlinks. Often a well optimised page will lose out to a lower quality page with backlinks from other sites.
+          </p>
+        </div>
+        <div class="comparison-narrative-card">
+          <p>
+            Both work together. If you have quality on page SEO there will be a reason why people will link to your site. If you have quality backlinks your pages will have the authority to rank. This means we see off page SEO services Delhi companies as part of a larger growth strategy.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Transparent Pricing & Reporting Section -->
-  <section class="section section-cream">
+  <!-- 6. Transparent Pricing & Reporting Section -->
+  <section class="section" style="background: #FAF8F3; border-top: 1px solid rgba(183, 154, 98, 0.2); border-bottom: 1px solid rgba(183, 154, 98, 0.2);">
     <div class="container">
-      <div class="grid-2">
+      <div class="offpage-card-grid">
         <div class="feature-card reveal-init stagger-1">
-          <div class="eyebrow">Strategies</div>
-          <h3>Transparent Authority Strategy from a Trusted Backlink Agency Delhi</h3>
+          <div class="eyebrow" style="margin-bottom: 0.65rem;">Strategies</div>
+          <h3 style="font-size: 1.25rem !important; margin-bottom: 0.75rem !important;">Transparent Authority Strategy from a Trusted Backlink Agency Delhi</h3>
           <p>At the start of your off page SEO services Delhi we will provide a strategy. This will include which pages you want to target, type of links, outreach strategies and volume per month. As an off page SEO consultant Delhi we will explain why we have chosen these options simply. We will personalise our strategy depending on the results we are getting.</p>
           
-          <h4 style="margin-top: 1.25rem; font-size: 1.05rem;">Data-Driven Decisions with an Experienced Off-Page SEO Consultant Delhi</h4>
+          <h4 style="margin-top: 1.35rem; margin-bottom: 0.5rem; font-size: 1.08rem; color: #123C32; font-weight: 700;">Data-Driven Decisions with an Experienced Off-Page SEO Consultant Delhi</h4>
           <p>Every decision is backed by data from your own backlink profile, your competitors and your ranking reports. Each month we review which links moved your pages and which did not, and we adjust the next month’s plan to match. You will always know why a link was chosen and what we expect it to do.</p>
         </div>
 
         <div class="feature-card reveal-init stagger-2">
-          <div class="eyebrow">Scope &amp; Investment</div>
-          <h3>Transparent Pricing & Flexible Retainers</h3>
+          <div class="eyebrow" style="margin-bottom: 0.65rem;">Scope &amp; Investment</div>
+          <h3 style="font-size: 1.25rem !important; margin-bottom: 0.75rem !important;">Transparent Pricing & Flexible Retainers</h3>
           <p>The price of our off page SEO services Delhi and backlink services Delhi will depend on how competitive the links are, quality and how long the campaign is. Once we have completed our audit we will provide a quote. Our retainers are flexible with clear monthly deliverables.</p>
 
-          <div class="callout-quote" style="margin: 1.25rem 0; font-size: 0.95rem; border-left-color: var(--navy-700);">
+          <div class="pricing-callout-box">
             <p><strong>Return on investment:</strong> we measure our work by results you can see in your own reports, such as referring domains gained, ranking movement, referral traffic and enquiries, rather than by the number of links placed.</p>
           </div>
 
@@ -572,41 +936,39 @@
     </div>
   </section>
 
-  <!-- Why Choose Shipra Section -->
-  <section class="section section-navy">
+  <!-- 7. Best Link Building Expert Section (Deep Luxury Sanctuary) -->
+  <section class="section section-expert-sanctuary">
     <div class="container">
-      <div class="section-header reveal-init">
-        <div class="eyebrow" style="color: var(--accent-gold);">BEST LINK BUILDING EXPERT</div>
-        <h2 style="color: var(--cream-50);">Why Work With Shipra Chauhan – Best Link Building Expert Delhi 2026</h2>
-        <p class="lead-text" style="color: var(--navy-200);">
+      <div class="expert-content-wrap reveal-init text-center">
+        <div class="eyebrow">BEST LINK BUILDING EXPERT</div>
+        <h2>Why Work With Shipra Chauhan – Best Link Building Expert Delhi 2026</h2>
+        <p class="expert-lead">
           You will have one expert throughout your audit and reporting. All tasks will be personally completed.
         </p>
-      </div>
 
-      <div class="callout-quote reveal-init stagger-1" style="background: var(--navy-800); border-left: 4px solid var(--accent-gold); color: var(--navy-200);">
-        <p style="color: var(--navy-100);">Clients stay with us as we show them stats such as referring domains, ranking changes, referral traffic and leads. If you are looking to employ link building expert Delhi professionals who focus on long term authority this is what we aim to provide.</p>
+        <div class="expert-callout-quote reveal-init stagger-1">
+          <p>Clients stay with us as we show them stats such as referring domains, ranking changes, referral traffic and leads. If you are looking to employ link building expert Delhi professionals who focus on long term authority this is what we aim to provide.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQs Section -->
-
-    <!-- Frequently Asked Questions (Master Sanjeev-Style Accordion) -->
-    <!-- Final CTA Section -->
-  <section class="section section-cream">
-    <div class="container text-center reveal-init">
-      <div class="eyebrow">GET STARTED</div>
-      <h2>Boost Your Search Authority By Employing a Link Building Expert Delhi</h2>
-      <p class="lead-text max-text-measure" style="margin-left: auto; margin-right: auto; margin-bottom: 2rem;">
-        You will need external endorsements to improve your rankings. Tell us about your website and goals. We will analyse your current backlink profile and advise on next steps. If you are looking for off page SEO services Delhi we will begin with an audit to show you exactly where you are.
-      </p>
-      <a href="/contact" class="btn btn-primary">Book Off-Page SEO Review→</a>
+  <!-- 8. Final Get Started CTA Section -->
+  <section class="section section-final-cta">
+    <div class="container">
+      <div class="cta-inner-wrap reveal-init">
+        <div class="eyebrow">GET STARTED</div>
+        <h2>Boost Your Search Authority By Employing a Link Building Expert Delhi</h2>
+        <p class="lead-text">
+          You will need external endorsements to improve your rankings. Tell us about your website and goals. We will analyse your current backlink profile and advise on next steps. If you are looking for off page SEO services Delhi we will begin with an audit to show you exactly where you are.
+        </p>
+        <a href="/contact" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.05rem; font-weight: 700;">Book Off-Page SEO Review →</a>
+      </div>
     </div>
   </section>
 
-  <!-- Site Footer -->
-
-<section class="section section-warm" id="faqs" style="padding: 5rem 0; background: rgba(244, 239, 230, 0.45); border-top: 1px solid rgba(183, 154, 98, 0.2); border-bottom: 1px solid rgba(183, 154, 98, 0.2);">
+  <!-- 9. FAQs Section (Master Unified Luxury Accordion) -->
+  <section class="section section-warm" id="faqs" style="padding: 5rem 0; background: rgba(244, 239, 230, 0.45); border-top: 1px solid rgba(183, 154, 98, 0.2); border-bottom: 1px solid rgba(183, 154, 98, 0.2);">
     <div class="container">
       <div class="section-header text-center reveal-init">
         <div class="eyebrow">FAQ</div>
@@ -718,7 +1080,9 @@
       </div>
     </div>
   </section>
-    <footer class="site-footer section-dashed-top">
+
+  <!-- Master Site Footer (Deep Luxury Emerald Canvas) -->
+  <footer class="site-footer section-dashed-top">
     <div class="container">
       <div class="footer-grid">
         <!-- Brand Info & Social Profiles -->
@@ -803,8 +1167,7 @@
 
   <script src="/js/main.js?v=20261121_1"></script>
 
-  <!-- 3-Second Timed Animated Lead Pop-up Modal -->
-    <!-- 4-Second Timed Animated Lead Pop-up Modal (Every Page Load & Refresh) -->
+  <!-- 4-Second Timed Animated Lead Pop-up Modal (Every Page Load & Refresh) -->
   <div class="auto-popup-overlay" id="autoPopupOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
     <div class="auto-popup-card">
       <button class="popup-close-btn" id="closeAutoPopupBtn" aria-label="Close Pop-up">×</button>
@@ -871,7 +1234,7 @@
     </a>
     <a href="tel:+919718159724" class="floating-action-btn floating-call" aria-label="Call Directly">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
       </svg>
     </a>
   </div>
@@ -881,7 +1244,7 @@
     <div class="mobile-bottom-inner">
       <a href="tel:+919718159724" class="mobile-bottom-btn mobile-btn-call">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
         </svg>
         <span>Call Now</span>
       </a>

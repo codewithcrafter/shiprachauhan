@@ -1,11 +1,12 @@
 # ==============================================================================
 # SHIPRA CHAUHAN - UNIVERSAL ROUTING (.htaccess)
 # ==============================================================================
-Options -Indexes +FollowSymLinks
+Options -Indexes
 DirectoryIndex index.php index.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteBase /
 
   # 1. Route admin
   RewriteRule ^admin/?$ admin/index.php [NC,L]
@@ -16,22 +17,22 @@ DirectoryIndex index.php index.html
   # 3. Dynamic single blog post -> blog.php?slug=$1
   RewriteRule ^blogs/([^/]+)/?$ blog.php?slug=$1 [NC,L,QSA]
 
-  # 4. Route /services and /services/ directly to services.html
-  RewriteRule ^services/?$ services.html [NC,L]
+  # 4. Route /services and /services/ directly to services.html (using absolute root path)
+  RewriteRule ^services/?$ /services.html [NC,L]
 
-  # 4. If actual file exists, serve it (css, js, assets, images)
+  # 5. If actual file exists, serve it (css, js, assets, images)
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
 
-  # 5. Route clean URLs to .php if exists
+  # 6. Route clean URLs to .php if exists
   RewriteCond %{REQUEST_FILENAME}.php -f
   RewriteRule ^(.*)$ $1.php [NC,L]
 
-  # 6. Route clean URLs to .html if exists (e.g. /ecommerce-seo -> ecommerce-seo.html)
+  # 7. Route clean URLs to .html if exists (e.g. /ecommerce-seo -> ecommerce-seo.html)
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [NC,L]
 
-  # 7. Fallback to existing directory
+  # 8. Fallback to existing directory
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 </IfModule>

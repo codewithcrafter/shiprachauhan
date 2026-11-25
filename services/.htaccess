@@ -1,0 +1,18 @@
+# ==============================================================================
+# SERVICES DIRECTORY - DIRECT ACCESS & FALLBACK (.htaccess)
+# ==============================================================================
+DirectoryIndex index.html index.php
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /services/
+
+  # If an existing file or subfolder is requested, serve it
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Fallback to index.html for any unmapped requests within /services/
+  RewriteRule ^.*$ index.html [L]
+</IfModule>

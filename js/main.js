@@ -321,7 +321,7 @@ function initPageCurtainTransitions() {
         try {
           const el = document.querySelector(targetUrl.hash);
           if (el) {
-            const navHeight = document.querySelector('.site-header')?.offsetHeight || 75;
+            const navHeight = (document.querySelector('.site-header-full') || document.querySelector('.site-header'))?.offsetHeight || 75;
             const elementPosition = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
             window.scrollTo({ top: Math.max(0, elementPosition), behavior: 'smooth' });
             // Keep URL clean without hashtag clutter
@@ -370,13 +370,15 @@ function initScrollProgress() {
  * 3. Sticky Translucent Luxury Header
  */
 function initStickyHeader() {
-  const header = document.querySelector('.site-header');
+  const header = document.querySelector('.site-header-full, .site-header');
   if (!header) return;
 
   const onScroll = () => {
-    if (window.scrollY > 20) {
+    if (window.scrollY > 30) {
+      header.classList.add('header-scrolled');
       header.classList.add('scrolled');
     } else {
+      header.classList.remove('header-scrolled');
       header.classList.remove('scrolled');
     }
   };
